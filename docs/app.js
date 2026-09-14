@@ -44,35 +44,145 @@ function pBlocks(text) {
 function normalizePlace(name) {
   return String(name)
     .trim()
+    .replace(/\s*\((city|county)\)\s*$/i, "")
     .replace(/\s+County$/i, "")
     .replace(/\s+City$/i, "")
     .replace(/^City of\s+/i, "")
     .trim();
 }
 
-function resolvePlaces(places) {
+function parsePlaceKind(raw) {
+  const text = String(raw ?? "").trim();
+  const m = text.match(/\((city|county)\)\s*$/i);
+  const kind = m ? m[1].toLowerCase() : null;
+  const name = normalizePlace(text);
+  return { name, kind };
+}
+
+function geoLookups() {
   const cityMap = Object.fromEntries(
-    Object.entries(state.geography.city_to_county).map(([k, v]) => [k.toLowerCase(), v])
+    Object.entries(state.geography.city_to_county || {}).map(([k, v]) => [k.toLowerCase(), v])
+  );
+  const cityCanonical = Object.fromEntries(
+    Object.keys(state.geography.city_to_county || {}).map((k) => [k.toLowerCase(), k])
   );
   const countyLookup = Object.fromEntries(
-    state.geography.counties.map((c) => [c.toLowerCase(), c])
+    (state.geography.counties || []).map((c) => [c.toLowerCase(), c])
   );
+  return { cityMap, cityCanonical, countyLookup };
+}
+
+function isAmbiguousName(name) {
+  const { cityMap, countyLookup } = geoLookups();
+  const key = name.toLowerCase();
+  return Boolean(countyLookup[key] && cityMap[key]);
+}
+
+function placeId(place) {
+  return `${place.kind}:${place.name.toLowerCase()}`;
+}
+
+function resolvePlaces(places) {
+  const { cityMap, cityCanonical, countyLookup } = geoLookups();
   const display = [];
-  const counties = [];
+  const selectedCounties = [];
+  const selectedCities = [];
   const unresolved = [];
-  for (const raw of places) {
-    const place = normalizePlace(raw);
-    display.push(place);
+
+  for (const item of places) {
+    const raw = typeof item === "string" ? item : item.label || `${item.name} (${item.kind})`;
+    const parsed = typeof item === "string" ? parsePlaceKind(item) : { name: item.name, kind: item.kind };
+    const place = parsed.name;
+    if (!place) continue;
     const key = place.toLowerCase();
-    if (countyLookup[key]) counties.push(countyLookup[key]);
-    else if (cityMap[key]) counties.push(cityMap[key]);
-    else unresolved.push(raw);
+    const isCounty = Boolean(countyLookup[key]);
+    const isCity = Boolean(cityMap[key]);
+    let kind = parsed.kind;
+
+    if (kind === "county") {
+      if (isCounty) {
+        selectedCounties.push(countyLookup[key]);
+        display.push(`${countyLookup[key]} (county)`);
+      } else unresolved.push(raw);
+      continue;
+    }
+    if (kind === "city") {
+      if (isCity) {
+        selectedCities.push(cityCanonical[key]);
+        display.push(`${cityCanonical[key]} (city)`);
+      } else unresolved.push(raw);
+      continue;
+    }
+    if (isCounty && isCity) {
+      unresolved.push(`${place} (ambiguous — specify city or county)`);
+      continue;
+    }
+    if (isCounty) {
+      selectedCounties.push(countyLookup[key]);
+      display.push(`${countyLookup[key]} (county)`);
+      continue;
+    }
+    if (isCity) {
+      selectedCities.push(cityCanonical[key]);
+      display.push(`${cityCanonical[key]} (city)`);
+      continue;
+    }
+    unresolved.push(raw);
   }
+
+  const uniq = (seq) => [...new Set(seq)];
+  const counties = uniq([
+    ...selectedCounties,
+    ...selectedCities.map((c) => cityMap[c.toLowerCase()]).filter(Boolean),
+  ]);
   return {
-    display,
-    counties: [...new Set(counties)],
+    display: uniq(display),
+    counties,
+    cities: uniq(selectedCities),
+    selectedCounties: uniq(selectedCounties),
+    selectedCities: uniq(selectedCities),
     unresolved,
   };
+}
+
+function inferCityFromText(text, county = "") {
+  const raw = String(text || "");
+  if (!raw) return "";
+  let   m = raw.match(/City of\s+(.+?)(?:\s+GENERAL|\s+Member|\s+Vote for|\s*,|\s+-|\s*$)/i);
+    if (m) {
+    let name = normalizePlace(m[1]).replace(/[—–-]+$/g, "").trim();
+    if (name === name.toUpperCase()) {
+      name = name.replace(/\w\S*/g, (w) => w[0] + w.slice(1).toLowerCase());
+    }
+    return name;
+  }
+  const cityMap = state.geography.city_to_county || {};
+  const names = Object.keys(cityMap).sort((a, b) => b.length - a.length);
+  const countyKey = String(county || "").toLowerCase();
+  for (const city of names) {
+    if (county && cityMap[city] !== county) continue;
+    if (city.toLowerCase() === countyKey) continue;
+    const re = new RegExp(`\\b${city.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i");
+    if (re.test(raw)) return city;
+  }
+  return "";
+}
+
+function localItemMatches(item, { selectedCounties, selectedCities, county }) {
+  const title = item.name || item.title || "";
+  const level = item.level || "";
+  let city = item.city || inferCityFromText(`${title} ${item.jurisdiction || ""}`, county);
+  if (selectedCounties.includes(county)) return true;
+  if (!selectedCities.length) return selectedCounties.length > 0;
+  if (city && selectedCities.some((c) => c.toLowerCase() === city.toLowerCase())) return true;
+  if (selectedCities.some((c) => new RegExp(`\\b${c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i").test(title))) {
+    return true;
+  }
+  if (level === "County") {
+    const cityMap = state.geography.city_to_county || {};
+    return selectedCities.some((c) => cityMap[c] === county);
+  }
+  return false;
 }
 
 function districtsForCounties(counties) {
@@ -175,7 +285,17 @@ function renderMeasure(m) {
   return parts.join("\n");
 }
 
-function buildReportHtml({ places, counties, unresolved, election, snapshot, includeLocal }) {
+function buildReportHtml({
+  places,
+  counties,
+  cities,
+  selectedCounties,
+  selectedCities,
+  unresolved,
+  election,
+  snapshot,
+  includeLocal,
+}) {
   const notes = [];
   const sources = [];
   const races = [];
@@ -229,9 +349,31 @@ function buildReportHtml({ places, counties, unresolved, election, snapshot, inc
           );
           continue;
         }
-        races.push(...(local.races || []));
-        measures.push(...(local.measures || []));
+        const localRaces = (local.races || []).filter((r) =>
+          localItemMatches(
+            { ...r, county: r.county || county },
+            { selectedCounties, selectedCities, county }
+          )
+        );
+        const localMeasures = (local.measures || []).filter((m) =>
+          localItemMatches(
+            { ...m, name: `${m.title || ""} ${m.jurisdiction || ""}`, county },
+            { selectedCounties, selectedCities, county }
+          )
+        );
+        races.push(...localRaces);
+        measures.push(...localMeasures);
         notes.push(...(local.notes || []));
+      }
+      if (selectedCities.length && !selectedCounties.length) {
+        notes.push(
+          "City selection includes overlapping county contests plus municipal races for the selected city."
+        );
+      }
+      if (selectedCounties.length) {
+        notes.push(
+          "County selection includes countywide contests and all overlapping city races in the snapshot."
+        );
       }
     } else {
       notes.push("Local races and measures were excluded by your settings.");
@@ -279,7 +421,7 @@ function buildReportHtml({ places, counties, unresolved, election, snapshot, inc
 </head>
 <body>`,
     `<h1>${esc(title)}</h1>`,
-    `<p>Places: ${esc(places.join(", "))}. Resolved counties: ${esc(counties.join(", ") || "(none)")}. Election: ${esc(formatDateLabel(election.date))}.</p>`,
+    `<p>Places: ${esc(places.join(", "))}. Counties: ${esc(counties.join(", ") || "(none)")}. Cities: ${esc((cities || []).join(", ") || "(none)")}. Election: ${esc(formatDateLabel(election.date))}.</p>`,
     `<div class="note"><p>How to import: In Google Docs use File → Open → Upload this .html file. In Microsoft Word use File → Open and select this HTML file.</p></div>`,
   ];
 
@@ -318,15 +460,16 @@ function renderChips() {
   const wrap = $("place-chips");
   wrap.innerHTML = "";
   for (const place of state.places) {
+    const label = place.label || `${place.name} (${place.kind})`;
     const chip = document.createElement("span");
     chip.className = "chip";
-    chip.innerHTML = `<span>${esc(place)}</span>`;
+    chip.innerHTML = `<span>${esc(label)}</span>`;
     const btn = document.createElement("button");
     btn.type = "button";
-    btn.setAttribute("aria-label", `Remove ${place}`);
+    btn.setAttribute("aria-label", `Remove ${label}`);
     btn.textContent = "×";
     btn.addEventListener("click", () => {
-      state.places = state.places.filter((p) => p !== place);
+      state.places = state.places.filter((p) => placeId(p) !== placeId(place));
       renderChips();
       updateResolved();
     });
@@ -338,19 +481,19 @@ function renderChips() {
 
 function updateResolved() {
   if (!state.geography) return;
-  const { counties, unresolved } = resolvePlaces(state.places);
+  const { counties, cities, unresolved } = resolvePlaces(state.places);
   const bits = [];
   if (counties.length) bits.push(`Counties: ${counties.join(", ")}`);
+  if (cities.length) bits.push(`Cities: ${cities.join(", ")}`);
   if (unresolved.length) bits.push(`Unresolved: ${unresolved.join(", ")}`);
-  $("resolved-counties").textContent = bits.join(" · ");
+  $("resolved-places").textContent = bits.join(" · ");
 }
 
 function fillSuggestions() {
   const list = $("place-suggestions");
-  const cities = Object.keys(state.geography.city_to_county || {});
-  const values = [...state.geography.counties, ...cities].sort((a, b) =>
-    a.localeCompare(b)
-  );
+  const counties = (state.geography.counties || []).map((c) => `${c} (county)`);
+  const cities = Object.keys(state.geography.city_to_county || {}).map((c) => `${c} (city)`);
+  const values = [...counties, ...cities].sort((a, b) => a.localeCompare(b));
   list.innerHTML = values.map((v) => `<option value="${esc(v)}"></option>`).join("");
 }
 
@@ -395,12 +538,41 @@ async function loadSnapshot(iso) {
 
 function addPlace() {
   const input = $("place-input");
-  const value = normalizePlace(input.value);
-  if (!value) return;
-  if (!state.places.some((p) => p.toLowerCase() === value.toLowerCase())) {
-    state.places.push(value);
+  const { name, kind } = parsePlaceKind(input.value);
+  if (!name) return;
+  const { cityMap, cityCanonical, countyLookup } = geoLookups();
+  const key = name.toLowerCase();
+  let resolvedKind = kind;
+  if (!resolvedKind) {
+    if (isAmbiguousName(name)) {
+      setStatus(`“${name}” is both a city and a county. Choose “${name} (city)” or “${name} (county)”.`, "error");
+      return;
+    }
+    if (countyLookup[key]) resolvedKind = "county";
+    else if (cityMap[key]) resolvedKind = "city";
+  }
+  if (resolvedKind === "county" && !countyLookup[key]) {
+    setStatus(`Unknown county: ${name}`, "error");
+    return;
+  }
+  if (resolvedKind === "city" && !cityMap[key]) {
+    setStatus(`Unknown city: ${name}`, "error");
+    return;
+  }
+  if (!resolvedKind) {
+    setStatus(`Could not map “${name}” to a California city or county.`, "error");
+    return;
+  }
+  const place = {
+    name: resolvedKind === "county" ? countyLookup[key] : cityCanonical[key],
+    kind: resolvedKind,
+    label: `${resolvedKind === "county" ? countyLookup[key] : cityCanonical[key]} (${resolvedKind})`,
+  };
+  if (!state.places.some((p) => placeId(p) === placeId(place))) {
+    state.places.push(place);
   }
   input.value = "";
+  setStatus("");
   renderChips();
 }
 
@@ -410,7 +582,8 @@ async function generate() {
       setStatus("Add at least one county or city.", "error");
       return;
     }
-    const { display, counties, unresolved } = resolvePlaces(state.places);
+    const resolved = resolvePlaces(state.places);
+    const { display, counties, unresolved, cities, selectedCounties, selectedCities } = resolved;
     if (!counties.length) {
       setStatus("Could not resolve any counties from the places you entered.", "error");
       return;
@@ -422,6 +595,9 @@ async function generate() {
     const html = buildReportHtml({
       places: display,
       counties,
+      cities,
+      selectedCounties,
+      selectedCities,
       unresolved,
       election,
       snapshot: state.snapshot,
@@ -444,7 +620,9 @@ async function generate() {
 function downloadHtml() {
   if (!state.lastHtml) return;
   const iso = $("election-select").value;
-  const slug = state.places.join("_").replace(/\s+/g, "") || "ballot";
+  const slug =
+    state.places.map((p) => `${p.name}${p.kind === "city" ? "City" : "County"}`).join("_").replace(/\s+/g, "") ||
+    "ballot";
   const blob = new Blob([state.lastHtml], { type: "text/html;charset=utf-8" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
@@ -493,7 +671,7 @@ async function init() {
 
     // Sensible demo default
     if (!state.places.length) {
-      state.places = ["Yolo"];
+      state.places = [{ name: "Yolo", kind: "county", label: "Yolo (county)" }];
       renderChips();
     }
     setStatus("Ready. Add places and generate a report.");

@@ -34,6 +34,8 @@ def _race_to_dict(race) -> dict:
         "level": race.level,
         "description": race.description,
         "vote_for": race.vote_for,
+        "county": getattr(race, "county", "") or "",
+        "city": getattr(race, "city", "") or "",
         "candidates": [
             {
                 "name": c.name,

@@ -10,7 +10,7 @@ on:
       local_counties:
         description: "Optional space-separated counties for local scrape (blank = none)"
         required: false
-        default: "Yolo"
+        default: "Yolo Los Angeles"
   schedule:
     - cron: "0 14 * * 1"
 
@@ -35,7 +35,7 @@ jobs:
       - name: Export web data
         run: |
           DATE="${{ github.event.inputs.election_date || '2026-11-03' }}"
-          LOCAL="${{ github.event.inputs.local_counties || 'Yolo' }}"
+          LOCAL="${{ github.event.inputs.local_counties || 'Yolo Los Angeles' }}"
           if [ -n "$LOCAL" ]; then
             python tools/export_ballot_web_data.py --date "$DATE" --out docs/data --local-counties $LOCAL
           else

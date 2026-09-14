@@ -28,7 +28,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "places",
         nargs="+",
-        help="One or more California counties and/or cities (e.g. Yolo Davis Sacramento)",
+        help="One or more California counties and/or cities (e.g. 'Yolo' 'Santa Monica (city)' 'Los Angeles (county)')",
     )
     parser.add_argument(
         "--date",
@@ -64,7 +64,8 @@ def main(argv: list[str] | None = None) -> int:
     )
     args = parser.parse_args(argv)
 
-    display, counties, unresolved = resolve_places(args.places)
+    resolved = resolve_places(args.places)
+    display, counties, unresolved = resolved.display, resolved.counties, resolved.unresolved
     if unresolved and not counties:
         print("ERROR: could not resolve places:", ", ".join(unresolved), file=sys.stderr)
         return 2
@@ -74,6 +75,8 @@ def main(argv: list[str] | None = None) -> int:
     if args.list_elections:
         print(f"Places: {', '.join(display)}")
         print(f"Counties: {', '.join(counties)}")
+        if resolved.cities:
+            print(f"Cities: {', '.join(resolved.cities)}")
         print(f"As of: {as_of.isoformat()}")
         try:
             nxt = resolve_election(counties, election_date=None, as_of=as_of)

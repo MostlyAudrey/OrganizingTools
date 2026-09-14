@@ -34,6 +34,8 @@ class Race:
     candidates: list[Candidate] = field(default_factory=list)
     description: str = ""
     vote_for: str = ""
+    county: str = ""
+    city: str = ""
 
 
 @dataclass
@@ -62,6 +64,7 @@ class BallotReport:
     places: list[str]
     counties: list[str]
     election_date: str
+    cities: list[str] = field(default_factory=list)
     races: list[Race] = field(default_factory=list)
     measures: list[Measure] = field(default_factory=list)
     notes: list[str] = field(default_factory=list)

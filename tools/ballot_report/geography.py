@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import re
+from dataclasses import dataclass
 from pathlib import Path
 
 DATA_DIR = Path(__file__).resolve().parent / "data"
@@ -37,12 +38,52 @@ def _load_json(name: str) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+@dataclass
+class PlaceResolution:
+    display: list[str]
+    counties: list[str]
+    cities: list[str]
+    selected_counties: list[str]
+    selected_cities: list[str]
+    unresolved: list[str]
+
+
+def city_to_county_map() -> dict[str, str]:
+    return {k.lower(): v for k, v in _load_json("city_to_county.json").items()}
+
+
+def known_cities() -> list[str]:
+    return sorted(_load_json("city_to_county.json").keys(), key=lambda s: s.lower())
+
+
+def cities_in_county(county: str) -> list[str]:
+    county = normalize_place(county)
+    return [city for city, cty in _load_json("city_to_county.json").items() if cty == county]
+
+
 def normalize_place(name: str) -> str:
     name = name.strip()
+    name = re.sub(r"\s*\((city|county)\)\s*$", "", name, flags=re.I)
     name = re.sub(r"\s+County$", "", name, flags=re.I)
     name = re.sub(r"\s+City$", "", name, flags=re.I)
     name = re.sub(r"^City of\s+", "", name, flags=re.I)
     return name.strip()
+
+
+def parse_place_kind(raw: str) -> tuple[str, str | None]:
+    """Return (normalized name, 'city'|'county'|None if unspecified)."""
+    text = raw.strip()
+    kind = None
+    m = re.search(r"\((city|county)\)\s*$", text, flags=re.I)
+    if m:
+        kind = m.group(1).lower()
+        text = text[: m.start()]
+    return normalize_place(text), kind
+
+
+def is_ambiguous_place(name: str) -> bool:
+    key = normalize_place(name).lower()
+    return key in {c.lower() for c in CA_COUNTIES} and key in city_to_county_map()
 
 
 def appellate_district_for_county(county: str) -> str | None:
@@ -53,39 +94,137 @@ def appellate_district_for_county(county: str) -> str | None:
     return None
 
 
-def resolve_places(places: list[str]) -> tuple[list[str], list[str], list[str]]:
-    """
-    Resolve mixed city/county inputs.
-    Returns (display_places, counties, unresolved).
-    """
-    city_map = {k.lower(): v for k, v in _load_json("city_to_county.json").items()}
-    counties: list[str] = []
-    display: list[str] = []
-    unresolved: list[str] = []
-
+def resolve_places(places: list[str]) -> PlaceResolution:
+    """Resolve mixed city/county inputs, including ambiguous names like Los Angeles."""
+    city_map = city_to_county_map()
+    city_canonical = {k.lower(): k for k in _load_json("city_to_county.json")}
     county_lookup = {c.lower(): c for c in CA_COUNTIES}
 
+    display: list[str] = []
+    selected_counties: list[str] = []
+    selected_cities: list[str] = []
+    unresolved: list[str] = []
+
     for raw in places:
-        place = normalize_place(raw)
-        display.append(place)
+        place, kind = parse_place_kind(raw)
+        if not place:
+            continue
         key = place.lower()
-        if key in county_lookup:
-            counties.append(county_lookup[key])
+        is_county = key in county_lookup
+        is_city = key in city_map
+
+        if kind == "county":
+            if is_county:
+                selected_counties.append(county_lookup[key])
+                display.append(f"{county_lookup[key]} (county)")
+            else:
+                unresolved.append(raw)
             continue
-        if key in city_map:
-            counties.append(city_map[key])
+        if kind == "city":
+            if is_city:
+                selected_cities.append(city_canonical[key])
+                display.append(f"{city_canonical[key]} (city)")
+            else:
+                unresolved.append(raw)
             continue
-        # fuzzy: "West Sacramento" style already normalized
+
+        if is_county and is_city:
+            unresolved.append(f"{place} (ambiguous — specify city or county)")
+            continue
+        if is_county:
+            selected_counties.append(county_lookup[key])
+            display.append(f"{county_lookup[key]} (county)")
+            continue
+        if is_city:
+            selected_cities.append(city_canonical[key])
+            display.append(f"{city_canonical[key]} (city)")
+            continue
         unresolved.append(raw)
 
-    # unique preserve order
-    seen = set()
-    uniq_counties = []
-    for c in counties:
-        if c not in seen:
-            seen.add(c)
-            uniq_counties.append(c)
-    return display, uniq_counties, unresolved
+    def uniq(seq: list[str]) -> list[str]:
+        seen: set[str] = set()
+        out: list[str] = []
+        for item in seq:
+            if item not in seen:
+                seen.add(item)
+                out.append(item)
+        return out
+
+    selected_counties = uniq(selected_counties)
+    selected_cities = uniq(selected_cities)
+    counties = uniq(
+        selected_counties + [city_map[c.lower()] for c in selected_cities]
+    )
+    return PlaceResolution(
+        display=uniq(display),
+        counties=counties,
+        cities=selected_cities,
+        selected_counties=selected_counties,
+        selected_cities=selected_cities,
+        unresolved=unresolved,
+    )
+
+
+def infer_city_from_text(text: str, county: str = "") -> str:
+    """Best-effort city name from a contest title."""
+    if not text:
+        return ""
+
+    def _pretty(name: str) -> str:
+        name = normalize_place(name)
+        name = name.strip(" —–-")
+        if name.isupper():
+            name = name.title()
+        return name
+
+    m = re.search(
+        r"City of\s+(.+?)(?:\s+GENERAL|\s+Member|\s+Vote for|\s*,|\s+-|\s*$)",
+        text,
+        re.I,
+    )
+    if m:
+        return _pretty(m.group(1))
+    city_map = _load_json("city_to_county.json")
+    names = sorted(city_map.keys(), key=len, reverse=True)
+    county_key = normalize_place(county).lower()
+    for city in names:
+        if county and city_map[city] != county:
+            continue
+        # Don't treat the parent county name in a title as a city (Los Angeles County vs City of Los Angeles).
+        if city.lower() == county_key:
+            continue
+        if re.search(rf"\b{re.escape(city)}\b", text, re.I):
+            return city
+    return ""
+
+
+def local_item_matches(
+    *,
+    title: str,
+    level: str,
+    city: str,
+    selected_counties: list[str],
+    selected_cities: list[str],
+    county: str,
+) -> bool:
+    """
+    County selection includes all overlapping city races.
+    City selection includes overlapping county races plus that city's contests.
+    """
+    city = city or infer_city_from_text(title, county)
+    if selected_counties and county in selected_counties:
+        return True
+    if not selected_cities:
+        return bool(selected_counties)
+    if city:
+        return any(city.lower() == sc.lower() for sc in selected_cities)
+    if any(re.search(rf"\b{re.escape(sc)}\b", title, re.I) for sc in selected_cities):
+        return True
+    # City-only reports still include unnamed countywide offices (supervisors, etc.)
+    if level == "County":
+        city_map = city_to_county_map()
+        return any(city_map.get(sc.lower()) == county for sc in selected_cities)
+    return False
 
 
 def districts_for_counties(counties: list[str]) -> dict[str, list[str]]:

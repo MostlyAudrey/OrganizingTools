@@ -136,7 +136,8 @@ def render_html(report: BallotReport) -> str:
         h1(report.title),
         p(
             f"Places: {', '.join(report.places)}. "
-            f"Resolved counties: {', '.join(report.counties) or '(none)'}. "
+            f"Counties: {', '.join(report.counties) or '(none)'}. "
+            f"Cities: {', '.join(report.cities) or '(none)'}. "
             f"Election: {report.election_date}."
         ),
         '<div class="note">'

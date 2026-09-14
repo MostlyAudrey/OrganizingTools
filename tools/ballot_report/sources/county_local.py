@@ -6,7 +6,7 @@ import urllib.request
 from html.parser import HTMLParser
 from urllib.parse import urljoin
 
-from ..geography import county_elections_url, normalize_place
+from ..geography import county_elections_url, infer_city_from_text, local_item_matches, normalize_place
 from ..models import Candidate, Measure, Race
 
 UA = {"User-Agent": "Mozilla/5.0 (compatible; BallotReportBot/1.0)"}
@@ -238,12 +238,7 @@ def scrape_civicplus_county(county: str, base_url: str | None = None) -> tuple[l
                 if re.search(r"OFF THE BALLOT", title, re.I):
                     continue
                 races.append(
-                    Race(
-                        name=title,
-                        level=_guess_level(title, key),
-                        candidates=cands,
-                        vote_for="See ballot",
-                    )
+                    _make_local_race(title, key, cands, county, vote_for="See ballot")
                 )
         else:
             for heading, rows in parser.blocks:
@@ -253,13 +248,7 @@ def scrape_civicplus_county(county: str, base_url: str | None = None) -> tuple[l
                 title = heading or f"{normalize_place(county)} {key} contest"
                 if re.search(r"OFF THE BALLOT", title, re.I):
                     continue
-                races.append(
-                    Race(
-                        name=title,
-                        level=_guess_level(title, key),
-                        candidates=cands,
-                    )
-                )
+                races.append(_make_local_race(title, key, cands, county))
 
     measures: list[Measure] = []
     measures_url = links.get("measures")
@@ -358,13 +347,81 @@ def _between(text: str, starts: list[str], ends: list[str]) -> str:
     return rest[:end].strip()
 
 
+def _make_local_race(
+    title: str,
+    path_key: str,
+    cands: list[Candidate],
+    county: str,
+    vote_for: str = "",
+) -> Race:
+    return Race(
+        name=title,
+        level=_guess_level(title, path_key),
+        candidates=cands,
+        vote_for=vote_for,
+        county=normalize_place(county),
+        city=infer_city_from_text(title, normalize_place(county)),
+    )
+
+
+def filter_local_items(
+    races: list[Race],
+    measures: list[Measure],
+    *,
+    selected_counties: list[str],
+    selected_cities: list[str],
+) -> tuple[list[Race], list[Measure]]:
+    kept_races = [
+        r
+        for r in races
+        if local_item_matches(
+            title=r.name,
+            level=r.level,
+            city=r.city,
+            selected_counties=selected_counties,
+            selected_cities=selected_cities,
+            county=r.county,
+        )
+    ]
+    from ..geography import city_to_county_map
+
+    counties = list(dict.fromkeys(selected_counties))
+    city_map = city_to_county_map()
+    for city in selected_cities:
+        cty = city_map.get(city.lower())
+        if cty and cty not in counties:
+            counties.append(cty)
+    kept_measures = []
+    for m in measures:
+        blob = f"{m.title} {m.jurisdiction}"
+        if any(
+            local_item_matches(
+                title=blob,
+                level=m.level,
+                city=infer_city_from_text(blob, county),
+                selected_counties=selected_counties,
+                selected_cities=selected_cities,
+                county=county,
+            )
+            for county in counties
+        ):
+            kept_measures.append(m)
+    return kept_races, kept_measures
+
+
 def load_local_for_counties(counties: list[str]) -> tuple[list[Race], list[Measure], list[str]]:
     all_races: list[Race] = []
     all_measures: list[Measure] = []
     notes: list[str] = []
     for county in counties:
-        races, measures, n = scrape_civicplus_county(county)
-        # Prefer county/municipal/school/special from scrape; statewide/federal/state often better from SOS
+        county = normalize_place(county)
+        if county == "Los Angeles":
+            from .lavote import scrape_lavote
+
+            races, n = scrape_lavote(county)
+            measures: list[Measure] = []
+        else:
+            races, measures, n = scrape_civicplus_county(county)
         local_levels = {"County", "Municipal / City", "School Districts", "Special Districts"}
         all_races.extend([r for r in races if r.level in local_levels])
         all_measures.extend(measures)

@@ -9,9 +9,9 @@ from .geography import (
     districts_for_counties,
     resolve_places,
 )
+from .sources.county_local import filter_local_items, load_local_for_counties
 from .html_report import write_report
 from .models import BallotReport, Race
-from .sources.county_local import load_local_for_counties
 from .sources.justices import retention_races_for
 from .sources.sos_candidates import filter_district_races, load_certified_races
 from .sources.sos_props import load_statewide_measures
@@ -24,7 +24,10 @@ def build_report(
     include_local: bool = True,
     cache_dir: Path | None = None,
 ) -> BallotReport:
-    display_places, counties, unresolved = resolve_places(places)
+    resolved = resolve_places(places)
+    display_places = resolved.display
+    counties = resolved.counties
+    unresolved = resolved.unresolved
     if not counties:
         raise ValueError(
             "Could not resolve any counties from: "
@@ -114,9 +117,25 @@ def build_report(
     # Local races / measures
     if include_local:
         local_races, local_measures, local_notes = load_local_for_counties(counties)
+        local_races, local_measures = filter_local_items(
+            local_races,
+            local_measures,
+            selected_counties=resolved.selected_counties,
+            selected_cities=resolved.selected_cities,
+        )
         races.extend(local_races)
         measures.extend(local_measures)
         notes.extend(local_notes)
+        if resolved.selected_cities and not resolved.selected_counties:
+            notes.append(
+                "City selection includes overlapping county contests plus municipal/"
+                "school/special district races that name the selected city."
+            )
+        if resolved.selected_counties:
+            notes.append(
+                "County selection includes countywide contests and all overlapping city races "
+                "found in the county source."
+            )
 
     place_label = ", ".join(display_places)
     title = f"{place_label} — {election.name} Ballot Guide ({format_election_date(election.date)})"
@@ -125,6 +144,7 @@ def build_report(
         title=title,
         places=display_places,
         counties=counties,
+        cities=resolved.cities,
         election_date=format_election_date(election.date),
         races=_dedupe_races(races),
         measures=measures,
