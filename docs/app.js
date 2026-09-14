@@ -240,8 +240,32 @@ function candidateDetails(c) {
   return bits.join(" — ") || "No additional details available.";
 }
 
-function renderRace(race) {
-  const parts = [`<h2>${esc(race.name)}</h2>`];
+function headingId(text, used) {
+  const base =
+    String(text || "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "") || "section";
+  used[base] = (used[base] || 0) + 1;
+  return used[base] === 1 ? base : `${base}-${used[base]}`;
+}
+
+function renderToc(entries) {
+  const items = entries.map(([title, hid, children]) => {
+    let html = `<li><a href="#${esc(hid)}">${esc(title)}</a>`;
+    if (children?.length) {
+      html += `<ul>${children
+        .map(([childTitle, childId]) => `<li><a href="#${esc(childId)}">${esc(childTitle)}</a></li>`)
+        .join("")}</ul>`;
+    }
+    return `${html}</li>`;
+  });
+  return `<nav class="toc" aria-label="Table of contents"><p>Contents</p><ul>${items.join("")}</ul></nav>`;
+}
+
+function renderRace(race, hid = "") {
+  const idAttr = hid ? ` id="${esc(hid)}"` : "";
+  const parts = [`<h2${idAttr}>${esc(race.name)}</h2>`];
   if (race.description) parts.push(`<p>${esc(race.description)}</p>`);
   if (race.vote_for) parts.push(`<p>${esc(race.vote_for)}</p>`);
   if (!race.candidates?.length) {
@@ -254,8 +278,9 @@ function renderRace(race) {
   return parts.join("\n");
 }
 
-function renderMeasure(m) {
-  const parts = [`<h2>${esc(m.title)}</h2>`];
+function renderMeasure(m, hid = "") {
+  const idAttr = hid ? ` id="${esc(hid)}"` : "";
+  const parts = [`<h2${idAttr}>${esc(m.title)}</h2>`];
   if (m.jurisdiction) parts.push(`<p>Jurisdiction: ${esc(m.jurisdiction)}</p>`);
   if (m.threshold) parts.push(`<p>Passage threshold: ${esc(m.threshold)}</p>`);
   if (m.ballot_question) {
@@ -404,6 +429,20 @@ function buildReportHtml({
   }
 
   const title = `${places.join(", ")} — ${election.name} Ballot Guide (${formatDateLabel(election.date)})`;
+  const usedIds = {};
+  const toc = [];
+  const addH1 = (title) => {
+    const hid = headingId(title, usedIds);
+    toc.push([title, hid, []]);
+    return hid;
+  };
+  const addH2 = (title) => {
+    const hid = headingId(title, usedIds);
+    if (toc.length) toc[toc.length - 1][2].push([title, hid]);
+    return hid;
+  };
+  const titleId = addH1(title);
+
   const sections = [
     `<!DOCTYPE html>
 <html lang="en">
@@ -417,31 +456,47 @@ function buildReportHtml({
   h3 { margin-top: 1.1rem; color: #333; }
   p { margin: .55rem 0; }
   .note { background: #f5f5f5; padding: 1rem; border-left: 4px solid #666; margin: 1rem 0; }
+  nav.toc { margin: 1.6rem 0 2rem; padding: 1rem 1.25rem 1.15rem; border: 1px solid #bbb; background: #fafafa; }
+  nav.toc > p { margin: 0 0 .6rem; font-weight: 700; }
+  nav.toc ul { margin: .2rem 0; padding-left: 1.25rem; }
+  nav.toc > ul { padding-left: 1.1rem; }
+  nav.toc li { margin: .2rem 0; }
+  nav.toc a { color: #111; }
 </style>
 </head>
 <body>`,
-    `<h1>${esc(title)}</h1>`,
+    `<h1 id="${esc(titleId)}">${esc(title)}</h1>`,
     `<p>Places: ${esc(places.join(", "))}. Counties: ${esc(counties.join(", ") || "(none)")}. Cities: ${esc((cities || []).join(", ") || "(none)")}. Election: ${esc(formatDateLabel(election.date))}.</p>`,
     `<div class="note"><p>How to import: In Google Docs use File → Open → Upload this .html file. In Microsoft Word use File → Open and select this HTML file.</p></div>`,
   ];
 
+  const body = [];
   if (notes.length) {
-    sections.push("<h1>Notes</h1>");
-    for (const note of notes) sections.push(`<p>${esc(note)}</p>`);
+    body.push(`<h1 id="${esc(addH1("Notes"))}">Notes</h1>`);
+    for (const note of notes) body.push(`<p>${esc(note)}</p>`);
   }
 
-  for (const level of LEVEL_ORDER) {
+  const extraLevels = Object.keys(byLevel)
+    .concat(Object.keys(measuresByLevel))
+    .filter((level) => !LEVEL_ORDER.includes(level));
+  const orderedLevels = [...LEVEL_ORDER];
+  for (const level of extraLevels) {
+    if (!orderedLevels.includes(level)) orderedLevels.push(level);
+  }
+  for (const level of orderedLevels) {
     if (byLevel[level]?.length) {
-      sections.push(`<h1>${esc(level)}</h1>`);
-      for (const race of byLevel[level]) sections.push(renderRace(race));
+      body.push(`<h1 id="${esc(addH1(level))}">${esc(level)}</h1>`);
+      for (const race of byLevel[level]) body.push(renderRace(race, addH2(race.name)));
     }
     if (measuresByLevel[level]?.length) {
-      sections.push(`<h1>${esc(level)}</h1>`);
-      for (const m of measuresByLevel[level]) sections.push(renderMeasure(m));
+      body.push(`<h1 id="${esc(addH1(level))}">${esc(level)}</h1>`);
+      for (const m of measuresByLevel[level]) body.push(renderMeasure(m, addH2(m.title)));
     }
   }
 
-  sections.push("<h1>Sources</h1>");
+  body.push(`<h1 id="${esc(addH1("Sources"))}">Sources</h1>`);
+  sections.push(renderToc(toc));
+  sections.push(...body);
   for (const src of sources) sections.push(`<p>${esc(src)}</p>`);
   sections.push(
     "<p>Compiled as a research aid. Confirm final ballot content with your county sample ballot or Official Voter Information Guide.</p>"

@@ -23,6 +23,16 @@ def esc(s: str) -> str:
     return html.escape(re.sub(r"[ \t]+\n", "\n", s or "").strip())
 
 
+def heading_id(text: str, used: dict[str, int]) -> str:
+    base = re.sub(r"[^a-z0-9]+", "-", (text or "").lower()).strip("-") or "section"
+    used[base] = used.get(base, 0) + 1
+    return base if used[base] == 1 else f"{base}-{used[base]}"
+
+
+def heading(tag: str, text: str, hid: str) -> str:
+    return f'<{tag} id="{esc(hid)}">{esc(text)}</{tag}>'
+
+
 def p_blocks(text: str) -> str:
     text = (text or "").strip()
     if not text:
@@ -36,12 +46,12 @@ def p_blocks(text: str) -> str:
     return "\n".join(out) if out else f"<p>{esc(text)}</p>"
 
 
-def h1(t: str) -> str:
-    return f"<h1>{esc(t)}</h1>"
+def h1(t: str, hid: str = "") -> str:
+    return heading("h1", t, hid) if hid else f"<h1>{esc(t)}</h1>"
 
 
-def h2(t: str) -> str:
-    return f"<h2>{esc(t)}</h2>"
+def h2(t: str, hid: str = "") -> str:
+    return heading("h2", t, hid) if hid else f"<h2>{esc(t)}</h2>"
 
 
 def h3(t: str) -> str:
@@ -52,8 +62,8 @@ def p(t: str) -> str:
     return f"<p>{esc(t)}</p>"
 
 
-def render_race(race: Race) -> str:
-    parts = [h2(race.name)]
+def render_race(race: Race, hid: str = "") -> str:
+    parts = [h2(race.name, hid)]
     if race.description:
         parts.append(p(race.description))
     if race.vote_for:
@@ -66,8 +76,8 @@ def render_race(race: Race) -> str:
     return "\n".join(parts)
 
 
-def render_measure(m: Measure) -> str:
-    parts = [h2(m.title)]
+def render_measure(m: Measure, hid: str = "") -> str:
+    parts = [h2(m.title, hid)]
     if m.jurisdiction:
         parts.append(p(f"Jurisdiction: {m.jurisdiction}"))
     if m.threshold:
@@ -129,6 +139,12 @@ def render_html(report: BallotReport) -> str:
   h3 { margin-top: 1.1rem; color: #333; }
   p { margin: .55rem 0; }
   .note { background: #f5f5f5; padding: 1rem; border-left: 4px solid #666; margin: 1rem 0; }
+  nav.toc { margin: 1.6rem 0 2rem; padding: 1rem 1.25rem 1.15rem; border: 1px solid #bbb; background: #fafafa; }
+  nav.toc > p { margin: 0 0 .6rem; font-weight: 700; }
+  nav.toc ul { margin: .2rem 0; padding-left: 1.25rem; }
+  nav.toc > ul { padding-left: 1.1rem; }
+  nav.toc li { margin: .2rem 0; }
+  nav.toc a { color: #111; }
 </style>
 </head>
 <body>
@@ -149,34 +165,57 @@ def render_html(report: BallotReport) -> str:
         + "</div>",
     ]
 
+    used_ids: dict[str, int] = {}
+    toc: list[tuple[str, str, list[tuple[str, str]]]] = []
+    title_id = heading_id(report.title, used_ids)
+    toc.append((report.title, title_id, []))
+    sections[1] = h1(report.title, title_id)
+
+    def add_h1(title: str) -> str:
+        hid = heading_id(title, used_ids)
+        toc.append((title, hid, []))
+        return hid
+
+    def add_h2(title: str) -> str:
+        hid = heading_id(title, used_ids)
+        if toc:
+            toc[-1][2].append((title, hid))
+        return hid
+
+    body: list[str] = []
     if report.notes:
-        sections.append(h1("Notes"))
+        body.append(h1("Notes", add_h1("Notes")))
         for note in report.notes:
-            sections.append(p(note))
+            body.append(p(note))
 
-    for level in LEVEL_ORDER:
+    ordered_levels = list(LEVEL_ORDER)
+    for level in list(races_by_level) + list(measures_by_level):
+        if level not in ordered_levels:
+            ordered_levels.append(level)
+    for level in ordered_levels:
         if level in races_by_level:
-            sections.append(h1(level))
+            body.append(h1(level, add_h1(level)))
             for race in races_by_level[level]:
-                sections.append(render_race(race))
+                body.append(render_race(race, add_h2(race.name)))
         if level in measures_by_level:
-            sections.append(h1(level))
+            body.append(h1(level, add_h1(level)))
             for measure in measures_by_level[level]:
-                sections.append(render_measure(measure))
+                body.append(render_measure(measure, add_h2(measure.title)))
 
-    # Any unexpected levels
-    for level, races in races_by_level.items():
-        if level not in LEVEL_ORDER:
-            sections.append(h1(level))
-            for race in races:
-                sections.append(render_race(race))
-    for level, measures in measures_by_level.items():
-        if level not in LEVEL_ORDER:
-            sections.append(h1(level))
-            for measure in measures:
-                sections.append(render_measure(measure))
+    body.append(h1("Sources", add_h1("Sources")))
 
-    sections.append(h1("Sources"))
+    toc_html = ['<nav class="toc" aria-label="Table of contents">', "<p>Contents</p>", "<ul>"]
+    for title, hid, children in toc:
+        toc_html.append(f'<li><a href="#{esc(hid)}">{esc(title)}</a>')
+        if children:
+            toc_html.append("<ul>")
+            for child_title, child_id in children:
+                toc_html.append(f'<li><a href="#{esc(child_id)}">{esc(child_title)}</a></li>')
+            toc_html.append("</ul>")
+        toc_html.append("</li>")
+    toc_html.extend(["</ul>", "</nav>"])
+    sections.extend(toc_html)
+    sections.extend(body)
     for src in report.sources:
         sections.append(p(src))
     sections.append(
