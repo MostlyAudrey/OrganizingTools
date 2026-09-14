@@ -1,0 +1,49 @@
+{
+  "elections": [
+    {
+      "date": "2026-06-02",
+      "name": "California Statewide Direct Primary Election",
+      "kind": "statewide_primary",
+      "scope": "statewide",
+      "cert_list_url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-primary/cert-list.pdf",
+      "vig_base_url": "",
+      "notes": "Top-two primary for voter-nominated offices."
+    },
+    {
+      "date": "2026-08-18",
+      "name": "Congressional District 14 Special General Election",
+      "kind": "special",
+      "scope": "San Mateo",
+      "cert_list_url": "",
+      "vig_base_url": "",
+      "notes": "Special vacancy election affecting San Mateo County / CD-14."
+    },
+    {
+      "date": "2026-11-03",
+      "name": "California General Election",
+      "kind": "statewide_general",
+      "scope": "statewide",
+      "cert_list_url": "https://elections.cdn.sos.ca.gov/statewide-elections/2026-general/cert-list-candidates.pdf",
+      "vig_base_url": "https://voterguide.sos.ca.gov/",
+      "notes": "Gubernatorial general election; statewide propositions and local contests."
+    },
+    {
+      "date": "2028-03-07",
+      "name": "California Presidential Primary Election",
+      "kind": "statewide_primary",
+      "scope": "statewide",
+      "cert_list_url": "",
+      "vig_base_url": "",
+      "notes": "Presidential primary (date from SOS party-qualification materials)."
+    },
+    {
+      "date": "2028-11-07",
+      "name": "California Presidential General Election",
+      "kind": "statewide_general",
+      "scope": "statewide",
+      "cert_list_url": "",
+      "vig_base_url": "",
+      "notes": "Presidential general election (date from SOS party-qualification materials)."
+    }
+  ]
+}

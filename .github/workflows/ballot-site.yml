@@ -1,0 +1,67 @@
+name: Update ballot site data
+
+on:
+  workflow_dispatch:
+    inputs:
+      election_date:
+        description: "Election date to export (YYYY-MM-DD)"
+        required: true
+        default: "2026-11-03"
+      local_counties:
+        description: "Optional space-separated counties for local scrape (blank = none)"
+        required: false
+        default: "Yolo"
+  schedule:
+    - cron: "0 14 * * 1"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  export-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps
+        run: python -m pip install -r tools/ballot_report/requirements.txt
+
+      - name: Export web data
+        run: |
+          DATE="${{ github.event.inputs.election_date || '2026-11-03' }}"
+          LOCAL="${{ github.event.inputs.local_counties || 'Yolo' }}"
+          if [ -n "$LOCAL" ]; then
+            python tools/export_ballot_web_data.py --date "$DATE" --out docs/data --local-counties $LOCAL
+          else
+            python tools/export_ballot_web_data.py --date "$DATE" --out docs/data --no-local
+          fi
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data
+          if git diff --staged --quiet; then
+            echo "No data changes"
+          else
+            git commit -m "chore: refresh ballot site data"
+            git push
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
