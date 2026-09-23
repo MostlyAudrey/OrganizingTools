@@ -25,7 +25,7 @@ Open http://localhost:8080
 
 ## How it works
 
-- `docs/` is the static site (`index.html`, `app.js`, `styles.css`).
+- `docs/index.html` is the tools landing page. The Election Guide generator is `docs/election-guide.html` (`app.js`, `styles.css`).
 - `docs/data/` holds geography + election snapshots produced by `tools/export_ballot_web_data.py`.
 - The browser filters statewide/district contests for the selected places and renders the HTML report client-side (no server runtime required).
 - Local races/measures appear only for counties included when the snapshot was exported.
