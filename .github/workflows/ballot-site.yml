@@ -54,6 +54,12 @@ jobs:
             git push
           fi
 
+      - name: Write map config
+        env:
+          MAP_TILE_KEY: ${{ secrets.MAP_TILE_KEY }}
+        run: |
+          python -c "import json, os, pathlib; pathlib.Path('docs/map-config.js').write_text('window.MAP_TILE_KEY = ' + json.dumps(os.environ.get('MAP_TILE_KEY') or '') + ';\n', encoding='utf-8')"
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 

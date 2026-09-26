@@ -394,6 +394,34 @@ function popupHtml(item) {
   return `<strong>${esc(item.name)}</strong><br>${esc(item.place_name)} · ${esc(item.city)}${counted}<br>${units}<br><span>${esc(item.note)}</span>`;
 }
 
+function loadMapConfig() {
+  return new Promise((resolve) => {
+    const script = document.createElement("script");
+    script.src = "map-config.js";
+    script.onload = () => resolve();
+    script.onerror = () => resolve();
+    document.head.appendChild(script);
+  });
+}
+
+function mapTiles() {
+  const key = String(window.MAP_TILE_KEY || "");
+  const template = window.MAP_TILE_URL
+    || (key ? "https://api.maptiler.com/maps/dataviz/{z}/{x}/{y}.png?key={key}" : "");
+  if (key && template) {
+    return {
+      url: template.replaceAll("{key}", encodeURIComponent(key)),
+      attribution: window.MAP_TILE_ATTRIBUTION
+        || '&copy; <a href="https://www.maptiler.com/copyright/">MapTiler</a> &copy; OpenStreetMap',
+    };
+  }
+  return {
+    url: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+    attribution: "&copy; OpenStreetMap &copy; CARTO",
+    subdomains: "abcd",
+  };
+}
+
 function renderMap(profile) {
   const places = [
     ...profile.employers.map((item) => ({ ...item, kind: "employer" })),
@@ -401,11 +429,13 @@ function renderMap(profile) {
   ].filter((item) => item.lat != null && item.lng != null);
 
   const map = L.map("county-map", { scrollWheelZoom: false });
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-    attribution: '&copy; OpenStreetMap &copy; CARTO',
-    subdomains: "abcd",
+  const tiles = mapTiles();
+  const tileOptions = {
+    attribution: tiles.attribution,
     maxZoom: 19,
-  }).addTo(map);
+  };
+  if (tiles.subdomains) tileOptions.subdomains = tiles.subdomains;
+  L.tileLayer(tiles.url, tileOptions).addTo(map);
 
   const employers = L.markerClusterGroup({ showCoverageOnHover: false });
   const unions = L.markerClusterGroup({ showCoverageOnHover: false });
@@ -595,6 +625,7 @@ function renderUnions(profile) {
 }
 
 async function main() {
+  await loadMapConfig();
   const response = await fetch("data/yolo-profile.json");
   if (!response.ok) throw new Error("Missing profile data");
   const profile = await response.json();

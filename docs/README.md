@@ -9,6 +9,7 @@ Static site UI for the ballot report generator. Visitors pick counties/cities an
 3. Source: **GitHub Actions** (recommended; uses `.github/workflows/ballot-site.yml`)
    - Or: Deploy from branch → `/docs`
 4. Run the **Update ballot site data** workflow once (Actions tab) to publish/refresh `docs/data`.
+5. For map tiles that require a key, add a repository secret named `MAP_TILE_KEY` under **Settings → Secrets and variables → Actions**. The workflow writes it to `docs/map-config.js` only in the Pages artifact. Restrict the key to your Pages domain in the tile provider’s dashboard. Without the secret, the map uses CARTO tiles.
 
 ## Local preview
 
@@ -17,11 +18,19 @@ Static site UI for the ballot report generator. Visitors pick counties/cities an
 python -m pip install -r tools/ballot_report/requirements.txt
 python tools/export_ballot_web_data.py --date 2026-11-03 --out docs/data --local-counties Yolo Los Angeles
 
-# Serve the site (required so fetch() can load JSON)
-python -m http.server 8080 --directory docs
+# Serve the site, including Signal DMER (one private environment per name)
+python tools/serve_organizer_tools.py
 ```
 
-Open http://localhost:8080
+Open http://127.0.0.1:8080
+
+Signal DMER needs the `signal_dmer` folder that contains `signal-cli-0.14.8` (by default `Desktop/Apps/signal_dmer`). Override that location with `SIGNAL_DMER_HOME`. Opening a name creates `runtime/signal_dmer_users/<name>/` with its own virtual environment and signal-cli data. Ending that session deletes the folder, including the linked Signal account and exported files.
+
+A static server still works for the ballot pages:
+
+```bash
+python -m http.server 8080 --directory docs
+```
 
 ## How it works
 

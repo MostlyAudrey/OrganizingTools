@@ -1,0 +1,4 @@
+qrcode[pil]
+pillow
+streamlit
+pandas
