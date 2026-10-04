@@ -18,19 +18,11 @@ Static site UI for the ballot report generator. Visitors pick counties/cities an
 python -m pip install -r tools/ballot_report/requirements.txt
 python tools/export_ballot_web_data.py --date 2026-11-03 --out docs/data --local-counties Yolo Los Angeles
 
-# Serve the site, including Signal DMER (one private environment per name)
-python tools/serve_organizer_tools.py
-```
-
-Open http://127.0.0.1:8080
-
-Signal DMER needs the `signal_dmer` folder that contains `signal-cli-0.14.8` (by default `Desktop/Apps/signal_dmer`). Override that location with `SIGNAL_DMER_HOME`. Opening a name creates `runtime/signal_dmer_users/<name>/` with its own virtual environment and signal-cli data. Ending that session deletes the folder, including the linked Signal account and exported files.
-
-A static server still works for the ballot pages:
-
-```bash
+# Serve the site (required so fetch() can load JSON)
 python -m http.server 8080 --directory docs
 ```
+
+Open http://localhost:8080
 
 ## How it works
 

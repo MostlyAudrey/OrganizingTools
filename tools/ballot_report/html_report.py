@@ -76,7 +76,7 @@ def render_race(race: Race, hid: str = "") -> str:
     return "\n".join(parts)
 
 
-def render_measure(m: Measure, hid: str = "") -> str:
+def render_measure(m: Measure, hid: str = "", include_measure_arguments: bool = True) -> str:
     parts = [h2(m.title, hid)]
     if m.jurisdiction:
         parts.append(p(f"Jurisdiction: {m.jurisdiction}"))
@@ -95,27 +95,29 @@ def render_measure(m: Measure, hid: str = "") -> str:
     if m.analysis:
         parts.append(h3("Impartial Analysis"))
         parts.append(p_blocks(m.analysis))
-    parts.append(h3("Argument in Favor"))
-    parts.append(p_blocks(m.arg_for))
-    if m.reb_for.strip():
-        parts.append(h3("Rebuttal to Argument in Favor"))
-        parts.append(p_blocks(m.reb_for))
-    parts.append(h3("Argument Against"))
-    parts.append(p_blocks(m.arg_against))
-    if m.reb_against.strip():
-        parts.append(h3("Rebuttal to Argument Against"))
-        parts.append(p_blocks(m.reb_against))
+    if include_measure_arguments:
+        parts.append(h3("Argument in Favor"))
+        parts.append(p_blocks(m.arg_for))
+        if m.reb_for.strip():
+            parts.append(h3("Rebuttal to Argument in Favor"))
+            parts.append(p_blocks(m.reb_for))
+        parts.append(h3("Argument Against"))
+        parts.append(p_blocks(m.arg_against))
+        if m.reb_against.strip():
+            parts.append(h3("Rebuttal to Argument Against"))
+            parts.append(p_blocks(m.reb_against))
     if m.tax_rate_statement:
         parts.append(h3("Tax Rate Statement"))
         parts.append(p_blocks(m.tax_rate_statement))
-    parts.append(h3("Full Text"))
-    parts.append(p_blocks(m.full_text))
+    if include_measure_arguments:
+        parts.append(h3("Full Text"))
+        parts.append(p_blocks(m.full_text))
     if m.source_url:
         parts.append(p(f"Source: {m.source_url}"))
     return "\n".join(parts)
 
 
-def render_html(report: BallotReport) -> str:
+def render_html(report: BallotReport, include_measure_arguments: bool = True) -> str:
     races_by_level: dict[str, list[Race]] = {}
     for race in report.races:
         races_by_level.setdefault(race.level, []).append(race)
@@ -200,7 +202,13 @@ def render_html(report: BallotReport) -> str:
         if level in measures_by_level:
             body.append(h1(level, add_h1(level)))
             for measure in measures_by_level[level]:
-                body.append(render_measure(measure, add_h2(measure.title)))
+                body.append(
+                    render_measure(
+                        measure,
+                        add_h2(measure.title),
+                        include_measure_arguments=include_measure_arguments,
+                    )
+                )
 
     body.append(h1("Sources", add_h1("Sources")))
 
@@ -228,7 +236,10 @@ def render_html(report: BallotReport) -> str:
     return "\n".join(sections)
 
 
-def write_report(report: BallotReport, path: Path) -> Path:
+def write_report(report: BallotReport, path: Path, include_measure_arguments: bool = True) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(render_html(report), encoding="utf-8")
+    path.write_text(
+        render_html(report, include_measure_arguments=include_measure_arguments),
+        encoding="utf-8",
+    )
     return path

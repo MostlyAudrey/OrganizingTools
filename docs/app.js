@@ -1,3 +1,5 @@
+import { addressKeepsItem, lookupAddress } from "./address-lookup.js";
+
 const LEVEL_ORDER = [
   "Federal",
   "State",
@@ -16,6 +18,7 @@ const state = {
   places: [],
   snapshot: null,
   lastHtml: "",
+  downloadSlug: "",
 };
 
 const $ = (id) => document.getElementById(id);
@@ -278,7 +281,7 @@ function renderRace(race, hid = "") {
   return parts.join("\n");
 }
 
-function renderMeasure(m, hid = "") {
+function renderMeasure(m, hid = "", includeMeasureArguments = true) {
   const idAttr = hid ? ` id="${esc(hid)}"` : "";
   const parts = [`<h2${idAttr}>${esc(m.title)}</h2>`];
   if (m.jurisdiction) parts.push(`<p>Jurisdiction: ${esc(m.jurisdiction)}</p>`);
@@ -294,18 +297,22 @@ function renderMeasure(m, hid = "") {
   if (m.analysis) {
     parts.push("<h3>Impartial Analysis</h3>", pBlocks(m.analysis));
   }
-  parts.push("<h3>Argument in Favor</h3>", pBlocks(m.arg_for));
-  if ((m.reb_for || "").trim()) {
-    parts.push("<h3>Rebuttal to Argument in Favor</h3>", pBlocks(m.reb_for));
-  }
-  parts.push("<h3>Argument Against</h3>", pBlocks(m.arg_against));
-  if ((m.reb_against || "").trim()) {
-    parts.push("<h3>Rebuttal to Argument Against</h3>", pBlocks(m.reb_against));
+  if (includeMeasureArguments) {
+    parts.push("<h3>Argument in Favor</h3>", pBlocks(m.arg_for));
+    if ((m.reb_for || "").trim()) {
+      parts.push("<h3>Rebuttal to Argument in Favor</h3>", pBlocks(m.reb_for));
+    }
+    parts.push("<h3>Argument Against</h3>", pBlocks(m.arg_against));
+    if ((m.reb_against || "").trim()) {
+      parts.push("<h3>Rebuttal to Argument Against</h3>", pBlocks(m.reb_against));
+    }
   }
   if (m.tax_rate_statement) {
     parts.push("<h3>Tax Rate Statement</h3>", pBlocks(m.tax_rate_statement));
   }
-  parts.push("<h3>Full Text</h3>", pBlocks(m.full_text));
+  if (includeMeasureArguments) {
+    parts.push("<h3>Full Text</h3>", pBlocks(m.full_text));
+  }
   if (m.source_url) parts.push(`<p>Source: ${esc(m.source_url)}</p>`);
   return parts.join("\n");
 }
@@ -320,6 +327,8 @@ function buildReportHtml({
   election,
   snapshot,
   includeLocal,
+  includeMeasureArguments = true,
+  addressLocation = null,
 }) {
   const notes = [];
   const sources = [];
@@ -331,6 +340,18 @@ function buildReportHtml({
   }
   notes.push(`Using election ${formatDateLabel(election.date)} (${election.name}).`);
   if (election.notes) notes.push(election.notes);
+  if (addressLocation) {
+    notes.push(...(addressLocation.notes || []));
+    sources.push("https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer");
+    sources.push(
+      "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_Current/MapServer"
+    );
+  }
+  if (!includeMeasureArguments) {
+    notes.push(
+      "Arguments for and against, rebuttals, and the full text of proposed laws were omitted."
+    );
+  }
   if (!snapshot) {
     notes.push(
       "No data snapshot is published for this election yet. Run tools/export_ballot_web_data.py and redeploy."
@@ -341,17 +362,33 @@ function buildReportHtml({
     races.push(...(snapshot.statewide_races || []));
     races.push(...(snapshot.spi_races || []));
     const dist = districtsForCounties(counties);
-    for (const n of dist.us_house) {
-      if (snapshot.us_house?.[n]) races.push(snapshot.us_house[n]);
-    }
-    for (const n of dist.state_senate) {
-      if (snapshot.state_senate?.[n]) races.push(snapshot.state_senate[n]);
-    }
-    for (const n of dist.state_assembly) {
-      if (snapshot.state_assembly?.[n]) races.push(snapshot.state_assembly[n]);
-    }
+    if (addressLocation?.usHouse) dist.us_house = [addressLocation.usHouse];
+    if (addressLocation?.stateSenate) dist.state_senate = [addressLocation.stateSenate];
+    if (addressLocation?.stateAssembly) dist.state_assembly = [addressLocation.stateAssembly];
+    const pushDistrict = (bucket, numbers, label) => {
+      let added = 0;
+      for (const n of numbers) {
+        if (bucket?.[n]) {
+          races.push(bucket[n]);
+          added += 1;
+        }
+      }
+      if (addressLocation && numbers.length === 1 && !added) {
+        notes.push(
+          `${label} ${numbers[0]} was identified for this address, but that contest is not in the published snapshot.`
+        );
+      }
+    };
+    pushDistrict(snapshot.us_house, dist.us_house, "Congressional District");
+    pushDistrict(snapshot.state_senate, dist.state_senate, "State Senate District");
+    pushDistrict(snapshot.state_assembly, dist.state_assembly, "Assembly District");
     for (const n of dist.boe) {
       if (snapshot.boe?.[n]) races.push(snapshot.boe[n]);
+    }
+    if (addressLocation && dist.boe.length > 1) {
+      notes.push(
+        "More than one Board of Equalization district covers this county, and the address lookup does not split them."
+      );
     }
 
     races.push(...(snapshot.retention?.supreme || []));
@@ -375,27 +412,43 @@ function buildReportHtml({
           continue;
         }
         const localRaces = (local.races || []).filter((r) =>
-          localItemMatches(
-            { ...r, county: r.county || county },
-            { selectedCounties, selectedCities, county }
-          )
+          addressLocation
+            ? addressKeepsItem({
+                title: r.name,
+                level: r.level,
+                city: r.city,
+                located: addressLocation,
+                inferCity: inferCityFromText,
+              })
+            : localItemMatches(
+                { ...r, county: r.county || county },
+                { selectedCounties, selectedCities, county }
+              )
         );
         const localMeasures = (local.measures || []).filter((m) =>
-          localItemMatches(
-            { ...m, name: `${m.title || ""} ${m.jurisdiction || ""}`, county },
-            { selectedCounties, selectedCities, county }
-          )
+          addressLocation
+            ? addressKeepsItem({
+                title: `${m.title || ""} ${m.jurisdiction || ""}`,
+                level: m.level,
+                city: "",
+                located: addressLocation,
+                inferCity: inferCityFromText,
+              })
+            : localItemMatches(
+                { ...m, name: `${m.title || ""} ${m.jurisdiction || ""}`, county },
+                { selectedCounties, selectedCities, county }
+              )
         );
         races.push(...localRaces);
         measures.push(...localMeasures);
         notes.push(...(local.notes || []));
       }
-      if (selectedCities.length && !selectedCounties.length) {
+      if (!addressLocation && selectedCities.length && !selectedCounties.length) {
         notes.push(
           "City selection includes overlapping county contests plus municipal races for the selected city."
         );
       }
-      if (selectedCounties.length) {
+      if (!addressLocation && selectedCounties.length) {
         notes.push(
           "County selection includes countywide contests and all overlapping city races in the snapshot."
         );
@@ -404,9 +457,15 @@ function buildReportHtml({
       notes.push("Local races and measures were excluded by your settings.");
     }
 
-    notes.push(
-      "District contests are filtered from published district-county coverage data; confirm on your county sample ballot after redistricting."
-    );
+    if (addressLocation) {
+      notes.push(
+        "Congressional, state senate, and state assembly contests are limited to the districts at this address. Board of Equalization contests follow the districts that cover the county."
+      );
+    } else {
+      notes.push(
+        "District contests are filtered from published district-county coverage data; confirm on your county sample ballot after redistricting."
+      );
+    }
   }
 
   // Dedupe races
@@ -490,7 +549,9 @@ function buildReportHtml({
     }
     if (measuresByLevel[level]?.length) {
       body.push(`<h1 id="${esc(addH1(level))}">${esc(level)}</h1>`);
-      for (const m of measuresByLevel[level]) body.push(renderMeasure(m, addH2(m.title)));
+      for (const m of measuresByLevel[level]) {
+        body.push(renderMeasure(m, addH2(m.title), includeMeasureArguments));
+      }
     }
   }
 
@@ -631,17 +692,52 @@ function addPlace() {
   renderChips();
 }
 
+function canonicalCity(name) {
+  if (!name) return "";
+  const map = state.geography?.city_to_county || {};
+  return Object.keys(map).find((city) => city.toLowerCase() === name.toLowerCase()) || name;
+}
+
 async function generate() {
   try {
-    if (!state.places.length) {
-      setStatus("Add at least one county or city.", "error");
-      return;
-    }
-    const resolved = resolvePlaces(state.places);
-    const { display, counties, unresolved, cities, selectedCounties, selectedCities } = resolved;
-    if (!counties.length) {
-      setStatus("Could not resolve any counties from the places you entered.", "error");
-      return;
+    const addressText = $("address-input").value.trim();
+    let addressLocation = null;
+    let display;
+    let counties;
+    let cities;
+    let selectedCounties;
+    let selectedCities;
+    let unresolved;
+    if (addressText) {
+      setStatus("Looking up that address…");
+      addressLocation = await lookupAddress(addressText);
+      const knownCounties = state.geography?.counties || [];
+      if (!knownCounties.includes(addressLocation.county)) {
+        throw new Error("That address is not inside a California county this guide covers.");
+      }
+      addressLocation.city = canonicalCity(addressLocation.city);
+      display = [addressLocation.matchedAddress];
+      counties = [addressLocation.county];
+      cities = addressLocation.city ? [addressLocation.city] : [];
+      selectedCounties = [];
+      selectedCities = cities;
+      unresolved = [];
+      state.downloadSlug = (addressLocation.city || addressLocation.county).replace(/\s+/g, "");
+    } else {
+      if (!state.places.length) {
+        setStatus("Add a county, a city, or a street address.", "error");
+        return;
+      }
+      const resolved = resolvePlaces(state.places);
+      ({ display, counties, unresolved, cities, selectedCounties, selectedCities } = resolved);
+      if (!counties.length) {
+        setStatus("Could not resolve any counties from the places you entered.", "error");
+        return;
+      }
+      state.downloadSlug = state.places
+        .map((p) => `${p.name}${p.kind === "city" ? "City" : "County"}`)
+        .join("_")
+        .replace(/\s+/g, "");
     }
     setStatus("Loading election data…");
     const iso = $("election-select").value;
@@ -657,6 +753,8 @@ async function generate() {
       election,
       snapshot: state.snapshot,
       includeLocal: $("include-local").checked,
+      includeMeasureArguments: $("include-measure-arguments").checked,
+      addressLocation,
     });
     state.lastHtml = html;
     const doc = $("preview").contentDocument;
@@ -665,7 +763,8 @@ async function generate() {
     doc.close();
     $("download").disabled = false;
     $("copy").disabled = false;
-    setStatus(`Generated guide for ${display.join(", ")} · ${formatDateLabel(iso)}.`, "ok");
+    const where = addressText ? $("address-input").value.trim() : display.join(", ");
+    setStatus(`Generated guide for ${where} · ${formatDateLabel(iso)}.`, "ok");
   } catch (err) {
     console.error(err);
     setStatus(err.message || String(err), "error");
@@ -675,9 +774,7 @@ async function generate() {
 function downloadHtml() {
   if (!state.lastHtml) return;
   const iso = $("election-select").value;
-  const slug =
-    state.places.map((p) => `${p.name}${p.kind === "city" ? "City" : "County"}`).join("_").replace(/\s+/g, "") ||
-    "ballot";
+  const slug = state.downloadSlug || "ballot";
   const blob = new Blob([state.lastHtml], { type: "text/html;charset=utf-8" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
