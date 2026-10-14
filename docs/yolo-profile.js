@@ -1,4 +1,5 @@
 const STACK_COLORS = ["#0f5c4c", "#b85c38", "#1f6f8b", "#6d5a45", "#8a8f7a", "#3e4c5e", "#c4a574"];
+const PIE_COLORS = ["#0f5c4c", "#b85c38", "#1f6f8b", "#6d5a45", "#c4a574", "#3e4c5e", "#8a8f7a", "#7a3e4a", "#2f6b4f", "#4c5d73"];
 
 const $ = (id) => document.getElementById(id);
 
@@ -44,7 +45,7 @@ function bars(items, valueOf, labelOf, noteOf) {
       const width = Math.max(2, Math.round((value / max) * 100));
       const note = noteOf ? noteOf(item) : count(value);
       return `<div class="bar-row">
-        <span>${esc(labelOf(item))}</span>
+        <span class="bar-label">${esc(labelOf(item))}</span>
         <span class="bar-track"><span class="bar-fill" style="width:${width}%"></span></span>
         <span class="bar-value">${esc(note)}</span>
       </div>`;
@@ -305,25 +306,68 @@ function renderIncome(profile) {
   ], draw);
 }
 
-function childBlock(children) {
-  return children
-    .map((child) => {
-      const nested = child.children?.length
-        ? `<div class="subbars">${bars(child.children, (row) => row.total || 0, (row) => row.label, (row) => count(row.total))}</div>`
-        : "";
+function occupationRows(nodes, depth) {
+  const max = Math.max(...nodes.map((node) => node.total || 0), 1);
+  return nodes
+    .map((node) => {
+      const width = Math.max(2, Math.round(((node.total || 0) / max) * 100));
+      const nested = node.children?.length ? occupationRows(node.children, depth + 1) : "";
       return `<div class="bar-row">
-        <span>${esc(child.label)}</span>
-        <span class="bar-track"><span class="bar-fill" style="width:${Math.max(2, Math.round(((child.total || 0) / (children[0] ? Math.max(...children.map((item) => item.total || 0)) : 1)) * 100))}%"></span></span>
-        <span class="bar-value">${count(child.total)}</span>
+        <span class="bar-label" style="padding-left:${depth * 0.85}rem">${esc(node.label)}</span>
+        <span class="bar-track"><span class="bar-fill" style="width:${width}%"></span></span>
+        <span class="bar-value">${count(node.total)}</span>
       </div>${nested}`;
     })
     .join("");
+}
+
+function pieChart(items, valueOf, labelOf, noteOf) {
+  const rows = items
+    .map((item, index) => ({
+      label: labelOf(item),
+      note: noteOf ? String(noteOf(item)) : "",
+      value: Number(valueOf(item)) || 0,
+      index,
+    }))
+    .filter((row) => row.value > 0);
+  const total = rows.reduce((sum, row) => sum + row.value, 0) || 1;
+  const cx = 100;
+  const cy = 100;
+  const radius = 78;
+  let angle = -Math.PI / 2;
+  const paths = rows.map((row, index) => {
+    const share = row.value / total;
+    const start = angle;
+    const end = index === rows.length - 1 ? Math.PI * 1.5 : angle + share * Math.PI * 2;
+    angle = end;
+    const color = PIE_COLORS[row.index % PIE_COLORS.length];
+    const title = `${esc(row.label)} ${esc(row.note)}`.trim();
+    if (share >= 0.999) {
+      return `<circle cx="${cx}" cy="${cy}" r="${radius}" fill="${color}"><title>${title}</title></circle>`;
+    }
+    const x1 = (cx + radius * Math.cos(start)).toFixed(2);
+    const y1 = (cy + radius * Math.sin(start)).toFixed(2);
+    const x2 = (cx + radius * Math.cos(end)).toFixed(2);
+    const y2 = (cy + radius * Math.sin(end)).toFixed(2);
+    const large = end - start > Math.PI ? 1 : 0;
+    return `<path d="M ${cx} ${cy} L ${x1} ${y1} A ${radius} ${radius} 0 ${large} 1 ${x2} ${y2} Z" fill="${color}"><title>${title}</title></path>`;
+  });
+  const legend = rows
+    .map((row) => {
+      const color = PIE_COLORS[row.index % PIE_COLORS.length];
+      const pct = Math.round((row.value / total) * 1000) / 10;
+      const note = row.note ? ` · ${esc(row.note)}` : "";
+      return `<li><i style="background:${color}"></i>${esc(row.label)}${note} · ${pct}%</li>`;
+    })
+    .join("");
+  return `<div class="pie-wrap"><svg viewBox="0 0 200 200" role="img" aria-label="Pie chart">${paths.join("")}</svg><ul class="legend">${legend}</ul></div>`;
 }
 
 function renderWork(profile) {
   const panel = $("work-panel");
   const occupations = profile.occupations;
   let groupLabel = occupations.groups[0]?.label || "";
+  let occChart = "bars";
   let povertyTitle = profile.poverty.find((section) => section.title === "Age")?.title || profile.poverty[0].title;
 
   function draw(tab) {
@@ -337,9 +381,23 @@ function renderWork(profile) {
         .join("");
       const group = occupations.groups.find((item) => item.label === groupLabel) || occupations.groups[0];
       const share = Math.round(((group.total || 0) / employed) * 1000) / 10;
+      const groupNote = (row) => `${count(row.total)} · ${Math.round(((row.total || 0) / employed) * 1000) / 10}%`;
+      const groupLabelText = (row) => row.label.replace(" occupations", "");
+      const summary =
+        occChart === "pie"
+          ? pieChart(occupations.groups, (row) => row.total || 0, groupLabelText, (row) => count(row.total))
+          : bars(occupations.groups, (row) => row.total || 0, groupLabelText, groupNote);
+      const detail =
+        occChart === "pie"
+          ? pieChart(group.children, (row) => row.total || 0, (row) => row.label, (row) => count(row.total))
+          : `<div class="bar-list">${occupationRows(group.children, 0)}</div>`;
       panel.innerHTML = `
+        <div class="menu chart-switch" role="group" aria-label="Occupation chart">
+          <button type="button" data-chart="bars" aria-pressed="${occChart === "bars" ? "true" : "false"}">Bars</button>
+          <button type="button" data-chart="pie" aria-pressed="${occChart === "pie" ? "true" : "false"}">Pie</button>
+        </div>
         <p class="eyebrow">${count(employed)} civilian employed residents</p>
-        ${bars(occupations.groups, (row) => row.total || 0, (row) => row.label.replace(" occupations", ""), (row) => `${count(row.total)} · ${Math.round(((row.total || 0) / employed) * 1000) / 10}%`)}
+        ${summary}
         <div class="menu" id="occ-menu">${menu}</div>
         <p><strong>${esc(group.label)}</strong> · ${esc(share)}% of employed residents</p>
         <div class="split" aria-hidden="true">
@@ -347,7 +405,13 @@ function renderWork(profile) {
           <span style="width:${esc(group.female_percent)}"></span>
         </div>
         <p class="hint">${esc(group.male_percent)} men · ${esc(group.female_percent)} women</p>
-        <div class="bar-list">${childBlock(group.children)}</div>`;
+        ${detail}`;
+      panel.querySelector(".chart-switch").addEventListener("click", (event) => {
+        const button = event.target.closest("button[data-chart]");
+        if (!button) return;
+        occChart = button.dataset.chart;
+        draw("occupations");
+      });
       panel.querySelector("#occ-menu").addEventListener("click", (event) => {
         const button = event.target.closest("button[data-group]");
         if (!button) return;
@@ -416,9 +480,10 @@ function mapTiles() {
     };
   }
   return {
-    url: "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-    attribution: "&copy; OpenStreetMap &copy; CARTO",
-    subdomains: "abcd",
+    url: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+    labels: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
+    attribution: "Tiles &copy; Esri, DeLorme, NAVTEQ",
+    maxZoom: 16,
   };
 }
 
@@ -432,10 +497,11 @@ function renderMap(profile) {
   const tiles = mapTiles();
   const tileOptions = {
     attribution: tiles.attribution,
-    maxZoom: 19,
+    maxZoom: tiles.maxZoom || 19,
   };
   if (tiles.subdomains) tileOptions.subdomains = tiles.subdomains;
   L.tileLayer(tiles.url, tileOptions).addTo(map);
+  if (tiles.labels) L.tileLayer(tiles.labels, { maxZoom: tiles.maxZoom || 19, pane: "overlayPane" }).addTo(map);
 
   const employers = L.markerClusterGroup({ showCoverageOnHover: false });
   const unions = L.markerClusterGroup({ showCoverageOnHover: false });

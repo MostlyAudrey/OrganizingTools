@@ -9,7 +9,7 @@ Static site UI for the ballot report generator. Visitors pick counties/cities an
 3. Source: **GitHub Actions** (recommended; uses `.github/workflows/ballot-site.yml`)
    - Or: Deploy from branch → `/docs`
 4. Run the **Update ballot site data** workflow once (Actions tab) to publish/refresh `docs/data`.
-5. For map tiles that require a key, add a repository secret named `MAP_TILE_KEY` under **Settings → Secrets and variables → Actions**. The workflow writes it to `docs/map-config.js` only in the Pages artifact. Restrict the key to your Pages domain in the tile provider’s dashboard. Without the secret, the map uses CARTO tiles.
+5. For MapTiler tiles, add a repository secret named `MAP_TILE_KEY` under **Settings → Secrets and variables → Actions**. The workflow writes it to `docs/map-config.js` only in the Pages artifact. Restrict the key to your Pages domain in the tile provider’s dashboard. Without the secret, the map uses Esri light gray tiles, which do not need a key.
 
 ## Local preview
 

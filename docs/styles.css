@@ -482,15 +482,19 @@ input[type="text"]:focus, select:focus, .btn:focus-visible {
   vertical-align: -1px;
 }
 
-.bar-list { display: grid; gap: 0.45rem; margin-top: 0.4rem; }
-
-.bar-row {
+.bar-list {
   display: grid;
-  grid-template-columns: minmax(9rem, 1.3fr) minmax(0, 2fr) auto;
-  gap: 0.55rem;
+  grid-template-columns: minmax(0, 1.15fr) minmax(7rem, 1.35fr) 11.5rem;
+  column-gap: 0.75rem;
+  row-gap: 0.42rem;
   align-items: center;
+  margin-top: 0.4rem;
   font-size: 0.92rem;
 }
+
+.bar-row { display: contents; }
+
+.bar-label { min-width: 0; }
 
 .bar-track {
   height: 0.7rem;
@@ -506,9 +510,27 @@ input[type="text"]:focus, select:focus, .btn:focus-visible {
 
 .bar-fill.alt { background: var(--accent-2); }
 
-.bar-value { color: var(--muted); font-variant-numeric: tabular-nums; }
+.bar-value {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
 
-.subbars { margin: 0.2rem 0 0.5rem 1rem; }
+.pie-wrap {
+  display: grid;
+  grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
+  gap: 0.4rem 1.1rem;
+  align-items: center;
+  margin: 0.5rem 0 1rem;
+}
+
+.pie-wrap svg { width: 100%; height: auto; }
+
+.pie-wrap .legend {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+}
 
 .split {
   display: flex;
@@ -647,9 +669,11 @@ input[type="text"]:focus, select:focus, .btn:focus-visible {
 .panel-grid { grid-template-columns: 1.2fr 0.8fr; align-items: start; }
 
 @media (max-width: 900px) {
-  .layout, .map-layout, .panel-grid, .bar-row, .union-row summary {
+  .layout, .map-layout, .panel-grid, .union-row summary, .pie-wrap {
     grid-template-columns: 1fr;
   }
+  .bar-list { grid-template-columns: 1fr auto; }
+  .bar-track { grid-column: 1 / -1; }
   .preview-wrap { min-height: 55vh; }
   #county-map, .map-list { height: 420px; max-height: 420px; }
 }
