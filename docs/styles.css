@@ -509,6 +509,8 @@ input[type="text"]:focus, select:focus, .btn:focus-visible {
 }
 
 .bar-fill.alt { background: var(--accent-2); }
+.bar-fill.sub { background: #6eaa98; }
+.bar-fill.sub-deep { background: #b7d8cd; }
 
 .bar-value {
   color: var(--muted);
@@ -633,13 +635,41 @@ input[type="text"]:focus, select:focus, .btn:focus-visible {
 .union-row summary {
   cursor: pointer;
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) auto;
-  gap: 0.6rem;
-  align-items: baseline;
-  padding: 0.65rem 0;
+  grid-template-columns: 0.7rem minmax(12rem, 1.15fr) minmax(0, 1.45fr) 10.5rem;
+  column-gap: 0.85rem;
+  align-items: center;
+  width: 100%;
+  padding: 0.7rem 0.15rem 0.7rem 0;
+  list-style: none;
 }
 
-.union-row summary span { color: var(--muted); font-size: 0.9rem; }
+.union-row summary::-webkit-details-marker { display: none; }
+
+.union-row summary::before {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: rotate(-45deg);
+  justify-self: center;
+}
+
+.union-row[open] summary::before { transform: rotate(45deg); }
+
+.union-row summary strong { min-width: 0; }
+
+.union-row summary .workplace {
+  min-width: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.union-row summary .badge {
+  justify-self: end;
+  text-align: right;
+  white-space: nowrap;
+}
 
 .unit-list {
   list-style: none;
@@ -669,9 +699,13 @@ input[type="text"]:focus, select:focus, .btn:focus-visible {
 .panel-grid { grid-template-columns: 1.2fr 0.8fr; align-items: start; }
 
 @media (max-width: 900px) {
-  .layout, .map-layout, .panel-grid, .union-row summary, .pie-wrap {
+  .layout, .map-layout, .panel-grid, .pie-wrap {
     grid-template-columns: 1fr;
   }
+  .union-row summary {
+    grid-template-columns: 0.7rem minmax(0, 1fr) auto;
+  }
+  .union-row summary .workplace { grid-column: 2 / -1; }
   .bar-list { grid-template-columns: 1fr auto; }
   .bar-track { grid-column: 1 / -1; }
   .preview-wrap { min-height: 55vh; }

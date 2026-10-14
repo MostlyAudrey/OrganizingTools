@@ -1,5 +1,5 @@
 const STACK_COLORS = ["#0f5c4c", "#b85c38", "#1f6f8b", "#6d5a45", "#8a8f7a", "#3e4c5e", "#c4a574"];
-const PIE_COLORS = ["#0f5c4c", "#b85c38", "#1f6f8b", "#6d5a45", "#c4a574", "#3e4c5e", "#8a8f7a", "#7a3e4a", "#2f6b4f", "#4c5d73"];
+const PIE_COLORS = ["#0f5c4c", "#b85c38", "#1f6f8b", "#6d5a45", "#c4a574", "#3e4c5e", "#8a8f7a", "#7a3e4a", "#2f6b4f", "#4c5d73", "#d38b6a", "#3d7a6a", "#8c6b3e", "#5b6e8a", "#6e8b4e"];
 
 const $ = (id) => document.getElementById(id);
 
@@ -149,6 +149,49 @@ function renderSnapshot(profile) {
     </article>`;
 }
 
+function chartSwitch(kind, label) {
+  return `<div class="menu chart-switch" role="group" aria-label="${esc(label)}">
+    <button type="button" data-chart="bars" aria-pressed="${kind === "bars" ? "true" : "false"}">Bars</button>
+    <button type="button" data-chart="pie" aria-pressed="${kind === "pie" ? "true" : "false"}">Pie</button>
+  </div>`;
+}
+
+function bindChartSwitch(root, onPick) {
+  root.querySelector(".chart-switch")?.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-chart]");
+    if (!button) return;
+    onPick(button.dataset.chart);
+  });
+}
+
+function chartFor(kind, items, valueOf, labelOf, noteOf) {
+  return kind === "pie"
+    ? pieChart(items, valueOf, labelOf, noteOf)
+    : bars(items, valueOf, labelOf, noteOf);
+}
+
+function decadeAge(rows) {
+  const byLabel = new Map(rows.map((row) => [row.label, row]));
+  const bands = [
+    ["Under 10 years", ["Under 5 years", "5 to 9 years"]],
+    ["10 to 19 years", ["10 to 14 years", "15 to 19 years"]],
+    ["20 to 24 years", ["20 to 24 years"]],
+    ["25 to 34 years", ["25 to 34 years"]],
+    ["35 to 44 years", ["35 to 44 years"]],
+    ["45 to 54 years", ["45 to 54 years"]],
+    ["55 to 64 years", ["55 to 59 years", "60 to 64 years"]],
+    ["65 to 74 years", ["65 to 74 years"]],
+    ["75 to 84 years", ["75 to 84 years"]],
+    ["85 years and over", ["85 years and over"]],
+  ];
+  return bands
+    .map(([label, parts]) => ({
+      label,
+      estimate: parts.reduce((sum, name) => sum + (byLabel.get(name)?.estimate || 0), 0),
+    }))
+    .filter((row) => row.estimate > 0);
+}
+
 function renderPeople(profile) {
   const views = profile.views;
   const panel = $("people-panel");
@@ -158,12 +201,28 @@ function renderPeople(profile) {
     { id: "hispanic", label: "Hispanic origin" },
   ];
   let raceFocus = views.race[0]?.label || "";
+  let peopleChart = "bars";
+  const peopleNote = (row) =>
+    peopleChart === "pie" ? count(row.estimate) : `${row.percent} · ${count(row.estimate)}`;
 
   function draw(tab) {
+    const switcher = chartSwitch(peopleChart, "People chart");
     if (tab === "age") {
       panel.innerHTML = `
+        ${switcher}
         <p class="eyebrow">Age bands</p>
-        ${bars(views.age, (row) => percentOf(row.percent) || 0, (row) => row.label, (row) => `${row.percent} · ${count(row.estimate)}`)}`;
+        ${chartFor(
+          peopleChart,
+          peopleChart === "pie" ? decadeAge(views.age) : views.age,
+          (row) => row.estimate || 0,
+          (row) => row.label,
+          peopleNote
+        )}
+        ${peopleChart === "pie" ? `<p class="hint">Ten-year bands where the spreadsheet publishes them. 20 to 24 years stays a 5-year band because the next published band is 25 to 34 years.</p>` : ""}`;
+      bindChartSwitch(panel, (kind) => {
+        peopleChart = kind;
+        draw(tab);
+      });
       return;
     }
     if (tab === "race") {
@@ -174,14 +233,31 @@ function renderPeople(profile) {
             `<button type="button" data-race="${esc(item.label)}" aria-pressed="${item.label === group.label ? "true" : "false"}">${esc(item.label)}</button>`
         )
         .join("");
-      const children = group.children.length
-        ? bars(group.children, (row) => percentOf(row.percent) || 0, (row) => row.label, (row) => row.percent)
+      const detail = group.children.length
+        ? chartFor(
+            peopleChart,
+            group.children,
+            (row) => row.estimate || 0,
+            (row) => row.label,
+            (row) => (peopleChart === "pie" ? count(row.estimate) : row.percent)
+          )
         : `<p class="hint">No finer breakdown in the spreadsheet.</p>`;
+      const groupPie =
+        peopleChart === "pie"
+          ? `<p class="eyebrow">Race groups</p>
+        ${pieChart(views.race, (row) => row.estimate || 0, (row) => row.label, (row) => count(row.estimate))}`
+          : "";
       panel.innerHTML = `
-        <p class="eyebrow">Race group</p>
+        ${switcher}
+        ${groupPie}
+        <p class="eyebrow">${peopleChart === "pie" ? "Within a race group" : "Race group"}</p>
         <div class="menu" id="race-menu">${choices}</div>
         <p><strong>${esc(group.label)}</strong> ${esc(group.percent)} · ${count(group.estimate)}</p>
-        ${children}`;
+        ${detail}`;
+      bindChartSwitch(panel, (kind) => {
+        peopleChart = kind;
+        draw(tab);
+      });
       panel.querySelector("#race-menu").addEventListener("click", (event) => {
         const button = event.target.closest("button[data-race]");
         if (!button) return;
@@ -190,11 +266,32 @@ function renderPeople(profile) {
       });
       return;
     }
+    const originParts = views.hispanic_origin.slice(1);
+    const raceParts = views.hispanic_race.filter(
+      (row) => row.percent && row.percent !== "(X)" && row.label !== "Not Hispanic or Latino" && !row.label.startsWith("Two races")
+    );
     panel.innerHTML = `
+      ${switcher}
       <p class="eyebrow">Hispanic or Latino origin</p>
-      ${bars(views.hispanic_origin, (row) => percentOf(row.percent) || 0, (row) => row.label, (row) => `${row.percent} · ${count(row.estimate)}`)}
+      ${chartFor(
+        peopleChart,
+        peopleChart === "pie" ? originParts : views.hispanic_origin,
+        (row) => row.estimate || 0,
+        (row) => row.label,
+        peopleNote
+      )}
       <p class="eyebrow" style="margin-top:1rem">Not Hispanic or Latino, by race</p>
-      ${bars(views.hispanic_race, (row) => percentOf(row.percent) || 0, (row) => row.label, (row) => row.percent)}`;
+      ${chartFor(
+        peopleChart,
+        peopleChart === "pie" ? raceParts : views.hispanic_race,
+        (row) => (peopleChart === "pie" ? row.estimate || 0 : percentOf(row.percent) || 0),
+        (row) => row.label,
+        (row) => (peopleChart === "pie" ? count(row.estimate) : row.percent)
+      )}`;
+    bindChartSwitch(panel, (kind) => {
+      peopleChart = kind;
+      draw(tab);
+    });
   }
 
   mountMenu($("people-menu"), tabs, draw);
@@ -233,28 +330,44 @@ function renderIncome(profile) {
     })
     .join("");
 
+  let incomeChart = "bars";
+  let incomeGroup = groups[0];
+  let earnField = "total_label";
+
+  function payBands() {
+    if (profile.earnings.bands?.length) return profile.earnings.bands;
+    return (profile.earnings.headlines || []).filter((row) => String(row.total_label || "").includes("%"));
+  }
+
   function draw(tab) {
     if (tab === "households") {
       const bands = profile.income.distribution;
       const menu = groups
         .map(
-          (group, index) =>
-            `<button type="button" data-group="${esc(group)}" aria-pressed="${index === 0 ? "true" : "false"}">${termLabel(group, false)}</button>`
+          (group) =>
+            `<button type="button" data-group="${esc(group)}" aria-pressed="${group === incomeGroup ? "true" : "false"}">${termLabel(group, false)}</button>`
         )
         .join("");
       panel.innerHTML = `
         ${medians}
         <p class="eyebrow" style="margin-top:1rem">Income distribution</p>
+        ${chartSwitch(incomeChart, "Income distribution chart")}
         <div class="menu" id="income-groups">${menu}</div>
         <div id="income-bars"></div>`;
       const drawGroup = (group) => {
-        panel.querySelector("#income-bars").innerHTML = bars(
+        incomeGroup = group;
+        panel.querySelector("#income-bars").innerHTML = chartFor(
+          incomeChart,
           bands,
           (row) => row.values[group]?.value || 0,
           (row) => row.label,
-          (row) => row.values[group]?.raw || ""
+          incomeChart === "pie" ? null : (row) => row.values[group]?.raw || ""
         );
       };
+      bindChartSwitch(panel, (kind) => {
+        incomeChart = kind;
+        draw(tab);
+      });
       panel.querySelector("#income-groups").addEventListener("click", (event) => {
         const button = event.target.closest("button[data-group]");
         if (!button) return;
@@ -262,27 +375,32 @@ function renderIncome(profile) {
         button.setAttribute("aria-pressed", "true");
         drawGroup(button.dataset.group);
       });
-      drawGroup(groups[0]);
+      drawGroup(incomeGroup);
       return;
     }
     if (tab === "earnings") {
-      const fullTime = profile.earnings.bands;
+      const fullTime = payBands();
+      const countField = { total_label: "total", male_label: "male", female_label: "female" };
       panel.innerHTML = `
+        ${chartSwitch(incomeChart, "Pay band chart")}
         <p class="eyebrow">Full-time, year-round workers</p>
         <div class="menu" id="earn-menu">
-          <button type="button" data-field="total_label" aria-pressed="true">All</button>
-          <button type="button" data-field="male_label" aria-pressed="false">Men</button>
-          <button type="button" data-field="female_label" aria-pressed="false">Women</button>
+          <button type="button" data-field="total_label" aria-pressed="${earnField === "total_label" ? "true" : "false"}">All</button>
+          <button type="button" data-field="male_label" aria-pressed="${earnField === "male_label" ? "true" : "false"}">Men</button>
+          <button type="button" data-field="female_label" aria-pressed="${earnField === "female_label" ? "true" : "false"}">Women</button>
         </div>
         <div id="earn-bars"></div>`;
       const drawField = (field) => {
-        panel.querySelector("#earn-bars").innerHTML = bars(
-          fullTime,
-          (row) => percentOf(row[field]) || 0,
-          (row) => row.label,
-          (row) => row[field]
-        );
+        earnField = field;
+        const valueOf = (row) =>
+          incomeChart === "pie" ? row[countField[field]] || 0 : percentOf(row[field]) || 0;
+        const noteOf = (row) => (incomeChart === "pie" ? count(row[countField[field]]) : row[field]);
+        panel.querySelector("#earn-bars").innerHTML = chartFor(incomeChart, fullTime, valueOf, (row) => row.label, noteOf);
       };
+      bindChartSwitch(panel, (kind) => {
+        incomeChart = kind;
+        draw(tab);
+      });
       panel.querySelector("#earn-menu").addEventListener("click", (event) => {
         const button = event.target.closest("button[data-field]");
         if (!button) return;
@@ -290,7 +408,7 @@ function renderIncome(profile) {
         button.setAttribute("aria-pressed", "true");
         drawField(button.dataset.field);
       });
-      drawField("total_label");
+      drawField(earnField);
       return;
     }
     const rows = profile.earnings.education;
@@ -306,15 +424,16 @@ function renderIncome(profile) {
   ], draw);
 }
 
-function occupationRows(nodes, depth) {
-  const max = Math.max(...nodes.map((node) => node.total || 0), 1);
+function occupationRows(nodes, depth, whole) {
+  const scale = whole || Math.max(...nodes.map((node) => node.total || 0), 1);
   return nodes
     .map((node) => {
-      const width = Math.max(2, Math.round(((node.total || 0) / max) * 100));
-      const nested = node.children?.length ? occupationRows(node.children, depth + 1) : "";
+      const width = Math.round((((node.total || 0) / scale) * 100) * 10) / 10;
+      const nested = node.children?.length ? occupationRows(node.children, depth + 1, scale) : "";
+      const fill = depth > 1 ? "bar-fill sub-deep" : depth > 0 ? "bar-fill sub" : "bar-fill";
       return `<div class="bar-row">
         <span class="bar-label" style="padding-left:${depth * 0.85}rem">${esc(node.label)}</span>
-        <span class="bar-track"><span class="bar-fill" style="width:${width}%"></span></span>
+        <span class="bar-track"><span class="${fill}" style="width:${width}%"></span></span>
         <span class="bar-value">${count(node.total)}</span>
       </div>${nested}`;
     })
@@ -676,7 +795,7 @@ function renderUnions(profile) {
         return `<details class="union-row">
           <summary>
             <strong>${esc(group.union)}</strong>
-            <span>${esc(workplaceLine(group.units))}</span>
+            <span class="workplace">${esc(workplaceLine(group.units))}</span>
             <span class="badge">${esc(badge)}</span>
           </summary>
           <ul class="unit-list">${units}</ul>
