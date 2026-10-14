@@ -447,6 +447,17 @@ input[type="text"]:focus, select:focus, .btn:focus-visible {
   cursor: pointer;
 }
 
+.filter-bar > .menu { margin: 0; }
+
+.filter-bar .menu button,
+.filter-bar select,
+.filter-bar input {
+  box-sizing: border-box;
+  height: 2.6rem;
+  padding: 0 0.75rem;
+  line-height: 1.2;
+}
+
 .menu button[aria-pressed="true"] {
   background: var(--accent);
   border-color: var(--accent);
@@ -536,9 +547,22 @@ input[type="text"]:focus, select:focus, .btn:focus-visible {
 
 .split {
   display: flex;
-  height: 0.85rem;
+  width: 100%;
   border: 1px solid var(--line);
-  margin: 0.35rem 0;
+  margin: 0.4rem 0 0.7rem;
+}
+
+.split span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 0.08rem 0.4rem;
+  color: #f7fff9;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: center;
 }
 
 .split span:first-child { background: var(--accent); }
@@ -623,6 +647,27 @@ input[type="text"]:focus, select:focus, .btn:focus-visible {
 
 .swatch.employer { background: var(--accent); }
 .swatch.union { background: var(--accent-2); }
+
+.density-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.9rem;
+  align-items: center;
+  margin: 0 0 0.7rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.density-legend[hidden] { display: none; }
+
+.density-legend i {
+  display: inline-block;
+  width: 0.85rem;
+  height: 0.85rem;
+  margin-right: 0.3rem;
+  border: 1px solid var(--line);
+  vertical-align: -1px;
+}
 
 .union-list { display: grid; gap: 0.45rem; }
 

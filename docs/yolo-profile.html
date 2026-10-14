@@ -63,6 +63,9 @@
       <p class="hint">Statewide locals and locals whose hall is in Sacramento, San Francisco, or the Bay Area are pinned on the Yolo campus, city hall, hospital, school district, or shop in the inventory. Overlapping pins cluster. Click a cluster to separate them.</p>
       <div class="filter-bar">
         <div id="map-kind" class="menu" role="group" aria-label="What to show on the map"></div>
+        <div class="menu" role="group" aria-label="Population density">
+          <button type="button" id="map-density" aria-pressed="true">Density</button>
+        </div>
         <label>City
           <select id="map-city"></select>
         </label>
@@ -70,6 +73,7 @@
           <input id="map-search" type="search" placeholder="Name, industry, or workplace">
         </label>
       </div>
+      <div id="density-legend" class="density-legend"></div>
       <div class="map-layout">
         <div id="county-map" role="region" aria-label="Map of Yolo County"></div>
         <ul id="map-list" class="map-list"></ul>

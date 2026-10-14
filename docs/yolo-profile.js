@@ -519,11 +519,10 @@ function renderWork(profile) {
         ${summary}
         <div class="menu" id="occ-menu">${menu}</div>
         <p><strong>${esc(group.label)}</strong> · ${esc(share)}% of employed residents</p>
-        <div class="split" aria-hidden="true">
-          <span style="width:${esc(group.male_percent)}"></span>
-          <span style="width:${esc(group.female_percent)}"></span>
+        <div class="split" role="img" aria-label="${esc(group.male_percent)} men, ${esc(group.female_percent)} women">
+          <span style="width:${esc(group.male_percent)}">${esc(group.male_percent)} men</span>
+          <span style="width:${esc(group.female_percent)}">${esc(group.female_percent)} women</span>
         </div>
-        <p class="hint">${esc(group.male_percent)} men · ${esc(group.female_percent)} women</p>
         ${detail}`;
       panel.querySelector(".chart-switch").addEventListener("click", (event) => {
         const button = event.target.closest("button[data-chart]");
@@ -606,6 +605,18 @@ function mapTiles() {
   };
 }
 
+const DENSITY_STEPS = [
+  { max: 500, color: "#e7f0ea", label: "Under 500" },
+  { max: 2000, color: "#b7d4c8", label: "500 to 1,999" },
+  { max: 5000, color: "#6eaa98", label: "2,000 to 4,999" },
+  { max: 8000, color: "#2f7d68", label: "5,000 to 7,999" },
+  { max: Infinity, color: "#0f5c4c", label: "8,000 or more" },
+];
+
+function densityStep(value) {
+  return DENSITY_STEPS.find((step) => value < step.max) || DENSITY_STEPS[DENSITY_STEPS.length - 1];
+}
+
 function renderMap(profile) {
   const places = [
     ...profile.employers.map((item) => ({ ...item, kind: "employer" })),
@@ -620,6 +631,8 @@ function renderMap(profile) {
   };
   if (tiles.subdomains) tileOptions.subdomains = tiles.subdomains;
   L.tileLayer(tiles.url, tileOptions).addTo(map);
+  map.createPane("density");
+  map.getPane("density").style.zIndex = 350;
   if (tiles.labels) L.tileLayer(tiles.labels, { maxZoom: tiles.maxZoom || 19, pane: "overlayPane" }).addTo(map);
 
   const employers = L.markerClusterGroup({ showCoverageOnHover: false });
@@ -684,13 +697,63 @@ function renderMap(profile) {
     });
   }
 
-  fetch("data/yolo-county.geojson")
-    .then((response) => response.json())
-    .then((geo) => {
-      const layer = L.geoJSON(geo, {
-        style: { color: "#0f5c4c", weight: 2, fillColor: "#0f5c4c", fillOpacity: 0.06 },
-      }).addTo(map);
-      map.fitBounds(layer.getBounds(), { padding: [16, 16] });
+  let showDensity = true;
+  let countyLayer = null;
+  let densityLayer = null;
+  const densityButton = $("map-density");
+  const densityLegend = $("density-legend");
+
+  function countyStyle() {
+    return {
+      color: "#0f5c4c",
+      weight: 2,
+      fillColor: "#0f5c4c",
+      fillOpacity: showDensity ? 0 : 0.06,
+    };
+  }
+
+  function paintDensity() {
+    if (densityLayer) {
+      map.removeLayer(densityLayer);
+      densityLayer = null;
+    }
+    densityButton?.setAttribute("aria-pressed", showDensity ? "true" : "false");
+    if (densityLegend) densityLegend.hidden = !showDensity;
+    if (countyLayer) countyLayer.setStyle(countyStyle());
+    if (!showDensity || !densityLayerData) return;
+    densityLayer = L.geoJSON(densityLayerData, {
+      pane: "density",
+      style: (feature) => {
+        const step = densityStep(feature.properties.density || 0);
+        return { color: "#8e9a92", weight: 0.6, fillColor: step.color, fillOpacity: 0.72 };
+      },
+      onEachFeature: (feature, layer) => {
+        const item = feature.properties;
+        layer.bindPopup(
+          `<strong>${esc(item.name)}</strong><br>${count(item.population)} people<br>${count(item.density)} people per square mile`
+        );
+      },
+    }).addTo(map);
+  }
+
+  let densityLayerData = null;
+  densityLegend.innerHTML = `<span>People per square mile</span>${DENSITY_STEPS
+    .map((step) => `<span><i style="background:${step.color}"></i>${esc(step.label)}</span>`)
+    .join("")}`;
+  densityButton?.addEventListener("click", () => {
+    showDensity = !showDensity;
+    paintDensity();
+  });
+
+  Promise.all([
+    fetch("data/yolo-county.geojson").then((response) => response.json()),
+    fetch("data/yolo-density.geojson").then((response) => response.json()),
+  ])
+    .then(([county, density]) => {
+      densityLayerData = density;
+      countyLayer = L.geoJSON(county, { interactive: false, style: countyStyle() }).addTo(map);
+      paintDensity();
+      map.fitBounds(countyLayer.getBounds(), { padding: [16, 16] });
     })
     .catch(() => {
       map.setView([38.68, -121.9], 10);
