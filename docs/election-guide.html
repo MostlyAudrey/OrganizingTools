@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Election Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <header class="site-header">
+    <p class="crumb"><a href="index.html">All tools</a></p>
+    <p class="brand">Election Guide</p>
+    <p class="tagline">Build a structured sample ballot for a county, a city, or a street address. Ready for Google Docs or Word.</p>
+  </header>
+
+  <main class="layout">
+    <section class="panel controls" aria-labelledby="controls-title">
+      <h2 id="controls-title">Build a report</h2>
+
+      <label class="field">
+        <span>Street address</span>
+        <input id="address-input" type="text" placeholder="e.g. 23 Russell Blvd, Davis, CA" autocomplete="street-address">
+      </label>
+      <p class="hint">Optional. A street address replaces the place list and limits the guide to the districts at that location.</p>
+
+      <label class="field">
+        <span>Places</span>
+        <input id="place-input" type="text" list="place-suggestions" placeholder="e.g. Santa Monica (city) or Los Angeles (county)">
+        <datalist id="place-suggestions"></datalist>
+      </label>
+      <div class="row">
+        <button type="button" id="add-place" class="btn secondary">Add place</button>
+        <button type="button" id="clear-places" class="btn ghost">Clear</button>
+      </div>
+      <div id="place-chips" class="chips" aria-live="polite"></div>
+      <p id="resolved-places" class="hint"></p>
+
+      <label class="field">
+        <span>Election</span>
+        <select id="election-select"></select>
+      </label>
+      <p id="election-hint" class="hint"></p>
+
+      <label class="check">
+        <input type="checkbox" id="include-local" checked>
+        <span>Include local races &amp; measures when available in the data snapshot</span>
+      </label>
+      <label class="check">
+        <input type="checkbox" id="include-measure-arguments" checked>
+        <span>Include arguments for and against and the text of proposed laws</span>
+      </label>
+
+      <div class="row actions">
+        <button type="button" id="generate" class="btn primary">Generate report</button>
+        <button type="button" id="download" class="btn secondary" disabled>Download HTML</button>
+        <button type="button" id="copy" class="btn ghost" disabled>Copy HTML</button>
+      </div>
+      <p id="status" class="status" role="status"></p>
+    </section>
+
+    <section class="panel preview-wrap" aria-labelledby="preview-title">
+      <div class="preview-header">
+        <h2 id="preview-title">Preview</h2>
+        <p class="hint">Import the downloaded HTML via File → Open in Google Docs or Word.</p>
+      </div>
+      <iframe id="preview" title="Ballot report preview" sandbox="allow-same-origin"></iframe>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Data from California Secretary of State certified lists and voter guides, plus county elections sites when exported. Confirm against your official sample ballot before voting.</p>
+    <p><a href="https://github.com/" id="repo-link">Hosted on GitHub Pages</a> · Refresh snapshots with <code>tools/export_ballot_web_data.py</code></p>
+  </footer>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>

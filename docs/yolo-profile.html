@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yolo County profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <header class="site-header">
+    <p class="crumb"><a href="index.html">All tools</a></p>
+    <p class="brand">Yolo County profile</p>
+    <p class="tagline">Demographics, pay, major employers, and union locals. Charts and menus follow the spreadsheet. The map places each employer and each union on a workplace inside the county.</p>
+  </header>
+
+  <main class="profile">
+    <nav class="section-nav" aria-label="Profile sections">
+      <a href="#snapshot">Snapshot</a>
+      <a href="#people">People</a>
+      <a href="#income">Income</a>
+      <a href="#work">Work</a>
+      <a href="#county-map-section">Map</a>
+      <a href="#unions">Unions</a>
+    </nav>
+
+    <section id="snapshot" class="profile-section" aria-labelledby="snapshot-title">
+      <h2 id="snapshot-title">Snapshot</h2>
+      <div id="stat-grid" class="stat-grid"></div>
+      <div id="snapshot-charts"></div>
+    </section>
+
+    <section id="people" class="profile-section" aria-labelledby="people-title">
+      <h2 id="people-title">People</h2>
+      <div id="people-menu" class="menu" role="tablist"></div>
+      <div id="people-panel" class="sheet"></div>
+    </section>
+
+    <section id="income" class="profile-section" aria-labelledby="income-title">
+      <h2 id="income-title">Income</h2>
+      <div id="income-menu" class="menu" role="tablist"></div>
+      <div id="income-panel" class="sheet"></div>
+    </section>
+
+    <section id="work" class="profile-section" aria-labelledby="work-title">
+      <h2 id="work-title">Work</h2>
+      <div id="work-menu" class="menu" role="tablist"></div>
+      <div id="work-panel" class="sheet"></div>
+    </section>
+
+    <section id="county-map-section" class="profile-section" aria-labelledby="map-title">
+      <h2 id="map-title">Employers and unions</h2>
+      <p class="pin-key">
+        <span><i class="swatch employer"></i>Major employer</span>
+        <span><i class="swatch union"></i>Union, shown at a Yolo workplace</span>
+      </p>
+      <p class="hint">Statewide locals and locals whose hall is in Sacramento, San Francisco, or the Bay Area are pinned on the Yolo campus, city hall, hospital, school district, or shop in the inventory. Overlapping pins cluster. Click a cluster to separate them.</p>
+      <div class="filter-bar">
+        <div id="map-kind" class="menu" role="group" aria-label="What to show on the map"></div>
+        <div class="menu" role="group" aria-label="Population density">
+          <button type="button" id="map-density" aria-pressed="true">Density</button>
+        </div>
+        <label>City
+          <select id="map-city"></select>
+        </label>
+        <label>Search
+          <input id="map-search" type="search" placeholder="Name, industry, or workplace">
+        </label>
+      </div>
+      <div id="density-legend" class="density-legend"></div>
+      <div class="map-layout">
+        <div id="county-map" role="region" aria-label="Map of Yolo County"></div>
+        <ul id="map-list" class="map-list"></ul>
+      </div>
+    </section>
+
+    <section id="unions" class="profile-section" aria-labelledby="unions-title">
+      <h2 id="unions-title">Union inventory</h2>
+      <p id="union-note" class="hint"></p>
+      <div id="union-stats" class="stat-grid"></div>
+      <div class="filter-bar">
+        <label>City
+          <select id="union-city"></select>
+        </label>
+        <label>Sector
+          <select id="union-sector"></select>
+        </label>
+        <label>Status
+          <select id="union-status"></select>
+        </label>
+        <label>Search
+          <input id="union-search" type="search" placeholder="Union, employer, or unit">
+        </label>
+      </div>
+      <div id="union-list" class="union-list"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Figures come from <code>Yolo Data Multiple Sheets.xlsx</code>. The union inventory was compiled August 31, 2026. Worker counts are bargaining-unit or election figures, not dues-paying membership. County outline: Yolo County GIS. Confirm a workplace before you rely on a pin.</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <script src="yolo-profile.js" type="module"></script>
+</body>
+</html>

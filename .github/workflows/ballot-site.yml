@@ -1,0 +1,97 @@
+name: Update ballot site data
+
+on:
+  workflow_dispatch:
+    inputs:
+      election_date:
+        description: "Election date to export (YYYY-MM-DD)"
+        required: true
+        default: "2026-11-03"
+      local_counties:
+        description: "Optional space-separated counties for local scrape (blank = none)"
+        required: false
+        default: "Yolo Los Angeles"
+  schedule:
+    - cron: "0 14 * * 1"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  actions: write
+
+jobs:
+  export-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps
+        run: python -m pip install -r tools/ballot_report/requirements.txt
+
+      - name: Export web data
+        run: |
+          DATE="${{ github.event.inputs.election_date || '2026-11-03' }}"
+          LOCAL="${{ github.event.inputs.local_counties || 'Yolo Los Angeles' }}"
+          if [ -n "$LOCAL" ]; then
+            python tools/export_ballot_web_data.py --date "$DATE" --out docs/data --local-counties $LOCAL
+          else
+            python tools/export_ballot_web_data.py --date "$DATE" --out docs/data --no-local
+          fi
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data
+          if git diff --staged --quiet; then
+            echo "No data changes"
+          else
+            git commit -m "chore: refresh ballot site data"
+            git push
+          fi
+
+      - name: Write map config
+        env:
+          MAP_TILE_KEY: ${{ secrets.MAP_TILE_KEY }}
+        run: |
+          python -c "import json, os, pathlib; pathlib.Path('docs/map-config.js').write_text('window.MAP_TILE_KEY = ' + json.dumps(os.environ.get('MAP_TILE_KEY') or '') + ';\n', encoding='utf-8')"
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # A re-run keeps the previous attempt's artifact. deploy-pages fails
+          # when more than one artifact shares the default name "github-pages".
+          name: github-pages-${{ github.run_attempt }}
+          path: docs
+
+      - name: Drop duplicate Pages artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_NAME: github-pages-${{ github.run_attempt }}
+        run: |
+          set -euo pipefail
+          artifacts=$(gh api "/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts?per_page=100" \
+            --jq "[.artifacts[] | select(.name == \"$ARTIFACT_NAME\" and (.expired | not))] | sort_by(.created_at) | reverse")
+          count=$(echo "$artifacts" | jq 'length')
+          echo "Found $count $ARTIFACT_NAME artifact(s)."
+          if [ "$count" -le 1 ]; then
+            exit 0
+          fi
+          echo "$artifacts" | jq -r '.[1:] | .[].id' | while read -r id; do
+            echo "Deleting duplicate artifact $id"
+            gh api -X DELETE "/repos/${{ github.repository }}/actions/artifacts/$id"
+          done
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.run_attempt }}

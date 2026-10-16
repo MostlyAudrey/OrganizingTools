@@ -1,0 +1,4319 @@
+{
+  "title": "Yolo County",
+  "workbook": "Yolo Data Multiple Sheets.xlsx",
+  "union_compiled": "August 31, 2026",
+  "views": {
+    "population": {
+      "label": "Total population",
+      "estimate": 220564,
+      "percent": "220,564"
+    },
+    "median_age": {
+      "label": "Median age (years)",
+      "estimate": 32.1,
+      "percent": "(X)"
+    },
+    "sex": [
+      {
+        "label": "Male",
+        "estimate": 107320,
+        "percent": "48.7%"
+      },
+      {
+        "label": "Female",
+        "estimate": 113244,
+        "percent": "51.3%"
+      }
+    ],
+    "under_18": {
+      "label": "Under 18 years",
+      "estimate": 44283,
+      "percent": "20.1%"
+    },
+    "over_65": {
+      "label": "65 years and over",
+      "estimate": 29712,
+      "percent": "13.5%"
+    },
+    "age": [
+      {
+        "label": "Under 5 years",
+        "estimate": 10516,
+        "percent": "4.8%"
+      },
+      {
+        "label": "5 to 9 years",
+        "estimate": 12420,
+        "percent": "5.6%"
+      },
+      {
+        "label": "10 to 14 years",
+        "estimate": 12913,
+        "percent": "5.9%"
+      },
+      {
+        "label": "15 to 19 years",
+        "estimate": 22703,
+        "percent": "10.3%"
+      },
+      {
+        "label": "20 to 24 years",
+        "estimate": 30804,
+        "percent": "14.0%"
+      },
+      {
+        "label": "25 to 34 years",
+        "estimate": 29590,
+        "percent": "13.4%"
+      },
+      {
+        "label": "35 to 44 years",
+        "estimate": 26743,
+        "percent": "12.1%"
+      },
+      {
+        "label": "45 to 54 years",
+        "estimate": 23092,
+        "percent": "10.5%"
+      },
+      {
+        "label": "55 to 59 years",
+        "estimate": 10999,
+        "percent": "5.0%"
+      },
+      {
+        "label": "60 to 64 years",
+        "estimate": 11072,
+        "percent": "5.0%"
+      },
+      {
+        "label": "65 to 74 years",
+        "estimate": 17725,
+        "percent": "8.0%"
+      },
+      {
+        "label": "75 to 84 years",
+        "estimate": 8636,
+        "percent": "3.9%"
+      },
+      {
+        "label": "85 years and over",
+        "estimate": 3351,
+        "percent": "1.5%"
+      }
+    ],
+    "race": [
+      {
+        "label": "White",
+        "estimate": 107834,
+        "percent": "48.9%",
+        "children": [
+          {
+            "label": "Egyptian",
+            "estimate": 178,
+            "percent": "0.1%"
+          },
+          {
+            "label": "English",
+            "estimate": 11363,
+            "percent": "5.2%"
+          },
+          {
+            "label": "German",
+            "estimate": 6002,
+            "percent": "2.7%"
+          },
+          {
+            "label": "Irish",
+            "estimate": 6112,
+            "percent": "2.8%"
+          },
+          {
+            "label": "Italian",
+            "estimate": 3172,
+            "percent": "1.4%"
+          },
+          {
+            "label": "Lebanese",
+            "estimate": 165,
+            "percent": "0.1%"
+          },
+          {
+            "label": "Other White",
+            "estimate": 80842,
+            "percent": "36.7%"
+          }
+        ]
+      },
+      {
+        "label": "Black or African American",
+        "estimate": 5795,
+        "percent": "2.6%",
+        "children": [
+          {
+            "label": "African American",
+            "estimate": 3715,
+            "percent": "1.7%"
+          },
+          {
+            "label": "Ethiopian",
+            "estimate": 9,
+            "percent": "0.0%"
+          },
+          {
+            "label": "Haitian",
+            "estimate": 1,
+            "percent": "0.0%"
+          },
+          {
+            "label": "Jamaican",
+            "estimate": 21,
+            "percent": "0.0%"
+          },
+          {
+            "label": "Nigerian",
+            "estimate": 107,
+            "percent": "0.0%"
+          },
+          {
+            "label": "Somali",
+            "estimate": 0,
+            "percent": "0.0%"
+          },
+          {
+            "label": "Other Black or African American",
+            "estimate": 1942,
+            "percent": "0.9%"
+          }
+        ]
+      },
+      {
+        "label": "American Indian and Alaska Native",
+        "estimate": 2870,
+        "percent": "1.3%",
+        "children": [
+          {
+            "label": "Aztec",
+            "estimate": 704,
+            "percent": "0.3%"
+          },
+          {
+            "label": "Blackfeet Tribe of the Blackfeet Indian Reservation of Montana",
+            "estimate": 41,
+            "percent": "0.0%"
+          },
+          {
+            "label": "Maya",
+            "estimate": 199,
+            "percent": "0.1%"
+          },
+          {
+            "label": "Native Village of Barrow Inupiat Traditional Government",
+            "estimate": 0,
+            "percent": "0.0%"
+          },
+          {
+            "label": "Navajo Nation",
+            "estimate": 17,
+            "percent": "0.0%"
+          },
+          {
+            "label": "Nome Eskimo Community",
+            "estimate": 0,
+            "percent": "0.0%"
+          },
+          {
+            "label": "Other American Indian and Alaska Native",
+            "estimate": 1909,
+            "percent": "0.9%"
+          }
+        ]
+      },
+      {
+        "label": "Asian",
+        "estimate": 33861,
+        "percent": "15.4%",
+        "children": [
+          {
+            "label": "Asian Indian",
+            "estimate": 5519,
+            "percent": "2.5%"
+          },
+          {
+            "label": "Chinese",
+            "estimate": 11091,
+            "percent": "5.0%"
+          },
+          {
+            "label": "Filipino",
+            "estimate": 4341,
+            "percent": "2.0%"
+          },
+          {
+            "label": "Japanese",
+            "estimate": 1747,
+            "percent": "0.8%"
+          },
+          {
+            "label": "Korean",
+            "estimate": 1975,
+            "percent": "0.9%"
+          },
+          {
+            "label": "Vietnamese",
+            "estimate": 1808,
+            "percent": "0.8%"
+          },
+          {
+            "label": "Other Asian",
+            "estimate": 7380,
+            "percent": "3.3%"
+          }
+        ]
+      },
+      {
+        "label": "Native Hawaiian and Other Pacific Islander",
+        "estimate": 875,
+        "percent": "0.4%",
+        "children": [
+          {
+            "label": "Chamorro",
+            "estimate": 42,
+            "percent": "0.0%"
+          },
+          {
+            "label": "Native Hawaiian",
+            "estimate": 37,
+            "percent": "0.0%"
+          },
+          {
+            "label": "Samoan",
+            "estimate": 301,
+            "percent": "0.1%"
+          },
+          {
+            "label": "Other Native Hawaiian and Other Pacific Islander",
+            "estimate": 495,
+            "percent": "0.2%"
+          }
+        ]
+      },
+      {
+        "label": "Some Other Race",
+        "estimate": 28003,
+        "percent": "12.7%",
+        "children": []
+      },
+      {
+        "label": "Two or More Races",
+        "estimate": 41326,
+        "percent": "18.7%",
+        "children": [
+          {
+            "label": "White and Black or African American",
+            "estimate": 2155,
+            "percent": "1.0%"
+          },
+          {
+            "label": "White and American Indian and Alaska Native",
+            "estimate": 2076,
+            "percent": "0.9%"
+          },
+          {
+            "label": "White and Asian",
+            "estimate": 6419,
+            "percent": "2.9%"
+          },
+          {
+            "label": "White and Some Other Race",
+            "estimate": 24835,
+            "percent": "11.3%"
+          },
+          {
+            "label": "Black or African American and American Indian and Alaska Native",
+            "estimate": 222,
+            "percent": "0.1%"
+          },
+          {
+            "label": "Black or African American and Some Other Race",
+            "estimate": 199,
+            "percent": "0.1%"
+          }
+        ]
+      }
+    ],
+    "hispanic_origin": [
+      {
+        "label": "Hispanic or Latino (of any race)",
+        "estimate": 73569,
+        "percent": "33.4%"
+      },
+      {
+        "label": "Mexican",
+        "estimate": 63224,
+        "percent": "28.7%"
+      },
+      {
+        "label": "Puerto Rican",
+        "estimate": 690,
+        "percent": "0.3%"
+      },
+      {
+        "label": "Cuban",
+        "estimate": 304,
+        "percent": "0.1%"
+      },
+      {
+        "label": "Other Hispanic or Latino",
+        "estimate": 9351,
+        "percent": "4.2%"
+      }
+    ],
+    "hispanic_race": [
+      {
+        "label": "Not Hispanic or Latino",
+        "estimate": 146995,
+        "percent": "66.6%"
+      },
+      {
+        "label": "White alone",
+        "estimate": 92161,
+        "percent": "41.8%"
+      },
+      {
+        "label": "Black or African American alone",
+        "estimate": 5323,
+        "percent": "2.4%"
+      },
+      {
+        "label": "American Indian and Alaska Native alone",
+        "estimate": 822,
+        "percent": "0.4%"
+      },
+      {
+        "label": "Asian alone",
+        "estimate": 32943,
+        "percent": "14.9%"
+      },
+      {
+        "label": "Native Hawaiian and Other Pacific Islander alone",
+        "estimate": 769,
+        "percent": "0.3%"
+      },
+      {
+        "label": "Some Other Race alone",
+        "estimate": 1518,
+        "percent": "0.7%"
+      },
+      {
+        "label": "Two or More Races",
+        "estimate": 13459,
+        "percent": "6.1%"
+      },
+      {
+        "label": "Two races including Some Other Race",
+        "estimate": 2207,
+        "percent": "1.0%"
+      },
+      {
+        "label": "Two races excluding Some Other Race, and three or more races",
+        "estimate": 11252,
+        "percent": "5.1%"
+      },
+      {
+        "label": "Total housing units",
+        "estimate": 82447,
+        "percent": "(X)"
+      }
+    ]
+  },
+  "income": {
+    "groups": [
+      "Households",
+      "Families",
+      "Married-couple families",
+      "Nonfamily households"
+    ],
+    "distribution": [
+      {
+        "label": "Less than $10,000",
+        "values": {
+          "Households": {
+            "raw": "7.4%",
+            "value": 7.4
+          },
+          "Families": {
+            "raw": "3.3%",
+            "value": 3.3
+          },
+          "Married-couple families": {
+            "raw": "1.9%",
+            "value": 1.9
+          },
+          "Nonfamily households": {
+            "raw": "14.8%",
+            "value": 14.8
+          }
+        }
+      },
+      {
+        "label": "$10,000 to $14,999",
+        "values": {
+          "Households": {
+            "raw": "3.5%",
+            "value": 3.5
+          },
+          "Families": {
+            "raw": "1.7%",
+            "value": 1.7
+          },
+          "Married-couple families": {
+            "raw": "0.7%",
+            "value": 0.7
+          },
+          "Nonfamily households": {
+            "raw": "7.3%",
+            "value": 7.3
+          }
+        }
+      },
+      {
+        "label": "$15,000 to $24,999",
+        "values": {
+          "Households": {
+            "raw": "5.0%",
+            "value": 5.0
+          },
+          "Families": {
+            "raw": "2.8%",
+            "value": 2.8
+          },
+          "Married-couple families": {
+            "raw": "2.1%",
+            "value": 2.1
+          },
+          "Nonfamily households": {
+            "raw": "8.7%",
+            "value": 8.7
+          }
+        }
+      },
+      {
+        "label": "$25,000 to $34,999",
+        "values": {
+          "Households": {
+            "raw": "6.4%",
+            "value": 6.4
+          },
+          "Families": {
+            "raw": "4.5%",
+            "value": 4.5
+          },
+          "Married-couple families": {
+            "raw": "3.3%",
+            "value": 3.3
+          },
+          "Nonfamily households": {
+            "raw": "9.9%",
+            "value": 9.9
+          }
+        }
+      },
+      {
+        "label": "$35,000 to $49,999",
+        "values": {
+          "Households": {
+            "raw": "6.9%",
+            "value": 6.9
+          },
+          "Families": {
+            "raw": "5.7%",
+            "value": 5.7
+          },
+          "Married-couple families": {
+            "raw": "3.4%",
+            "value": 3.4
+          },
+          "Nonfamily households": {
+            "raw": "10.6%",
+            "value": 10.6
+          }
+        }
+      },
+      {
+        "label": "$50,000 to $74,999",
+        "values": {
+          "Households": {
+            "raw": "14.1%",
+            "value": 14.1
+          },
+          "Families": {
+            "raw": "12.1%",
+            "value": 12.1
+          },
+          "Married-couple families": {
+            "raw": "10.1%",
+            "value": 10.1
+          },
+          "Nonfamily households": {
+            "raw": "16.7%",
+            "value": 16.7
+          }
+        }
+      },
+      {
+        "label": "$75,000 to $99,999",
+        "values": {
+          "Households": {
+            "raw": "10.3%",
+            "value": 10.3
+          },
+          "Families": {
+            "raw": "9.9%",
+            "value": 9.9
+          },
+          "Married-couple families": {
+            "raw": "10.3%",
+            "value": 10.3
+          },
+          "Nonfamily households": {
+            "raw": "10.3%",
+            "value": 10.3
+          }
+        }
+      },
+      {
+        "label": "$100,000 to $149,999",
+        "values": {
+          "Households": {
+            "raw": "17.8%",
+            "value": 17.8
+          },
+          "Families": {
+            "raw": "21.9%",
+            "value": 21.9
+          },
+          "Married-couple families": {
+            "raw": "22.0%",
+            "value": 22.0
+          },
+          "Nonfamily households": {
+            "raw": "10.6%",
+            "value": 10.6
+          }
+        }
+      },
+      {
+        "label": "$150,000 to $199,999",
+        "values": {
+          "Households": {
+            "raw": "10.6%",
+            "value": 10.6
+          },
+          "Families": {
+            "raw": "12.8%",
+            "value": 12.8
+          },
+          "Married-couple families": {
+            "raw": "15.1%",
+            "value": 15.1
+          },
+          "Nonfamily households": {
+            "raw": "6.2%",
+            "value": 6.2
+          }
+        }
+      },
+      {
+        "label": "$200,000 or more",
+        "values": {
+          "Households": {
+            "raw": "17.9%",
+            "value": 17.9
+          },
+          "Families": {
+            "raw": "25.3%",
+            "value": 25.3
+          },
+          "Married-couple families": {
+            "raw": "31.1%",
+            "value": 31.1
+          },
+          "Nonfamily households": {
+            "raw": "4.8%",
+            "value": 4.8
+          }
+        }
+      }
+    ],
+    "summaries": [
+      {
+        "label": "Total",
+        "values": {
+          "Households": {
+            "raw": "76,693",
+            "value": 76693
+          },
+          "Families": {
+            "raw": "47,461",
+            "value": 47461
+          },
+          "Married-couple families": {
+            "raw": "34,964",
+            "value": 34964
+          },
+          "Nonfamily households": {
+            "raw": "29,232",
+            "value": 29232
+          }
+        }
+      },
+      {
+        "label": "Median income (dollars)",
+        "values": {
+          "Households": {
+            "raw": "91,752",
+            "value": 91752
+          },
+          "Families": {
+            "raw": "122,185",
+            "value": 122185
+          },
+          "Married-couple families": {
+            "raw": "140,564",
+            "value": 140564
+          },
+          "Nonfamily households": {
+            "raw": "48,413",
+            "value": 48413
+          }
+        }
+      },
+      {
+        "label": "Mean income (dollars)",
+        "values": {
+          "Households": {
+            "raw": "123,254",
+            "value": 123254
+          },
+          "Families": {
+            "raw": "153,544",
+            "value": 153544
+          },
+          "Married-couple families": {
+            "raw": "175,176",
+            "value": 175176
+          },
+          "Nonfamily households": {
+            "raw": "67,422",
+            "value": 67422
+          }
+        }
+      }
+    ]
+  },
+  "earnings": {
+    "headlines": [
+      {
+        "label": "Population 16 years and over with earnings",
+        "total": 118623,
+        "total_label": "118,623",
+        "male": 60831,
+        "male_label": "60,831",
+        "female": 57792,
+        "female_label": "57,792"
+      },
+      {
+        "label": "Median earnings (dollars)",
+        "total": 42564,
+        "total_label": "(X)",
+        "male": 49234,
+        "male_label": "(X)",
+        "female": 35997,
+        "female_label": "(X)"
+      },
+      {
+        "label": "FULL-TIME, YEAR-ROUND WORKERS WITH EARNINGS",
+        "total": 67763,
+        "total_label": "67,763",
+        "male": 38213,
+        "male_label": "38,213",
+        "female": 29550,
+        "female_label": "29,550"
+      },
+      {
+        "label": "$1 to $9,999 or loss",
+        "total": 1183,
+        "total_label": "1.7%",
+        "male": 437,
+        "male_label": "1.1%",
+        "female": 746,
+        "female_label": "2.5%"
+      },
+      {
+        "label": "$10,000 to $14,999",
+        "total": 1307,
+        "total_label": "1.9%",
+        "male": 685,
+        "male_label": "1.8%",
+        "female": 622,
+        "female_label": "2.1%"
+      },
+      {
+        "label": "$15,000 to $24,999",
+        "total": 2605,
+        "total_label": "3.8%",
+        "male": 1600,
+        "male_label": "4.2%",
+        "female": 1005,
+        "female_label": "3.4%"
+      },
+      {
+        "label": "$25,000 to $34,999",
+        "total": 6564,
+        "total_label": "9.7%",
+        "male": 3125,
+        "male_label": "8.2%",
+        "female": 3439,
+        "female_label": "11.6%"
+      },
+      {
+        "label": "$35,000 to $49,999",
+        "total": 11167,
+        "total_label": "16.5%",
+        "male": 5923,
+        "male_label": "15.5%",
+        "female": 5244,
+        "female_label": "17.7%"
+      },
+      {
+        "label": "$50,000 to $64,999",
+        "total": 9287,
+        "total_label": "13.7%",
+        "male": 5392,
+        "male_label": "14.1%",
+        "female": 3895,
+        "female_label": "13.2%"
+      },
+      {
+        "label": "$65,000 to $74,999",
+        "total": 5320,
+        "total_label": "7.9%",
+        "male": 2883,
+        "male_label": "7.5%",
+        "female": 2437,
+        "female_label": "8.2%"
+      },
+      {
+        "label": "$75,000 to $99,999",
+        "total": 9887,
+        "total_label": "14.6%",
+        "male": 5726,
+        "male_label": "15.0%",
+        "female": 4161,
+        "female_label": "14.1%"
+      },
+      {
+        "label": "$100,000 or more",
+        "total": 20443,
+        "total_label": "30.2%",
+        "male": 12442,
+        "male_label": "32.6%",
+        "female": 8001,
+        "female_label": "27.1%"
+      },
+      {
+        "label": "Median earnings (dollars) for full-time, year-round workers with earnings",
+        "total": 68232,
+        "total_label": "(X)",
+        "male": 71856,
+        "male_label": "(X)",
+        "female": 64129,
+        "female_label": "(X)"
+      },
+      {
+        "label": "Mean earnings (dollars) for full-time, year-round workers with earnings",
+        "total": 89191,
+        "total_label": "(X)",
+        "male": 94279,
+        "male_label": "(X)",
+        "female": 82612,
+        "female_label": "(X)"
+      }
+    ],
+    "bands": [],
+    "education": [
+      {
+        "label": "Population 25 years and over with earnings",
+        "total": 58474,
+        "total_label": "(X)",
+        "male": 63280,
+        "male_label": "(X)",
+        "female": 52740,
+        "female_label": "(X)"
+      },
+      {
+        "label": "Less than high school graduate",
+        "total": 36023,
+        "total_label": "(X)",
+        "male": 40831,
+        "male_label": "(X)",
+        "female": 28231,
+        "female_label": "(X)"
+      },
+      {
+        "label": "High school graduate (includes equivalency)",
+        "total": 44388,
+        "total_label": "(X)",
+        "male": 51090,
+        "male_label": "(X)",
+        "female": 34335,
+        "female_label": "(X)"
+      },
+      {
+        "label": "Some college or associate's degree",
+        "total": 50762,
+        "total_label": "(X)",
+        "male": 58559,
+        "male_label": "(X)",
+        "female": 44613,
+        "female_label": "(X)"
+      },
+      {
+        "label": "Bachelor's degree",
+        "total": 66051,
+        "total_label": "(X)",
+        "male": 74841,
+        "male_label": "(X)",
+        "female": 60176,
+        "female_label": "(X)"
+      },
+      {
+        "label": "Graduate or professional degree",
+        "total": 101684,
+        "total_label": "(X)",
+        "male": 117601,
+        "male_label": "(X)",
+        "female": 88507,
+        "female_label": "(X)"
+      }
+    ]
+  },
+  "occupations": {
+    "total": {
+      "label": "Civilian employed population 16 years and over",
+      "total": 104451,
+      "male": 53730,
+      "male_percent": "51.4%",
+      "female": 50721,
+      "female_percent": "48.6%",
+      "children": []
+    },
+    "groups": [
+      {
+        "label": "Management, business, science, and arts occupations",
+        "total": 48918,
+        "male": 23055,
+        "male_percent": "47.1%",
+        "female": 25863,
+        "female_percent": "52.9%",
+        "children": [
+          {
+            "label": "Management, business, and financial occupations",
+            "total": 15454,
+            "male": 7965,
+            "male_percent": "51.5%",
+            "female": 7489,
+            "female_percent": "48.5%",
+            "children": [
+              {
+                "label": "Management occupations",
+                "total": 9616,
+                "male": 5383,
+                "male_percent": "56.0%",
+                "female": 4233,
+                "female_percent": "44.0%",
+                "children": []
+              },
+              {
+                "label": "Business and financial operations occupations",
+                "total": 5838,
+                "male": 2582,
+                "male_percent": "44.2%",
+                "female": 3256,
+                "female_percent": "55.8%",
+                "children": []
+              }
+            ]
+          },
+          {
+            "label": "Computer, engineering, and science occupations",
+            "total": 11272,
+            "male": 6714,
+            "male_percent": "59.6%",
+            "female": 4558,
+            "female_percent": "40.4%",
+            "children": [
+              {
+                "label": "Computer and mathematical occupations",
+                "total": 3836,
+                "male": 2719,
+                "male_percent": "70.9%",
+                "female": 1117,
+                "female_percent": "29.1%",
+                "children": []
+              },
+              {
+                "label": "Architecture and engineering occupations",
+                "total": 2683,
+                "male": 2029,
+                "male_percent": "75.6%",
+                "female": 654,
+                "female_percent": "24.4%",
+                "children": []
+              },
+              {
+                "label": "Life, physical, and social science occupations",
+                "total": 4753,
+                "male": 1966,
+                "male_percent": "41.4%",
+                "female": 2787,
+                "female_percent": "58.6%",
+                "children": []
+              }
+            ]
+          },
+          {
+            "label": "Education, legal, community service, arts, and media occupations",
+            "total": 16327,
+            "male": 6573,
+            "male_percent": "40.3%",
+            "female": 9754,
+            "female_percent": "59.7%",
+            "children": [
+              {
+                "label": "Community and social service occupations",
+                "total": 1822,
+                "male": 592,
+                "male_percent": "32.5%",
+                "female": 1230,
+                "female_percent": "67.5%",
+                "children": []
+              },
+              {
+                "label": "Legal occupations",
+                "total": 1896,
+                "male": 847,
+                "male_percent": "44.7%",
+                "female": 1049,
+                "female_percent": "55.3%",
+                "children": []
+              },
+              {
+                "label": "Educational instruction, and library occupations",
+                "total": 10465,
+                "male": 4119,
+                "male_percent": "39.4%",
+                "female": 6346,
+                "female_percent": "60.6%",
+                "children": []
+              },
+              {
+                "label": "Arts, design, entertainment, sports, and media occupations",
+                "total": 2144,
+                "male": 1015,
+                "male_percent": "47.3%",
+                "female": 1129,
+                "female_percent": "52.7%",
+                "children": []
+              }
+            ]
+          },
+          {
+            "label": "Healthcare practitioners and technical occupations",
+            "total": 5865,
+            "male": 1803,
+            "male_percent": "30.7%",
+            "female": 4062,
+            "female_percent": "69.3%",
+            "children": [
+              {
+                "label": "Health diagnosing and treating practitioners and other technical occupations",
+                "total": 4386,
+                "male": 1354,
+                "male_percent": "30.9%",
+                "female": 3032,
+                "female_percent": "69.1%",
+                "children": []
+              },
+              {
+                "label": "Health technologists and technicians",
+                "total": 1479,
+                "male": 449,
+                "male_percent": "30.4%",
+                "female": 1030,
+                "female_percent": "69.6%",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Service occupations",
+        "total": 18580,
+        "male": 8039,
+        "male_percent": "43.3%",
+        "female": 10541,
+        "female_percent": "56.7%",
+        "children": [
+          {
+            "label": "Healthcare support occupations",
+            "total": 3865,
+            "male": 948,
+            "male_percent": "24.5%",
+            "female": 2917,
+            "female_percent": "75.5%",
+            "children": []
+          },
+          {
+            "label": "Protective service occupations",
+            "total": 2377,
+            "male": 1896,
+            "male_percent": "79.8%",
+            "female": 481,
+            "female_percent": "20.2%",
+            "children": [
+              {
+                "label": "Firefighting and prevention, and other protective service workers including supervisors",
+                "total": 1079,
+                "male": 770,
+                "male_percent": "71.4%",
+                "female": 309,
+                "female_percent": "28.6%",
+                "children": []
+              },
+              {
+                "label": "Law enforcement workers including supervisors",
+                "total": 1298,
+                "male": 1126,
+                "male_percent": "86.7%",
+                "female": 172,
+                "female_percent": "13.3%",
+                "children": []
+              }
+            ]
+          },
+          {
+            "label": "Food preparation and serving related occupations",
+            "total": 6290,
+            "male": 2679,
+            "male_percent": "42.6%",
+            "female": 3611,
+            "female_percent": "57.4%",
+            "children": []
+          },
+          {
+            "label": "Building and grounds cleaning and maintenance occupations",
+            "total": 3335,
+            "male": 1914,
+            "male_percent": "57.4%",
+            "female": 1421,
+            "female_percent": "42.6%",
+            "children": []
+          },
+          {
+            "label": "Personal care and service occupations",
+            "total": 2713,
+            "male": 602,
+            "male_percent": "22.2%",
+            "female": 2111,
+            "female_percent": "77.8%",
+            "children": []
+          }
+        ]
+      },
+      {
+        "label": "Sales and office occupations",
+        "total": 16938,
+        "male": 6680,
+        "male_percent": "39.4%",
+        "female": 10258,
+        "female_percent": "60.6%",
+        "children": [
+          {
+            "label": "Sales and related occupations",
+            "total": 8004,
+            "male": 4013,
+            "male_percent": "50.1%",
+            "female": 3991,
+            "female_percent": "49.9%",
+            "children": []
+          },
+          {
+            "label": "Office and administrative support occupations",
+            "total": 8934,
+            "male": 2667,
+            "male_percent": "29.9%",
+            "female": 6267,
+            "female_percent": "70.1%",
+            "children": []
+          }
+        ]
+      },
+      {
+        "label": "Natural resources, construction, and maintenance occupations",
+        "total": 9039,
+        "male": 7912,
+        "male_percent": "87.5%",
+        "female": 1127,
+        "female_percent": "12.5%",
+        "children": [
+          {
+            "label": "Farming, fishing, and forestry occupations",
+            "total": 2127,
+            "male": 1211,
+            "male_percent": "56.9%",
+            "female": 916,
+            "female_percent": "43.1%",
+            "children": []
+          },
+          {
+            "label": "Construction and extraction occupations",
+            "total": 4152,
+            "male": 4036,
+            "male_percent": "97.2%",
+            "female": 116,
+            "female_percent": "2.8%",
+            "children": []
+          },
+          {
+            "label": "Installation, maintenance, and repair occupations",
+            "total": 2760,
+            "male": 2665,
+            "male_percent": "96.6%",
+            "female": 95,
+            "female_percent": "3.4%",
+            "children": []
+          }
+        ]
+      },
+      {
+        "label": "Production, transportation, and material moving occupations",
+        "total": 10976,
+        "male": 8044,
+        "male_percent": "73.3%",
+        "female": 2932,
+        "female_percent": "26.7%",
+        "children": [
+          {
+            "label": "Production occupations",
+            "total": 3643,
+            "male": 2784,
+            "male_percent": "76.4%",
+            "female": 859,
+            "female_percent": "23.6%",
+            "children": []
+          },
+          {
+            "label": "Transportation occupations",
+            "total": 3051,
+            "male": 2719,
+            "male_percent": "89.1%",
+            "female": 332,
+            "female_percent": "10.9%",
+            "children": []
+          },
+          {
+            "label": "Material moving occupations",
+            "total": 4282,
+            "male": 2541,
+            "male_percent": "59.3%",
+            "female": 1741,
+            "female_percent": "40.7%",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  "poverty": [
+    {
+      "title": "All people",
+      "rows": [
+        {
+          "label": "Population for whom poverty status is determined",
+          "total": 212568,
+          "total_moe": 160,
+          "below": 35478,
+          "below_moe": 2131,
+          "percent": 16.7,
+          "percent_moe": 1.0
+        }
+      ]
+    },
+    {
+      "title": "Age",
+      "rows": [
+        {
+          "label": "Under 18 years",
+          "total": 43988,
+          "total_moe": 130,
+          "below": 5334,
+          "below_moe": 1064,
+          "percent": 12.1,
+          "percent_moe": 2.4
+        },
+        {
+          "label": "Under 5 years",
+          "total": 10447,
+          "total_moe": 112,
+          "below": 1491,
+          "below_moe": 397,
+          "percent": 14.3,
+          "percent_moe": 3.8
+        },
+        {
+          "label": "5 to 17 years",
+          "total": 33541,
+          "total_moe": 139,
+          "below": 3843,
+          "below_moe": 812,
+          "percent": 11.5,
+          "percent_moe": 2.4
+        },
+        {
+          "label": "Related children of householder under 18 years",
+          "total": 43713,
+          "total_moe": 216,
+          "below": 5128,
+          "below_moe": 1067,
+          "percent": 11.7,
+          "percent_moe": 2.4
+        },
+        {
+          "label": "18 to 64 years",
+          "total": 139474,
+          "total_moe": 132,
+          "below": 26763,
+          "below_moe": 1642,
+          "percent": 19.2,
+          "percent_moe": 1.2
+        },
+        {
+          "label": "18 to 34 years",
+          "total": 67888,
+          "total_moe": 165,
+          "below": 20165,
+          "below_moe": 1254,
+          "percent": 29.7,
+          "percent_moe": 1.8
+        },
+        {
+          "label": "35 to 64 years",
+          "total": 71586,
+          "total_moe": 138,
+          "below": 6598,
+          "below_moe": 721,
+          "percent": 9.2,
+          "percent_moe": 1.0
+        },
+        {
+          "label": "60 years and over",
+          "total": 40133,
+          "total_moe": 627,
+          "below": 4602,
+          "below_moe": 505,
+          "percent": 11.5,
+          "percent_moe": 1.2
+        },
+        {
+          "label": "65 years and over",
+          "total": 29106,
+          "total_moe": 82,
+          "below": 3381,
+          "below_moe": 424,
+          "percent": 11.6,
+          "percent_moe": 1.5
+        }
+      ]
+    },
+    {
+      "title": "Sex",
+      "rows": [
+        {
+          "label": "Male",
+          "total": 103703,
+          "total_moe": 361,
+          "below": 15594,
+          "below_moe": 1373,
+          "percent": 15.0,
+          "percent_moe": 1.3
+        },
+        {
+          "label": "Female",
+          "total": 108865,
+          "total_moe": 315,
+          "below": 19884,
+          "below_moe": 1347,
+          "percent": 18.3,
+          "percent_moe": 1.2
+        }
+      ]
+    },
+    {
+      "title": "Race And Hispanic Or Latino Origin",
+      "rows": [
+        {
+          "label": "White alone",
+          "total": 104382,
+          "total_moe": 2055,
+          "below": 14590,
+          "below_moe": 1344,
+          "percent": 14.0,
+          "percent_moe": 1.2
+        },
+        {
+          "label": "Black or African American alone",
+          "total": 5516,
+          "total_moe": 584,
+          "below": 1530,
+          "below_moe": 529,
+          "percent": 27.7,
+          "percent_moe": 8.2
+        },
+        {
+          "label": "American Indian and Alaska Native alone",
+          "total": 2735,
+          "total_moe": 656,
+          "below": 492,
+          "below_moe": 191,
+          "percent": 18.0,
+          "percent_moe": 6.6
+        },
+        {
+          "label": "Asian alone",
+          "total": 31305,
+          "total_moe": 998,
+          "below": 8951,
+          "below_moe": 827,
+          "percent": 28.6,
+          "percent_moe": 2.4
+        },
+        {
+          "label": "Native Hawaiian and Other Pacific Islander alone",
+          "total": 821,
+          "total_moe": 178,
+          "below": 127,
+          "below_moe": 91,
+          "percent": 15.5,
+          "percent_moe": 10.2
+        },
+        {
+          "label": "Some other race alone",
+          "total": 27358,
+          "total_moe": 2226,
+          "below": 4833,
+          "below_moe": 1017,
+          "percent": 17.7,
+          "percent_moe": 3.5
+        },
+        {
+          "label": "Two or more races",
+          "total": 40451,
+          "total_moe": 2579,
+          "below": 4955,
+          "below_moe": 1130,
+          "percent": 12.2,
+          "percent_moe": 2.6
+        },
+        {
+          "label": "Hispanic or Latino origin (of any race)",
+          "total": 71819,
+          "total_moe": 357,
+          "below": 10260,
+          "below_moe": 1476,
+          "percent": 14.3,
+          "percent_moe": 2.0
+        },
+        {
+          "label": "White alone, not Hispanic or Latino",
+          "total": 89348,
+          "total_moe": 702,
+          "below": 12079,
+          "below_moe": 1108,
+          "percent": 13.5,
+          "percent_moe": 1.2
+        }
+      ]
+    },
+    {
+      "title": "Educational Attainment",
+      "rows": [
+        {
+          "label": "Population 25 years and over",
+          "total": 130020,
+          "total_moe": 207,
+          "below": 13227,
+          "below_moe": 1059,
+          "percent": 10.2,
+          "percent_moe": 0.8
+        },
+        {
+          "label": "Less than high school graduate",
+          "total": 14667,
+          "total_moe": 974,
+          "below": 2340,
+          "below_moe": 403,
+          "percent": 16.0,
+          "percent_moe": 2.6
+        },
+        {
+          "label": "High school graduate (includes equivalency)",
+          "total": 22885,
+          "total_moe": 1217,
+          "below": 3752,
+          "below_moe": 536,
+          "percent": 16.4,
+          "percent_moe": 2.3
+        },
+        {
+          "label": "Some college, associate's degree",
+          "total": 33938,
+          "total_moe": 1247,
+          "below": 3919,
+          "below_moe": 598,
+          "percent": 11.5,
+          "percent_moe": 1.6
+        },
+        {
+          "label": "Bachelor's degree or higher",
+          "total": 58530,
+          "total_moe": 1529,
+          "below": 3216,
+          "below_moe": 516,
+          "percent": 5.5,
+          "percent_moe": 0.9
+        }
+      ]
+    },
+    {
+      "title": "Employment Status",
+      "rows": [
+        {
+          "label": "Civilian labor force 16 years and over",
+          "total": 109565,
+          "total_moe": 1656,
+          "below": 12570,
+          "below_moe": 1152,
+          "percent": 11.5,
+          "percent_moe": 1.0
+        },
+        {
+          "label": "Employed",
+          "total": 103237,
+          "total_moe": 1682,
+          "below": 10151,
+          "below_moe": 914,
+          "percent": 9.8,
+          "percent_moe": 0.9
+        },
+        {
+          "label": "Male",
+          "total": 53309,
+          "total_moe": 1192,
+          "below": 3845,
+          "below_moe": 569,
+          "percent": 7.2,
+          "percent_moe": 1.0
+        },
+        {
+          "label": "Female",
+          "total": 49928,
+          "total_moe": 1229,
+          "below": 6306,
+          "below_moe": 725,
+          "percent": 12.6,
+          "percent_moe": 1.4
+        },
+        {
+          "label": "Unemployed",
+          "total": 6328,
+          "total_moe": 921,
+          "below": 2419,
+          "below_moe": 622,
+          "percent": 38.2,
+          "percent_moe": 6.0
+        },
+        {
+          "label": "Male",
+          "total": 3411,
+          "total_moe": 640,
+          "below": 1194,
+          "below_moe": 454,
+          "percent": 35.0,
+          "percent_moe": 8.9
+        },
+        {
+          "label": "Female",
+          "total": 2917,
+          "total_moe": 557,
+          "below": 1225,
+          "below_moe": 370,
+          "percent": 42.0,
+          "percent_moe": 8.0
+        }
+      ]
+    },
+    {
+      "title": "Work Experience",
+      "rows": [
+        {
+          "label": "Population 16 years and over",
+          "total": 174248,
+          "total_moe": 372,
+          "below": 30842,
+          "below_moe": 1650,
+          "percent": 17.7,
+          "percent_moe": 0.9
+        },
+        {
+          "label": "Worked full-time, year-round in the past 12 months",
+          "total": 67563,
+          "total_moe": 1650,
+          "below": 1794,
+          "below_moe": 476,
+          "percent": 2.7,
+          "percent_moe": 0.7
+        },
+        {
+          "label": "Worked part-time or part-year in the past 12 months",
+          "total": 47768,
+          "total_moe": 1663,
+          "below": 12286,
+          "below_moe": 1056,
+          "percent": 25.7,
+          "percent_moe": 2.0
+        },
+        {
+          "label": "Did not work",
+          "total": 58917,
+          "total_moe": 1577,
+          "below": 16762,
+          "below_moe": 1146,
+          "percent": 28.5,
+          "percent_moe": 1.6
+        }
+      ]
+    },
+    {
+      "title": "All Individuals With Income Below The Following Poverty Ratios",
+      "rows": [
+        {
+          "label": "50 percent of poverty level",
+          "total": 22764,
+          "total_moe": 1632,
+          "below": null,
+          "below_moe": null,
+          "percent": null,
+          "percent_moe": null
+        },
+        {
+          "label": "125 percent of poverty level",
+          "total": 42604,
+          "total_moe": 2207,
+          "below": null,
+          "below_moe": null,
+          "percent": null,
+          "percent_moe": null
+        },
+        {
+          "label": "150 percent of poverty level",
+          "total": 50556,
+          "total_moe": 2402,
+          "below": null,
+          "below_moe": null,
+          "percent": null,
+          "percent_moe": null
+        },
+        {
+          "label": "185 percent of poverty level",
+          "total": 60729,
+          "total_moe": 2672,
+          "below": null,
+          "below_moe": null,
+          "percent": null,
+          "percent_moe": null
+        },
+        {
+          "label": "200 percent of poverty level",
+          "total": 64655,
+          "total_moe": 2741,
+          "below": null,
+          "below_moe": null,
+          "percent": null,
+          "percent_moe": null
+        },
+        {
+          "label": "300 percent of poverty level",
+          "total": 95009,
+          "total_moe": 2966,
+          "below": null,
+          "below_moe": null,
+          "percent": null,
+          "percent_moe": null
+        },
+        {
+          "label": "400 percent of poverty level",
+          "total": 119957,
+          "total_moe": 3016,
+          "below": null,
+          "below_moe": null,
+          "percent": null,
+          "percent_moe": null
+        },
+        {
+          "label": "500 percent of poverty level",
+          "total": 138975,
+          "total_moe": 2334,
+          "below": null,
+          "below_moe": null,
+          "percent": null,
+          "percent_moe": null
+        },
+        {
+          "label": "UNRELATED INDIVIDUALS FOR WHOM POVERTY STATUS IS DETERMINED",
+          "total": 55542,
+          "total_moe": 1820,
+          "below": 23299,
+          "below_moe": 1428,
+          "percent": 41.9,
+          "percent_moe": 2.1
+        },
+        {
+          "label": "Male",
+          "total": 26375,
+          "total_moe": 1183,
+          "below": 10287,
+          "below_moe": 1004,
+          "percent": 39.0,
+          "percent_moe": 3.1
+        },
+        {
+          "label": "Female",
+          "total": 29167,
+          "total_moe": 1196,
+          "below": 13012,
+          "below_moe": 908,
+          "percent": 44.6,
+          "percent_moe": 2.5
+        },
+        {
+          "label": "15 years",
+          "total": 131,
+          "total_moe": 97,
+          "below": 131,
+          "below_moe": 97,
+          "percent": 100.0,
+          "percent_moe": 27.1
+        },
+        {
+          "label": "16 to 17 years",
+          "total": 144,
+          "total_moe": 116,
+          "below": 75,
+          "below_moe": 52,
+          "percent": 52.1,
+          "percent_moe": 46.8
+        },
+        {
+          "label": "18 to 24 years",
+          "total": 21172,
+          "total_moe": 1099,
+          "below": 15623,
+          "below_moe": 1163,
+          "percent": 73.8,
+          "percent_moe": 3.4
+        },
+        {
+          "label": "25 to 34 years",
+          "total": 11770,
+          "total_moe": 768,
+          "below": 2257,
+          "below_moe": 418,
+          "percent": 19.2,
+          "percent_moe": 3.5
+        },
+        {
+          "label": "35 to 44 years",
+          "total": 4951,
+          "total_moe": 672,
+          "below": 963,
+          "below_moe": 313,
+          "percent": 19.5,
+          "percent_moe": 5.8
+        },
+        {
+          "label": "45 to 54 years",
+          "total": 4017,
+          "total_moe": 580,
+          "below": 822,
+          "below_moe": 255,
+          "percent": 20.5,
+          "percent_moe": 5.2
+        },
+        {
+          "label": "55 to 64 years",
+          "total": 4448,
+          "total_moe": 436,
+          "below": 1433,
+          "below_moe": 290,
+          "percent": 32.2,
+          "percent_moe": 5.1
+        },
+        {
+          "label": "65 to 74 years",
+          "total": 4557,
+          "total_moe": 498,
+          "below": 1088,
+          "below_moe": 243,
+          "percent": 23.9,
+          "percent_moe": 4.7
+        },
+        {
+          "label": "75 years and over",
+          "total": 4352,
+          "total_moe": 438,
+          "below": 907,
+          "below_moe": 237,
+          "percent": 20.8,
+          "percent_moe": 5.1
+        },
+        {
+          "label": "Mean income deficit for unrelated individuals (dollars)",
+          "total": 10417,
+          "total_moe": 297,
+          "below": null,
+          "below_moe": null,
+          "percent": null,
+          "percent_moe": null
+        },
+        {
+          "label": "Worked full-time, year-round in the past 12 months",
+          "total": 17972,
+          "total_moe": 1284,
+          "below": 736,
+          "below_moe": 231,
+          "percent": 4.1,
+          "percent_moe": 1.2
+        },
+        {
+          "label": "Worked less than full-time, year-round in the past 12 months",
+          "total": 18213,
+          "total_moe": 1188,
+          "below": 10302,
+          "below_moe": 1033,
+          "percent": 56.6,
+          "percent_moe": 3.5
+        },
+        {
+          "label": "Did not work",
+          "total": 19357,
+          "total_moe": 1172,
+          "below": 12261,
+          "below_moe": 1026,
+          "percent": 63.3,
+          "percent_moe": 3.0
+        },
+        {
+          "label": "Population in housing units for whom poverty status is determined",
+          "total": 210805,
+          "total_moe": 163,
+          "below": 34594,
+          "below_moe": 2116,
+          "percent": 16.4,
+          "percent_moe": 1.0
+        }
+      ]
+    }
+  ],
+  "employers": [
+    {
+      "name": "Beckman Coulter Inc",
+      "city": "West Sacramento",
+      "industry": "Physicians & Surgeons Equip & Supls-Mfrs",
+      "lat": 38.568897,
+      "lng": -121.5796062,
+      "geocode_label": "1584, Enterprise Boulevard, West Sacramento, Yolo County, California, 95691, United States",
+      "precision": "building",
+      "note": "1584 Enterprise Blvd, from the EDD employer record."
+    },
+    {
+      "name": "Cache Creek Casino Resort",
+      "city": "Brooks",
+      "industry": "Hotels & Motels",
+      "lat": 38.7345359,
+      "lng": -122.1422025,
+      "geocode_label": "Cache Creek Casino, 14455, CA 16, Brooks, Yolo County, California, 95606, United States",
+      "precision": "amenity",
+      "note": "14455 State Highway 16, from the EDD employer record."
+    },
+    {
+      "name": "Capital Express Lines",
+      "city": "West Sacramento",
+      "industry": "Trucking-Motor Freight",
+      "lat": 38.5623081,
+      "lng": -121.5765243,
+      "geocode_label": "1925, Enterprise Boulevard, West Sacramento, Yolo County, California, 95691, United States",
+      "precision": "building",
+      "note": "1925 Enterprise Blvd, the company's listed West Sacramento branch."
+    },
+    {
+      "name": "City of Davis",
+      "city": "Davis",
+      "industry": "City Hall",
+      "lat": 38.5467264,
+      "lng": -121.7468967,
+      "geocode_label": "City Hall, 23, Russell Boulevard, Davis, Yolo County, California, 95616, United States",
+      "precision": "amenity",
+      "note": "Davis City Hall, 23 Russell Boulevard."
+    },
+    {
+      "name": "City of Davis-City Manager Ofc",
+      "city": "Davis",
+      "industry": "City Government-Executive Offices",
+      "lat": 38.5467264,
+      "lng": -121.7468967,
+      "geocode_label": "City Hall, 23, Russell Boulevard, Davis, Yolo County, California, 95616, United States",
+      "precision": "amenity",
+      "note": "City Manager's Office at Davis City Hall, 23 Russell Boulevard."
+    },
+    {
+      "name": "Clark Pacific",
+      "city": "West Sacramento",
+      "industry": "Concrete Products-Except Block & Brick (mfrs)",
+      "lat": 38.588286,
+      "lng": -121.5469006,
+      "geocode_label": "710, Riverpoint Court, Riverpoint Marketplace, Bryte, West Sacramento, Yolo County, California, 95605, United States",
+      "precision": "building",
+      "note": "710 Riverpoint Court, Suite 100, the company's West Sacramento headquarters."
+    },
+    {
+      "name": "Dennis Blazona Constr Inc",
+      "city": "West Sacramento",
+      "industry": "Construction Companies",
+      "lat": 38.5834501,
+      "lng": -121.5466503,
+      "geocode_label": "525, Harbor Boulevard, Mikon, West Sacramento, Yolo County, California, 95691, United States",
+      "precision": "building",
+      "note": "525 Harbor Blvd, the listed address for Blazona Concrete Construction."
+    },
+    {
+      "name": "Fedex Freight",
+      "city": "West Sacramento",
+      "industry": "Trucking-Motor Freight",
+      "lat": 38.5563771,
+      "lng": -121.5806731,
+      "geocode_label": "FedEx Freight, Channel Drive, West Sacramento, Yolo County, California, 95799, United States",
+      "precision": "building",
+      "note": "FedEx Freight, Channel Drive, West Sacramento, Yolo County, California, 95799, United States"
+    },
+    {
+      "name": "KOVR",
+      "city": "West Sacramento",
+      "industry": "Television Stations & Broadcasting Co",
+      "lat": 38.5924898,
+      "lng": -121.5465821,
+      "geocode_label": "KOVR/KMAX-TV, 2713, Kovr Drive, Bryte, West Sacramento, Yolo County, California, 95605, United States",
+      "precision": "amenity",
+      "note": "2713 KOVR Drive, the station's main studio in the FCC public file."
+    },
+    {
+      "name": "Mariani Nut Co",
+      "city": "Winters",
+      "industry": "Nuts-Edible",
+      "lat": 38.5271479,
+      "lng": -121.9679398,
+      "geocode_label": "Mariani Nut Company, 709, Dutton Street, Winters, Yolo County, California, 95694, United States",
+      "precision": "building",
+      "note": "Mariani Nut Company, 709, Dutton Street, Winters, Yolo County, California, 95694, United States"
+    },
+    {
+      "name": "Nor-Cal Beverage Co",
+      "city": "West Sacramento",
+      "industry": "Vending Machines-Manufacturers",
+      "lat": 38.5499139,
+      "lng": -121.5756359,
+      "geocode_label": "Elliot Williams, 3600, Massie Court, West Sacramento, Yolo County, California, 95691, United States",
+      "precision": "building",
+      "note": "3600 Massie Court, the listed distribution center."
+    },
+    {
+      "name": "Pacific Coast Producers",
+      "city": "Woodland",
+      "industry": "Canned Specialties (mfrs)",
+      "lat": 38.6802623,
+      "lng": -121.7573441,
+      "geocode_label": "1376, Lemen Avenue, Woodland, Yolo County, California, 95776, United States",
+      "precision": "place",
+      "note": "1376 Lemen Avenue, the company's Woodland tomato plant."
+    },
+    {
+      "name": "Procurement Office",
+      "city": "West Sacramento",
+      "industry": "State Government-General Offices",
+      "lat": 38.5804609,
+      "lng": -121.530234,
+      "geocode_label": "West Sacramento, Yolo County, California, United States",
+      "precision": "city",
+      "note": "Listed in West Sacramento. A street address was not confirmed, so the pin marks the city."
+    },
+    {
+      "name": "Promega Corp",
+      "city": "Madison",
+      "industry": "Biotechnology Products & Services",
+      "lat": 38.674279,
+      "lng": -121.9669538,
+      "geocode_label": "Madison, Yolo County, California, 95653, United States",
+      "precision": "city",
+      "note": "EDD lists 2800 Woods Hollow Rd with a Madison, CA ZIP. That street is Promega's Wisconsin headquarters, so the pin marks Madison, California only."
+    },
+    {
+      "name": "Sutter Davis Hospital",
+      "city": "Davis",
+      "industry": "Hospitals",
+      "lat": 38.5626195,
+      "lng": -121.7712099,
+      "geocode_label": "Sutter Davis Hospital, 2000, County Road 99D, West Davis, Davis, Yolo County, California, 95616, United States",
+      "precision": "amenity",
+      "note": "Sutter Davis Hospital, 2000, County Road 99D, West Davis, Davis, Yolo County, California, 95616, United States"
+    },
+    {
+      "name": "Target Distribution Ctr",
+      "city": "Woodland",
+      "industry": "Distribution Centers (whls)",
+      "lat": 38.6827462,
+      "lng": -121.7234508,
+      "geocode_label": "2050, East Beamer Street, Woodland, Yolo County, California, 95776, United States",
+      "precision": "building",
+      "note": "2050 East Beamer Street."
+    },
+    {
+      "name": "Treasure Chest Advg Co Inc",
+      "city": "West Sacramento",
+      "industry": "Printers (mfrs)",
+      "lat": 38.5731164,
+      "lng": -121.5454454,
+      "geocode_label": "1201, Shore Street, West Sacramento, Yolo County, California, 95691, United States",
+      "precision": "building",
+      "note": "1201 Shore Street. A 1994 OSHA record lists Shore Drive at this number. The worksite may no longer be active."
+    },
+    {
+      "name": "University of California Davis",
+      "city": "Davis",
+      "industry": "Schools-Universities & Colleges Academic",
+      "lat": 38.5402343,
+      "lng": -121.749142,
+      "geocode_label": "1, Peter J Shields Avenue, Davis, Yolo County, California, 95616, United States",
+      "precision": "amenity",
+      "note": "Main campus, 1 Shields Avenue."
+    },
+    {
+      "name": "UPS Customer Ctr",
+      "city": "West Sacramento",
+      "industry": "Mailing & Shipping Services",
+      "lat": 38.5710916,
+      "lng": -121.5472354,
+      "geocode_label": "UPS Customer Center, 1380, Shore Street, West Sacramento, Yolo County, California, 95691, United States",
+      "precision": "building",
+      "note": "UPS Customer Center, 1380, Shore Street, West Sacramento, Yolo County, California, 95691, United States"
+    },
+    {
+      "name": "Walmart Supercenter",
+      "city": "West Sacramento",
+      "industry": "Department Stores",
+      "lat": 38.5873026,
+      "lng": -121.5500861,
+      "geocode_label": "Walmart Supercenter, 755, Riverpoint Court, Riverpoint Marketplace, Bryte, West Sacramento, Yolo County, California, 95605, United States",
+      "precision": "shop",
+      "note": "Walmart Supercenter, 755, Riverpoint Court, Riverpoint Marketplace, Bryte, West Sacramento, Yolo County, California, 95605, United States"
+    },
+    {
+      "name": "Woodland Healthcare",
+      "city": "Woodland",
+      "industry": "Health Care Management",
+      "lat": 38.6649209,
+      "lng": -121.7922087,
+      "geocode_label": "Woodland Healthcare, 1325, Cottonwood Street, Woodland, Yolo County, California, 95695, United States",
+      "precision": "amenity",
+      "note": "Woodland Healthcare, 1325, Cottonwood Street, Woodland, Yolo County, California, 95695, United States"
+    },
+    {
+      "name": "Woodland Healthcare Foundation",
+      "city": "Woodland",
+      "industry": "Health Services",
+      "lat": 38.6649209,
+      "lng": -121.7922087,
+      "geocode_label": "Woodland Healthcare, 1325, Cottonwood Street, Woodland, Yolo County, California, 95695, United States",
+      "precision": "amenity",
+      "note": "Shown at Woodland Healthcare, 1325 Cottonwood Street. A separate foundation address was not confirmed."
+    },
+    {
+      "name": "Yolo County District Attorney",
+      "city": "Woodland",
+      "industry": "County Government-Legal Counsel",
+      "lat": 38.678621,
+      "lng": -121.771774,
+      "geocode_label": "301, 2nd Street, Woodland, Yolo County, California, 95695, United States",
+      "precision": "place",
+      "note": "301 Second Street, the office address published by the District Attorney."
+    },
+    {
+      "name": "Yolo County Office of Edu",
+      "city": "Woodland",
+      "industry": "County Government-Education Programs",
+      "lat": 38.6962539,
+      "lng": -121.757562,
+      "geocode_label": "1280, Santa Anita Court, Woodland, Yolo County, California, 95776, United States",
+      "precision": "place",
+      "note": "1280 Santa Anita Court, the address on the California school directory."
+    },
+    {
+      "name": "Yolo County Sheriff-Civil Div",
+      "city": "Woodland",
+      "industry": "Government Offices-County",
+      "lat": 38.6620162,
+      "lng": -121.7320011,
+      "geocode_label": "Yolo County Sheriff, 140, Tony Diaz Drive, Woodland, Yolo County, California, 95776, United States",
+      "precision": "amenity",
+      "note": "140 Tony Diaz Drive, the Sheriff's Civil Section address."
+    }
+  ],
+  "unions": {
+    "note": "Current working inventory compiled August 31, 2026. One row per employer\u2013union relationship; counts are bargaining-unit or election figures, not necessarily dues-paying membership.",
+    "rows": [
+      {
+        "union": "UAW Local 4811",
+        "employer": "University of California, Davis",
+        "unit": "Academic Student Employees (BX)",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Higher education",
+        "workers": 2311,
+        "count_basis": "Approx. Davis unit count",
+        "status": "Confirmed current",
+        "contact": "https://uaw4811.org/",
+        "source": "https://ucnet.universityofcalifornia.edu/resources/employment-policies-contracts/bargaining-units/",
+        "notes": ""
+      },
+      {
+        "union": "Teamsters Local 2010",
+        "employer": "University of California, Davis",
+        "unit": "Clerical & Allied Services (CX)",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Higher education",
+        "workers": 1481,
+        "count_basis": "Approx. Davis unit count",
+        "status": "Confirmed current",
+        "contact": "https://teamsters2010.org/",
+        "source": "https://ucnet.universityofcalifornia.edu/resources/employment-policies-contracts/bargaining-units/",
+        "notes": ""
+      },
+      {
+        "union": "UAW Local 4811",
+        "employer": "University of California, Davis",
+        "unit": "Graduate Student Researchers (BR)",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Higher education",
+        "workers": 1384,
+        "count_basis": "Approx. Davis unit count",
+        "status": "Confirmed current",
+        "contact": "https://uaw4811.org/",
+        "source": "https://ucnet.universityofcalifornia.edu/resources/employment-policies-contracts/bargaining-units/",
+        "notes": ""
+      },
+      {
+        "union": "UPTE-CWA Local 9119",
+        "employer": "University of California, Davis",
+        "unit": "Technical employees (TX)",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Higher education / research",
+        "workers": 1065,
+        "count_basis": "Approx. Davis unit count",
+        "status": "Confirmed current",
+        "contact": "https://upte.org/",
+        "source": "https://ucnet.universityofcalifornia.edu/resources/employment-policies-contracts/bargaining-units/",
+        "notes": ""
+      },
+      {
+        "union": "AFSCME Local 3299",
+        "employer": "University of California, Davis",
+        "unit": "Service employees (SX)",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Higher education",
+        "workers": 892,
+        "count_basis": "Approx. Davis unit count",
+        "status": "Confirmed current",
+        "contact": "https://afscme3299.org/",
+        "source": "https://ucnet.universityofcalifornia.edu/resources/employment-policies-contracts/bargaining-units/",
+        "notes": ""
+      },
+      {
+        "union": "UAW Local 4811",
+        "employer": "University of California, Davis",
+        "unit": "Academic Researchers (RA)",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Higher education / research",
+        "workers": 745,
+        "count_basis": "Approx. Davis unit count",
+        "status": "Confirmed current",
+        "contact": "https://uaw4811.org/",
+        "source": "https://ucnet.universityofcalifornia.edu/resources/employment-policies-contracts/bargaining-units/",
+        "notes": ""
+      },
+      {
+        "union": "UC-AFT",
+        "employer": "University of California, Davis",
+        "unit": "Non-Senate Instructional / Lecturers (IX)",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Higher education",
+        "workers": 536,
+        "count_basis": "Approx. Davis unit count",
+        "status": "Confirmed current",
+        "contact": "https://ucaft.org/",
+        "source": "https://ucnet.universityofcalifornia.edu/resources/employment-policies-contracts/bargaining-units/",
+        "notes": ""
+      },
+      {
+        "union": "California Nurses Association / NNU",
+        "employer": "Sutter Davis Hospital",
+        "unit": "Registered nurses and RN clinical scheduling coordinators",
+        "city": "Davis",
+        "sector": "Private",
+        "industry": "Hospital / health care",
+        "workers": 292,
+        "count_basis": "Eligible voters in 2025 NLRB election",
+        "status": "Confirmed current",
+        "contact": "(510) 273-2292; https://www.nationalnursesunited.org/cna",
+        "source": "https://www.nlrb.gov/case/20-RD-362837",
+        "notes": ""
+      },
+      {
+        "union": "SEIU Local 2015",
+        "employer": "Courtyard Healthcare Center",
+        "unit": "CNAs, RNAs, dietary, laundry, housekeeping, janitorial and activities employees",
+        "city": "Davis",
+        "sector": "Private",
+        "industry": "Nursing home / health care",
+        "workers": 80,
+        "count_basis": "Eligible voters at certification election",
+        "status": "Confirmed current",
+        "contact": "https://www.seiu2015.org/",
+        "source": "https://www.nlrb.gov/case/20-RC-162276",
+        "notes": "Recent 2026 contract-related NLRB activity supports continuation."
+      },
+      {
+        "union": "Workers United / SEIU",
+        "employer": "Starbucks",
+        "unit": "Store employees",
+        "city": "Dunnigan",
+        "sector": "Private",
+        "industry": "Coffee / food service / retail",
+        "workers": 17,
+        "count_basis": "Votes cast for union; unit at least this size",
+        "status": "Confirmed current",
+        "contact": "https://workersunited.org/",
+        "source": "https://www.nlrb.gov/case/20-RC-370950",
+        "notes": ""
+      },
+      {
+        "union": "SEIU Local 1021",
+        "employer": "Peet\u2019s Coffee, 1411 W Covell Blvd",
+        "unit": "Baristas and related store employees",
+        "city": "Davis",
+        "sector": "Private",
+        "industry": "Coffee / food service / retail",
+        "workers": 15,
+        "count_basis": "Eligible voters at certification election",
+        "status": "Confirmed current",
+        "contact": "(415) 848-3611; https://www.seiu1021.org/",
+        "source": "https://www.nlrb.gov/case/20-RC-308250",
+        "notes": ""
+      },
+      {
+        "union": "Workers United / SEIU",
+        "employer": "Starbucks, 623 2nd St",
+        "unit": "Store employees",
+        "city": "Davis",
+        "sector": "Private",
+        "industry": "Coffee / food service / retail",
+        "workers": 12,
+        "count_basis": "Eligible voters in 2025 election",
+        "status": "Confirmed current",
+        "contact": "(646) 448-6414; https://workersunited.org/",
+        "source": "https://www.nlrb.gov/case/20-RC-369162",
+        "notes": ""
+      },
+      {
+        "union": "Teamsters Local 150",
+        "employer": "Nor-Cal Produce / UNFI",
+        "unit": "Quality Services Packaging workers and existing represented workforce",
+        "city": "West Sacramento",
+        "sector": "Private",
+        "industry": "Produce distribution / warehousing",
+        "workers": 9,
+        "count_basis": "Newly added election unit; excludes existing represented workers",
+        "status": "Confirmed current",
+        "contact": "(916) 392-7070; https://teamsters150.org/",
+        "source": "https://www.nlrb.gov/case/20-RC-341271",
+        "notes": ""
+      },
+      {
+        "union": "SEIU-UHW West",
+        "employer": "Woodland Memorial Hospital / Dignity Community Care",
+        "unit": "Cardiology specialists",
+        "city": "Woodland",
+        "sector": "Private",
+        "industry": "Hospital / health care",
+        "workers": 3,
+        "count_basis": "Eligible voters in 2022 election",
+        "status": "Confirmed; current status should be rechecked",
+        "contact": "https://www.seiu-uhw.org/",
+        "source": "https://www.nlrb.gov/case/20-RC-302270",
+        "notes": ""
+      },
+      {
+        "union": "UAW Local 4811",
+        "employer": "University of California, Davis",
+        "unit": "Postdoctoral Scholars (PX)",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Higher education / research",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://uaw4811.org/",
+        "source": "https://ucnet.universityofcalifornia.edu/resources/employment-policies-contracts/bargaining-units/",
+        "notes": ""
+      },
+      {
+        "union": "UAW (non-academic)",
+        "employer": "University of California, Davis",
+        "unit": "Communications, Marketing & Sales Professionals (CM)",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Higher education",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.uaw.org/",
+        "source": "https://ucnet.universityofcalifornia.edu/resources/employment-policies-contracts/bargaining-units/",
+        "notes": ""
+      },
+      {
+        "union": "UAW (non-academic)",
+        "employer": "University of California, Davis",
+        "unit": "Student Services & Advising Professionals (SV)",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Higher education",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.uaw.org/",
+        "source": "https://ucnet.universityofcalifornia.edu/resources/employment-policies-contracts/bargaining-units/",
+        "notes": ""
+      },
+      {
+        "union": "UAW (non-academic)",
+        "employer": "University of California, Davis",
+        "unit": "Research & Public Service Professionals (RP)",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Higher education / research",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.uaw.org/",
+        "source": "https://ucnet.universityofcalifornia.edu/resources/employment-policies-contracts/bargaining-units/",
+        "notes": ""
+      },
+      {
+        "union": "Teamsters Local 2010",
+        "employer": "University of California, Davis",
+        "unit": "Skilled Crafts (K3)",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Skilled trades / higher education",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://teamsters2010.org/",
+        "source": "https://ucnet.universityofcalifornia.edu/resources/employment-policies-contracts/bargaining-units/",
+        "notes": ""
+      },
+      {
+        "union": "UPTE-CWA Local 9119",
+        "employer": "University of California, Davis",
+        "unit": "Research Support Professionals (RX)",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Higher education / research",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://upte.org/",
+        "source": "https://ucnet.universityofcalifornia.edu/resources/employment-policies-contracts/bargaining-units/",
+        "notes": ""
+      },
+      {
+        "union": "UPTE-CWA Local 9119",
+        "employer": "University of California, Davis",
+        "unit": "Health Care Professionals (HX)",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Health care / higher education",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://upte.org/",
+        "source": "https://ucnet.universityofcalifornia.edu/resources/employment-policies-contracts/bargaining-units/",
+        "notes": ""
+      },
+      {
+        "union": "AFSCME Local 3299",
+        "employer": "University of California, Davis",
+        "unit": "Patient Care Technical (EX)",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Health care",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://afscme3299.org/",
+        "source": "https://ucnet.universityofcalifornia.edu/resources/employment-policies-contracts/bargaining-units/",
+        "notes": ""
+      },
+      {
+        "union": "UC-AFT",
+        "employer": "University of California, Davis",
+        "unit": "Professional Librarians (LX)",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Higher education / libraries",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://ucaft.org/",
+        "source": "https://ucnet.universityofcalifornia.edu/resources/employment-policies-contracts/bargaining-units/",
+        "notes": ""
+      },
+      {
+        "union": "California Nurses Association / NNU",
+        "employer": "University of California",
+        "unit": "Registered Nurses (NX), Davis-covered employees",
+        "city": "Davis / Sacramento",
+        "sector": "Public",
+        "industry": "Health care",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.nationalnursesunited.org/cna",
+        "source": "https://ucnet.universityofcalifornia.edu/resources/employment-policies-contracts/bargaining-units/",
+        "notes": "UC Davis Health includes major Sacramento facilities; only workers employed in Yolo County belong in a strict geographic count."
+      },
+      {
+        "union": "CIR/SEIU",
+        "employer": "University of California, Davis",
+        "unit": "Medical Residents (M3/MR)",
+        "city": "Davis / Sacramento",
+        "sector": "Public",
+        "industry": "Health care / graduate medical education",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.cirseiu.org/",
+        "source": "https://ucnet.universityofcalifornia.edu/resources/employment-policies-contracts/bargaining-units/",
+        "notes": "Some UC Davis medical residents work primarily in Sacramento."
+      },
+      {
+        "union": "Federated University Police Officers Association",
+        "employer": "University of California, Davis",
+        "unit": "Police Officers (PA)",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Law enforcement",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://fupoa.org/",
+        "source": "https://ucnet.universityofcalifornia.edu/resources/employment-policies-contracts/bargaining-units/",
+        "notes": ""
+      },
+      {
+        "union": "IAFF Local 4920",
+        "employer": "University of California, Davis",
+        "unit": "Firefighters (F3)",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Fire / public safety",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.iaff.org/",
+        "source": "https://ucnet.universityofcalifornia.edu/resources/employment-policies-contracts/bargaining-units/",
+        "notes": ""
+      },
+      {
+        "union": "Union of American Physicians and Dentists / AFSCME Local 206",
+        "employer": "University of California",
+        "unit": "Physicians, Dentists & Podiatrists (DX), Davis-covered employees",
+        "city": "Davis / Sacramento",
+        "sector": "Public",
+        "industry": "Health care",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.uapd.com/",
+        "source": "https://ucnet.universityofcalifornia.edu/resources/employment-policies-contracts/bargaining-units/",
+        "notes": "Strict Yolo-only count is not published."
+      },
+      {
+        "union": "Stationary Engineers Local 39",
+        "employer": "Yolo County",
+        "unit": "General Unit",
+        "city": "Countywide",
+        "sector": "Public",
+        "industry": "County government",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.yolocounty.gov/government/general-government-departments/human-resources/labor-relations",
+        "source": "https://www.yolocounty.gov/government/general-government-departments/human-resources/labor-relations",
+        "notes": ""
+      },
+      {
+        "union": "Yolo County Supervisor & Professional Employees Association",
+        "employer": "Yolo County",
+        "unit": "Supervisory & professional unit",
+        "city": "Countywide",
+        "sector": "Public",
+        "industry": "County government",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.yolocounty.gov/government/general-government-departments/human-resources/labor-relations",
+        "source": "https://www.yolocounty.gov/government/general-government-departments/human-resources/labor-relations",
+        "notes": ""
+      },
+      {
+        "union": "Yolo County Attorneys Association",
+        "employer": "Yolo County",
+        "unit": "Attorneys unit",
+        "city": "Countywide",
+        "sector": "Public",
+        "industry": "Legal services / county government",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.yolocounty.gov/government/general-government-departments/human-resources/labor-relations",
+        "source": "https://www.yolocounty.gov/government/general-government-departments/human-resources/labor-relations",
+        "notes": ""
+      },
+      {
+        "union": "Deputy County Counsel Association",
+        "employer": "Yolo County",
+        "unit": "Deputy county counsel unit",
+        "city": "Countywide",
+        "sector": "Public",
+        "industry": "Legal services / county government",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.yolocounty.gov/government/general-government-departments/human-resources/labor-relations",
+        "source": "https://www.yolocounty.gov/government/general-government-departments/human-resources/labor-relations",
+        "notes": ""
+      },
+      {
+        "union": "Yolo County Probation Association",
+        "employer": "Yolo County",
+        "unit": "Probation unit",
+        "city": "Countywide",
+        "sector": "Public",
+        "industry": "Probation / public safety",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.yolocounty.gov/government/general-government-departments/human-resources/labor-relations",
+        "source": "https://www.yolocounty.gov/government/general-government-departments/human-resources/labor-relations",
+        "notes": ""
+      },
+      {
+        "union": "Yolo County Deputy Sheriffs Association",
+        "employer": "Yolo County",
+        "unit": "Deputy sheriff unit",
+        "city": "Countywide",
+        "sector": "Public",
+        "industry": "Law enforcement",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.yolocounty.gov/government/general-government-departments/human-resources/labor-relations",
+        "source": "https://www.yolocounty.gov/government/general-government-departments/human-resources/labor-relations",
+        "notes": ""
+      },
+      {
+        "union": "Yolo County Correctional Officers Association",
+        "employer": "Yolo County",
+        "unit": "Correctional officers unit",
+        "city": "Countywide",
+        "sector": "Public",
+        "industry": "Corrections",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.yolocounty.gov/government/general-government-departments/human-resources/labor-relations",
+        "source": "https://www.yolocounty.gov/government/general-government-departments/human-resources/labor-relations",
+        "notes": ""
+      },
+      {
+        "union": "Yolo County Sheriff's Management Association",
+        "employer": "Yolo County",
+        "unit": "Sheriff management unit",
+        "city": "Countywide",
+        "sector": "Public",
+        "industry": "Law enforcement",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.yolocounty.gov/government/general-government-departments/human-resources/labor-relations",
+        "source": "https://www.yolocounty.gov/government/general-government-departments/human-resources/labor-relations",
+        "notes": ""
+      },
+      {
+        "union": "Program, Administrative & Support Employees Association",
+        "employer": "City of Davis",
+        "unit": "PASEA",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Municipal government",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.cityofdavis.org/city-hall/human-resources/memorandums-of-understanding-mous",
+        "source": "https://www.cityofdavis.org/city-hall/human-resources/memorandums-of-understanding-mous",
+        "notes": ""
+      },
+      {
+        "union": "Davis Firefighters Local 3494",
+        "employer": "City of Davis",
+        "unit": "General firefighter unit",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Fire / public safety",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.cityofdavis.org/city-hall/human-resources/memorandums-of-understanding-mous",
+        "source": "https://www.cityofdavis.org/city-hall/human-resources/memorandums-of-understanding-mous",
+        "notes": ""
+      },
+      {
+        "union": "Davis Firefighters Local 3494",
+        "employer": "City of Davis",
+        "unit": "Fire management unit",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Fire / public safety",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.cityofdavis.org/city-hall/human-resources/memorandums-of-understanding-mous",
+        "source": "https://www.cityofdavis.org/city-hall/human-resources/memorandums-of-understanding-mous",
+        "notes": ""
+      },
+      {
+        "union": "Davis Police Officers Association",
+        "employer": "City of Davis",
+        "unit": "Police officer unit",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Law enforcement",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.cityofdavis.org/city-hall/human-resources/memorandums-of-understanding-mous",
+        "source": "https://www.cityofdavis.org/city-hall/human-resources/memorandums-of-understanding-mous",
+        "notes": ""
+      },
+      {
+        "union": "Davis City Employees Association",
+        "employer": "City of Davis",
+        "unit": "General city employees",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Municipal government",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.cityofdavis.org/city-hall/human-resources/memorandums-of-understanding-mous",
+        "source": "https://www.cityofdavis.org/city-hall/human-resources/memorandums-of-understanding-mous",
+        "notes": ""
+      },
+      {
+        "union": "Davis Waste Water Treatment Plant Association",
+        "employer": "City of Davis",
+        "unit": "Wastewater employees",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "Utilities",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.cityofdavis.org/city-hall/human-resources/memorandums-of-understanding-mous",
+        "source": "https://www.cityofdavis.org/city-hall/human-resources/memorandums-of-understanding-mous",
+        "notes": ""
+      },
+      {
+        "union": "Woodland City Employees Association",
+        "employer": "City of Woodland",
+        "unit": "General services",
+        "city": "Woodland",
+        "sector": "Public",
+        "industry": "Municipal government",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.cityofwoodland.gov/1323/Human-Resources",
+        "source": "https://www.cityofwoodland.gov/1323/Human-Resources",
+        "notes": ""
+      },
+      {
+        "union": "Woodland Mid-Management Professional Association",
+        "employer": "City of Woodland",
+        "unit": "Mid-management",
+        "city": "Woodland",
+        "sector": "Public",
+        "industry": "Municipal government",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.cityofwoodland.gov/1323/Human-Resources",
+        "source": "https://www.cityofwoodland.gov/1323/Human-Resources",
+        "notes": ""
+      },
+      {
+        "union": "Woodland Police Officers Association",
+        "employer": "City of Woodland",
+        "unit": "Police officers",
+        "city": "Woodland",
+        "sector": "Public",
+        "industry": "Law enforcement",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.cityofwoodland.gov/1323/Human-Resources",
+        "source": "https://www.cityofwoodland.gov/1323/Human-Resources",
+        "notes": ""
+      },
+      {
+        "union": "Woodland Police Supervisors Association",
+        "employer": "City of Woodland",
+        "unit": "Police supervisors",
+        "city": "Woodland",
+        "sector": "Public",
+        "industry": "Law enforcement",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.cityofwoodland.gov/1323/Human-Resources",
+        "source": "https://www.cityofwoodland.gov/1323/Human-Resources",
+        "notes": ""
+      },
+      {
+        "union": "Woodland Police Mid-Management Unit",
+        "employer": "City of Woodland",
+        "unit": "Police mid-management",
+        "city": "Woodland",
+        "sector": "Public",
+        "industry": "Law enforcement",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.cityofwoodland.gov/1323/Human-Resources",
+        "source": "https://www.cityofwoodland.gov/1323/Human-Resources",
+        "notes": ""
+      },
+      {
+        "union": "Woodland Professional Firefighters Association",
+        "employer": "City of Woodland",
+        "unit": "Firefighters",
+        "city": "Woodland",
+        "sector": "Public",
+        "industry": "Fire / public safety",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.cityofwoodland.gov/1323/Human-Resources",
+        "source": "https://www.cityofwoodland.gov/1323/Human-Resources",
+        "notes": ""
+      },
+      {
+        "union": "Woodland Fire Mid-Management Association",
+        "employer": "City of Woodland",
+        "unit": "Fire management",
+        "city": "Woodland",
+        "sector": "Public",
+        "industry": "Fire / public safety",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.cityofwoodland.gov/1323/Human-Resources",
+        "source": "https://www.cityofwoodland.gov/1323/Human-Resources",
+        "notes": ""
+      },
+      {
+        "union": "Stationary Engineers Local 39",
+        "employer": "City of West Sacramento",
+        "unit": "General city unit",
+        "city": "West Sacramento",
+        "sector": "Public",
+        "industry": "Municipal government",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.cityofwestsacramento.org/government/departments/city-manager-s-office/human-resources/human-resources-document-listing",
+        "source": "https://www.cityofwestsacramento.org/government/departments/city-manager-s-office/human-resources/human-resources-document-listing",
+        "notes": ""
+      },
+      {
+        "union": "West Sacramento Firefighters Association",
+        "employer": "City of West Sacramento",
+        "unit": "Firefighters",
+        "city": "West Sacramento",
+        "sector": "Public",
+        "industry": "Fire / public safety",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.cityofwestsacramento.org/government/departments/city-manager-s-office/human-resources/human-resources-document-listing",
+        "source": "https://www.cityofwestsacramento.org/government/departments/city-manager-s-office/human-resources/human-resources-document-listing",
+        "notes": ""
+      },
+      {
+        "union": "West Sacramento Battalion Chiefs Association",
+        "employer": "City of West Sacramento",
+        "unit": "Battalion chiefs",
+        "city": "West Sacramento",
+        "sector": "Public",
+        "industry": "Fire / public safety",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.cityofwestsacramento.org/government/departments/city-manager-s-office/human-resources/human-resources-document-listing",
+        "source": "https://www.cityofwestsacramento.org/government/departments/city-manager-s-office/human-resources/human-resources-document-listing",
+        "notes": ""
+      },
+      {
+        "union": "West Sacramento Police Officers Association",
+        "employer": "City of West Sacramento",
+        "unit": "Police officers",
+        "city": "West Sacramento",
+        "sector": "Public",
+        "industry": "Law enforcement",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.cityofwestsacramento.org/government/departments/city-manager-s-office/human-resources/human-resources-document-listing",
+        "source": "https://www.cityofwestsacramento.org/government/departments/city-manager-s-office/human-resources/human-resources-document-listing",
+        "notes": ""
+      },
+      {
+        "union": "West Sacramento Police Management Association",
+        "employer": "City of West Sacramento",
+        "unit": "Police management",
+        "city": "West Sacramento",
+        "sector": "Public",
+        "industry": "Law enforcement",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.cityofwestsacramento.org/government/departments/city-manager-s-office/human-resources/human-resources-document-listing",
+        "source": "https://www.cityofwestsacramento.org/government/departments/city-manager-s-office/human-resources/human-resources-document-listing",
+        "notes": ""
+      },
+      {
+        "union": "Davis Teachers Association / CTA",
+        "employer": "Davis Joint Unified School District",
+        "unit": "Certificated employees",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "K-12 education",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.djusd.net/departments/personnel_services/bargaining_agreements/negotiations_update",
+        "source": "https://www.djusd.net/departments/personnel_services/bargaining_agreements/negotiations_update",
+        "notes": ""
+      },
+      {
+        "union": "CSEA Chapter 572",
+        "employer": "Davis Joint Unified School District",
+        "unit": "Classified employees",
+        "city": "Davis",
+        "sector": "Public",
+        "industry": "K-12 education",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.djusd.net/departments/personnel_services/bargaining_agreements/negotiations_update",
+        "source": "https://www.djusd.net/departments/personnel_services/bargaining_agreements/negotiations_update",
+        "notes": ""
+      },
+      {
+        "union": "Woodland Education Association / CTA",
+        "employer": "Woodland Joint Unified School District",
+        "unit": "Certificated employees",
+        "city": "Woodland",
+        "sector": "Public",
+        "industry": "K-12 education",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.wjusd.org/Departments/Human-Resources/Collective-Bargaining-Agreements/index.html",
+        "source": "https://www.wjusd.org/Departments/Human-Resources/Collective-Bargaining-Agreements/index.html",
+        "notes": ""
+      },
+      {
+        "union": "CSEA Chapter 118",
+        "employer": "Woodland Joint Unified School District",
+        "unit": "Classified employees",
+        "city": "Woodland",
+        "sector": "Public",
+        "industry": "K-12 education",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.wjusd.org/Departments/Human-Resources/Collective-Bargaining-Agreements/index.html",
+        "source": "https://www.wjusd.org/Departments/Human-Resources/Collective-Bargaining-Agreements/index.html",
+        "notes": ""
+      },
+      {
+        "union": "West Sacramento Teachers Association / CTA",
+        "employer": "Washington Unified School District",
+        "unit": "Certificated employees",
+        "city": "West Sacramento",
+        "sector": "Public",
+        "industry": "K-12 education",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.wusd.k12.ca.us/Departments/Human-Resources/Employee-Resources/",
+        "source": "https://www.wusd.k12.ca.us/Departments/Human-Resources/Employee-Resources/",
+        "notes": ""
+      },
+      {
+        "union": "CSEA Riverview Chapter 168",
+        "employer": "Washington Unified School District",
+        "unit": "Classified employees",
+        "city": "West Sacramento",
+        "sector": "Public",
+        "industry": "K-12 education",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.wusd.k12.ca.us/Departments/Human-Resources/Employee-Resources/",
+        "source": "https://www.wusd.k12.ca.us/Departments/Human-Resources/Employee-Resources/",
+        "notes": ""
+      },
+      {
+        "union": "Winters Area Education Association",
+        "employer": "Winters Joint Unified School District",
+        "unit": "Certificated employees",
+        "city": "Winters",
+        "sector": "Public",
+        "industry": "K-12 education",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://wintersjusd.org/en-US/human-resources-1bd995ab/bargaining-units-7e70fa51",
+        "source": "https://wintersjusd.org/en-US/human-resources-1bd995ab/bargaining-units-7e70fa51",
+        "notes": ""
+      },
+      {
+        "union": "CSEA",
+        "employer": "Winters Joint Unified School District",
+        "unit": "Classified employees",
+        "city": "Winters",
+        "sector": "Public",
+        "industry": "K-12 education",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://wintersjusd.org/en-US/human-resources-1bd995ab/bargaining-units-7e70fa51",
+        "source": "https://wintersjusd.org/en-US/human-resources-1bd995ab/bargaining-units-7e70fa51",
+        "notes": ""
+      },
+      {
+        "union": "WAPPSU",
+        "employer": "Winters Joint Unified School District",
+        "unit": "Pupil personnel services employees",
+        "city": "Winters",
+        "sector": "Public",
+        "industry": "K-12 education",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://wintersjusd.org/en-US/human-resources-1bd995ab/bargaining-units-7e70fa51",
+        "source": "https://wintersjusd.org/en-US/human-resources-1bd995ab/bargaining-units-7e70fa51",
+        "notes": ""
+      },
+      {
+        "union": "Yolo Education Association",
+        "employer": "Yolo County Office of Education",
+        "unit": "Education employees",
+        "city": "Woodland / countywide",
+        "sector": "Public",
+        "industry": "K-12 education",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.ycoe.org/Divisions/Human-Resources/Employee-Information/Collective-Bargaining/",
+        "source": "https://www.ycoe.org/Divisions/Human-Resources/Employee-Information/Collective-Bargaining/",
+        "notes": ""
+      },
+      {
+        "union": "CSEA",
+        "employer": "Yolo County Office of Education",
+        "unit": "Classified employees",
+        "city": "Woodland / countywide",
+        "sector": "Public",
+        "industry": "K-12 education",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.ycoe.org/Divisions/Human-Resources/Employee-Information/Collective-Bargaining/",
+        "source": "https://www.ycoe.org/Divisions/Human-Resources/Employee-Information/Collective-Bargaining/",
+        "notes": ""
+      },
+      {
+        "union": "AFSCME Council 57, Local 146",
+        "employer": "Yolo County Office of Education",
+        "unit": "Covered classified/certificated units",
+        "city": "Woodland / countywide",
+        "sector": "Public",
+        "industry": "K-12 education",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://www.ycoe.org/Divisions/Human-Resources/Employee-Information/Collective-Bargaining/",
+        "source": "https://www.ycoe.org/Divisions/Human-Resources/Employee-Information/Collective-Bargaining/",
+        "notes": ""
+      },
+      {
+        "union": "Amalgamated Transit Union Local 256",
+        "employer": "Transdev Services (Yolobus)",
+        "unit": "Transit operations employees",
+        "city": "Woodland / countywide",
+        "sector": "Private contractor",
+        "industry": "Public transit",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Strong evidence; 2021 bargaining case",
+        "contact": "https://atu256.org/",
+        "source": "https://www.nlrb.gov/case/20-CA-279230",
+        "notes": ""
+      },
+      {
+        "union": "Teamsters Local 150",
+        "employer": "UNFI / Tony\u2019s Fine Foods",
+        "unit": "Warehouse/distribution employees",
+        "city": "West Sacramento",
+        "sector": "Private",
+        "industry": "Food distribution / warehousing",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "(916) 392-7070; https://teamsters150.org/",
+        "source": "https://www.nlrb.gov/case/20-CB-393362",
+        "notes": ""
+      },
+      {
+        "union": "Teamsters Local 150",
+        "employer": "UPS",
+        "unit": "Package and logistics employees",
+        "city": "West Sacramento",
+        "sector": "Private",
+        "industry": "Package delivery / logistics",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "(916) 392-7070; https://teamsters150.org/",
+        "source": "https://www.nlrb.gov/case/20-CA-369665",
+        "notes": ""
+      },
+      {
+        "union": "UFCW Local 5",
+        "employer": "Raley\u2019s / Nob Hill Foods",
+        "unit": "Grocery employees",
+        "city": "West Sacramento",
+        "sector": "Private",
+        "industry": "Grocery retail",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Confirmed current",
+        "contact": "https://ufcw5.org/",
+        "source": "https://www.nlrb.gov/case/20-CA-381878",
+        "notes": ""
+      },
+      {
+        "union": "APWU Sacramento Area Local 66",
+        "employer": "U.S. Postal Service",
+        "unit": "Postal employees",
+        "city": "West Sacramento / Yolo area",
+        "sector": "Federal",
+        "industry": "Postal service",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Strong recent evidence",
+        "contact": "https://www.apwusacramento.org/",
+        "source": "https://www.nlrb.gov/case/20-CA-384286",
+        "notes": ""
+      },
+      {
+        "union": "Unknown union \u2014 research lead",
+        "employer": "Pacific Coast Producers",
+        "unit": "Production/processing workforce",
+        "city": "Woodland",
+        "sector": "Private",
+        "industry": "Food processing / canning",
+        "workers": null,
+        "count_basis": "Unknown",
+        "status": "Employer clearly had 2025 bargaining allegation; union not named in public case page",
+        "contact": "Research needed",
+        "source": "https://www.nlrb.gov/case/20-CA-368004",
+        "notes": "Included as a lead, not counted as a confirmed named union relationship."
+      }
+    ],
+    "markers": [
+      {
+        "name": "UAW Local 4811",
+        "place_name": "University of California, Davis",
+        "city": "Davis",
+        "note": "Statewide local. No Yolo office found, so the pin is UC Davis.",
+        "lat": 38.5402343,
+        "lng": -121.749142,
+        "geocode_label": "1, Peter J Shields Avenue, Davis, Yolo County, California, 95616, United States",
+        "units": [
+          {
+            "employer": "University of California, Davis",
+            "unit": "Academic Student Employees (BX)",
+            "workers": 2311,
+            "status": "Confirmed current",
+            "city": "Davis"
+          },
+          {
+            "employer": "University of California, Davis",
+            "unit": "Graduate Student Researchers (BR)",
+            "workers": 1384,
+            "status": "Confirmed current",
+            "city": "Davis"
+          },
+          {
+            "employer": "University of California, Davis",
+            "unit": "Academic Researchers (RA)",
+            "workers": 745,
+            "status": "Confirmed current",
+            "city": "Davis"
+          },
+          {
+            "employer": "University of California, Davis",
+            "unit": "Postdoctoral Scholars (PX)",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis"
+          }
+        ],
+        "workers_counted": 4440,
+        "unit_count": 4
+      },
+      {
+        "name": "Teamsters Local 2010",
+        "place_name": "University of California, Davis",
+        "city": "Davis",
+        "note": "UC system local. No Yolo office found, so the pin is UC Davis.",
+        "lat": 38.5402343,
+        "lng": -121.749142,
+        "geocode_label": "1, Peter J Shields Avenue, Davis, Yolo County, California, 95616, United States",
+        "units": [
+          {
+            "employer": "University of California, Davis",
+            "unit": "Clerical & Allied Services (CX)",
+            "workers": 1481,
+            "status": "Confirmed current",
+            "city": "Davis"
+          },
+          {
+            "employer": "University of California, Davis",
+            "unit": "Skilled Crafts (K3)",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis"
+          }
+        ],
+        "workers_counted": 1481,
+        "unit_count": 2
+      },
+      {
+        "name": "UPTE-CWA Local 9119",
+        "place_name": "University of California, Davis",
+        "city": "Davis",
+        "note": "UC system local. No Yolo office found, so the pin is UC Davis.",
+        "lat": 38.5402343,
+        "lng": -121.749142,
+        "geocode_label": "1, Peter J Shields Avenue, Davis, Yolo County, California, 95616, United States",
+        "units": [
+          {
+            "employer": "University of California, Davis",
+            "unit": "Technical employees (TX)",
+            "workers": 1065,
+            "status": "Confirmed current",
+            "city": "Davis"
+          },
+          {
+            "employer": "University of California, Davis",
+            "unit": "Research Support Professionals (RX)",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis"
+          },
+          {
+            "employer": "University of California, Davis",
+            "unit": "Health Care Professionals (HX)",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis"
+          }
+        ],
+        "workers_counted": 1065,
+        "unit_count": 3
+      },
+      {
+        "name": "AFSCME Local 3299",
+        "place_name": "University of California, Davis",
+        "city": "Davis",
+        "note": "UC system local. No Yolo office found, so the pin is UC Davis.",
+        "lat": 38.5402343,
+        "lng": -121.749142,
+        "geocode_label": "1, Peter J Shields Avenue, Davis, Yolo County, California, 95616, United States",
+        "units": [
+          {
+            "employer": "University of California, Davis",
+            "unit": "Service employees (SX)",
+            "workers": 892,
+            "status": "Confirmed current",
+            "city": "Davis"
+          },
+          {
+            "employer": "University of California, Davis",
+            "unit": "Patient Care Technical (EX)",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis"
+          }
+        ],
+        "workers_counted": 892,
+        "unit_count": 2
+      },
+      {
+        "name": "UC-AFT",
+        "place_name": "University of California, Davis",
+        "city": "Davis",
+        "note": "UC system local. No Yolo office found, so the pin is UC Davis.",
+        "lat": 38.5402343,
+        "lng": -121.749142,
+        "geocode_label": "1, Peter J Shields Avenue, Davis, Yolo County, California, 95616, United States",
+        "units": [
+          {
+            "employer": "University of California, Davis",
+            "unit": "Non-Senate Instructional / Lecturers (IX)",
+            "workers": 536,
+            "status": "Confirmed current",
+            "city": "Davis"
+          },
+          {
+            "employer": "University of California, Davis",
+            "unit": "Professional Librarians (LX)",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis"
+          }
+        ],
+        "workers_counted": 536,
+        "unit_count": 2
+      },
+      {
+        "name": "California Nurses Association / NNU",
+        "place_name": "Sutter Davis Hospital",
+        "city": "Davis",
+        "note": "Union office is outside Yolo. Pin is Sutter Davis Hospital, the counted Yolo nurse unit. The same union also covers some UC nurses.",
+        "lat": 38.5612753,
+        "lng": -121.7704284,
+        "geocode_label": "County Road 99D, West Davis, Davis, Yolo County, California, 95616, United States",
+        "units": [
+          {
+            "employer": "Sutter Davis Hospital",
+            "unit": "Registered nurses and RN clinical scheduling coordinators",
+            "workers": 292,
+            "status": "Confirmed current",
+            "city": "Davis"
+          },
+          {
+            "employer": "University of California",
+            "unit": "Registered Nurses (NX), Davis-covered employees",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis / Sacramento"
+          }
+        ],
+        "workers_counted": 292,
+        "unit_count": 2
+      },
+      {
+        "name": "SEIU Local 2015",
+        "place_name": "Courtyard Healthcare Center",
+        "city": "Davis",
+        "note": "Statewide long-term care local. Pin is Courtyard Healthcare Center, 1850 E 8th Street.",
+        "lat": 38.5532676,
+        "lng": -121.7288655,
+        "geocode_label": "1850, East 8th Street, East Davis, Davis, Yolo County, California, 95616, United States",
+        "units": [
+          {
+            "employer": "Courtyard Healthcare Center",
+            "unit": "CNAs, RNAs, dietary, laundry, housekeeping, janitorial and activities employees",
+            "workers": 80,
+            "status": "Confirmed current",
+            "city": "Davis"
+          }
+        ],
+        "workers_counted": 80,
+        "unit_count": 1
+      },
+      {
+        "name": "Workers United / SEIU",
+        "place_name": "Starbucks, 623 2nd Street",
+        "city": "Davis",
+        "note": "No Yolo hall found. Pin is the Davis Starbucks named in the inventory. A Dunnigan Starbucks is also listed, without a confirmed street address.",
+        "lat": 38.5435347,
+        "lng": -121.740234,
+        "geocode_label": "Starbucks, 623, 2nd Street, Downtown Davis, Davis, Yolo County, California, 95616, United States",
+        "units": [
+          {
+            "employer": "Starbucks",
+            "unit": "Store employees",
+            "workers": 17,
+            "status": "Confirmed current",
+            "city": "Dunnigan"
+          },
+          {
+            "employer": "Starbucks, 623 2nd St",
+            "unit": "Store employees",
+            "workers": 12,
+            "status": "Confirmed current",
+            "city": "Davis"
+          }
+        ],
+        "workers_counted": 29,
+        "unit_count": 2
+      },
+      {
+        "name": "SEIU Local 1021",
+        "place_name": "Peet's Coffee, 1411 West Covell Boulevard",
+        "city": "Davis",
+        "note": "Regional office is in Sacramento (5450 Power Inn Road). Pin is the Davis Peet's store.",
+        "lat": 38.5623601,
+        "lng": -121.7652099,
+        "geocode_label": "Peet's Coffee, 1411, West Covell Boulevard, Davis, Yolo County, California, 95616, United States",
+        "units": [
+          {
+            "employer": "Peet\u2019s Coffee, 1411 W Covell Blvd",
+            "unit": "Baristas and related store employees",
+            "workers": 15,
+            "status": "Confirmed current",
+            "city": "Davis"
+          }
+        ],
+        "workers_counted": 15,
+        "unit_count": 1
+      },
+      {
+        "name": "Teamsters Local 150",
+        "place_name": "Tony's Fine Foods / UNFI",
+        "city": "West Sacramento",
+        "note": "Hall is 7120 East Parkway, Sacramento, outside Yolo. Pin is Tony's Fine Foods / UNFI at 3575 Reed Avenue. UPS in West Sacramento is another workplace.",
+        "lat": 38.5914371,
+        "lng": -121.5610048,
+        "geocode_label": "3575, Reed Avenue, Lovdal, West Sacramento, Yolo County, California, 95605, United States",
+        "units": [
+          {
+            "employer": "Nor-Cal Produce / UNFI",
+            "unit": "Quality Services Packaging workers and existing represented workforce",
+            "workers": 9,
+            "status": "Confirmed current",
+            "city": "West Sacramento"
+          },
+          {
+            "employer": "UNFI / Tony\u2019s Fine Foods",
+            "unit": "Warehouse/distribution employees",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "West Sacramento"
+          },
+          {
+            "employer": "UPS",
+            "unit": "Package and logistics employees",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "West Sacramento"
+          }
+        ],
+        "workers_counted": 9,
+        "unit_count": 3
+      },
+      {
+        "name": "SEIU-UHW West",
+        "place_name": "Woodland Memorial Hospital",
+        "city": "Woodland",
+        "note": "Regional union. Pin is Woodland Memorial Hospital. The inventory says this small unit should be rechecked.",
+        "lat": 38.6649209,
+        "lng": -121.7922087,
+        "geocode_label": "Woodland Healthcare, 1325, Cottonwood Street, Woodland, Yolo County, California, 95695, United States",
+        "units": [
+          {
+            "employer": "Woodland Memorial Hospital / Dignity Community Care",
+            "unit": "Cardiology specialists",
+            "workers": 3,
+            "status": "Confirmed; current status should be rechecked",
+            "city": "Woodland"
+          }
+        ],
+        "workers_counted": 3,
+        "unit_count": 1
+      },
+      {
+        "name": "UAW (non-academic)",
+        "place_name": "University of California, Davis",
+        "city": "Davis",
+        "note": "UC system local. No Yolo office found, so the pin is UC Davis.",
+        "lat": 38.5402343,
+        "lng": -121.749142,
+        "geocode_label": "1, Peter J Shields Avenue, Davis, Yolo County, California, 95616, United States",
+        "units": [
+          {
+            "employer": "University of California, Davis",
+            "unit": "Communications, Marketing & Sales Professionals (CM)",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis"
+          },
+          {
+            "employer": "University of California, Davis",
+            "unit": "Student Services & Advising Professionals (SV)",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis"
+          },
+          {
+            "employer": "University of California, Davis",
+            "unit": "Research & Public Service Professionals (RP)",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 3
+      },
+      {
+        "name": "CIR/SEIU",
+        "place_name": "University of California, Davis",
+        "city": "Davis",
+        "note": "Statewide resident union. Some UC Davis residents work in Sacramento. Pin is the Davis campus.",
+        "lat": 38.5402343,
+        "lng": -121.749142,
+        "geocode_label": "1, Peter J Shields Avenue, Davis, Yolo County, California, 95616, United States",
+        "units": [
+          {
+            "employer": "University of California, Davis",
+            "unit": "Medical Residents (M3/MR)",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis / Sacramento"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Federated University Police Officers Association",
+        "place_name": "UC Davis Police Department",
+        "city": "Davis",
+        "note": "Campus association. No separate hall found. Pin is the UC Davis police department.",
+        "lat": 38.540611,
+        "lng": -121.7576894,
+        "geocode_label": "UC Davis Police Department, 1, Kleiber Hall Drive, Davis, Yolo County, California, 95616, United States",
+        "units": [
+          {
+            "employer": "University of California, Davis",
+            "unit": "Police Officers (PA)",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "IAFF Local 4920",
+        "place_name": "UC Davis Fire Department",
+        "city": "Davis",
+        "note": "Campus fire local. Pin is the UC Davis Fire Department on Kleiber Hall Drive.",
+        "lat": 38.5403662,
+        "lng": -121.757659,
+        "geocode_label": "UC Davis Fire Department, 1, Kleiber Hall Drive, Davis, Yolo County, California, 95616, United States",
+        "units": [
+          {
+            "employer": "University of California, Davis",
+            "unit": "Firefighters (F3)",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Union of American Physicians and Dentists / AFSCME Local 206",
+        "place_name": "University of California, Davis",
+        "city": "Davis",
+        "note": "Statewide local. A strict Yolo headcount is not published. Pin is the Davis campus.",
+        "lat": 38.5402343,
+        "lng": -121.749142,
+        "geocode_label": "1, Peter J Shields Avenue, Davis, Yolo County, California, 95616, United States",
+        "units": [
+          {
+            "employer": "University of California",
+            "unit": "Physicians, Dentists & Podiatrists (DX), Davis-covered employees",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis / Sacramento"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Stationary Engineers Local 39",
+        "place_name": "Yolo County Administration Building",
+        "city": "Woodland",
+        "note": "Hall is 337 Valencia Street, San Francisco. Pin is the county administration building. The local also represents City of West Sacramento workers.",
+        "lat": 38.6791799,
+        "lng": -121.7721661,
+        "geocode_label": "Yolo County Administration Building, 625, Court Street, Woodland, Yolo County, California, 95695, United States",
+        "units": [
+          {
+            "employer": "Yolo County",
+            "unit": "General Unit",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Countywide"
+          },
+          {
+            "employer": "City of West Sacramento",
+            "unit": "General city unit",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "West Sacramento"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 2
+      },
+      {
+        "name": "Yolo County Supervisor & Professional Employees Association",
+        "place_name": "Yolo County Administration Building",
+        "city": "Woodland",
+        "note": "County employee association. No separate hall found. Pin is 625 Court Street.",
+        "lat": 38.6791799,
+        "lng": -121.7721661,
+        "geocode_label": "Yolo County Administration Building, 625, Court Street, Woodland, Yolo County, California, 95695, United States",
+        "units": [
+          {
+            "employer": "Yolo County",
+            "unit": "Supervisory & professional unit",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Countywide"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Yolo County Attorneys Association",
+        "place_name": "Yolo County Administration Building",
+        "city": "Woodland",
+        "note": "County employee association. No separate hall found. Pin is 625 Court Street.",
+        "lat": 38.6791799,
+        "lng": -121.7721661,
+        "geocode_label": "Yolo County Administration Building, 625, Court Street, Woodland, Yolo County, California, 95695, United States",
+        "units": [
+          {
+            "employer": "Yolo County",
+            "unit": "Attorneys unit",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Countywide"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Deputy County Counsel Association",
+        "place_name": "Yolo County Administration Building",
+        "city": "Woodland",
+        "note": "County employee association. No separate hall found. Pin is 625 Court Street.",
+        "lat": 38.6791799,
+        "lng": -121.7721661,
+        "geocode_label": "Yolo County Administration Building, 625, Court Street, Woodland, Yolo County, California, 95695, United States",
+        "units": [
+          {
+            "employer": "Yolo County",
+            "unit": "Deputy county counsel unit",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Countywide"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Yolo County Probation Association",
+        "place_name": "Yolo County Probation Department",
+        "city": "Woodland",
+        "note": "Employee association. No separate hall found. Pin is the probation department, 2780 East Gibson Road.",
+        "lat": 38.66263,
+        "lng": -121.7308247,
+        "geocode_label": "2780, East Gibson Road, Woodland, Yolo County, California, 95776, United States",
+        "units": [
+          {
+            "employer": "Yolo County",
+            "unit": "Probation unit",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Countywide"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Yolo County Deputy Sheriffs Association",
+        "place_name": "Yolo County Sheriff's Office",
+        "city": "Woodland",
+        "note": "Employee association. No separate hall found. Pin is the sheriff's office, 140 Tony Diaz Drive.",
+        "lat": 38.6620162,
+        "lng": -121.7320011,
+        "geocode_label": "Yolo County Sheriff, 140, Tony Diaz Drive, Woodland, Yolo County, California, 95776, United States",
+        "units": [
+          {
+            "employer": "Yolo County",
+            "unit": "Deputy sheriff unit",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Countywide"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Yolo County Correctional Officers Association",
+        "place_name": "Monroe Detention Center",
+        "city": "Woodland",
+        "note": "Employee association. No separate hall found. Pin is Monroe Detention Center, 2420 East Gibson Road.",
+        "lat": 38.662643,
+        "lng": -121.7341625,
+        "geocode_label": "East Gibson Road, Woodland, Yolo County, California, 95776, United States",
+        "units": [
+          {
+            "employer": "Yolo County",
+            "unit": "Correctional officers unit",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Countywide"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Yolo County Sheriff's Management Association",
+        "place_name": "Yolo County Sheriff's Office",
+        "city": "Woodland",
+        "note": "Employee association. No separate hall found. Pin is the sheriff's office, 140 Tony Diaz Drive.",
+        "lat": 38.6620162,
+        "lng": -121.7320011,
+        "geocode_label": "Yolo County Sheriff, 140, Tony Diaz Drive, Woodland, Yolo County, California, 95776, United States",
+        "units": [
+          {
+            "employer": "Yolo County",
+            "unit": "Sheriff management unit",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Countywide"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Program, Administrative & Support Employees Association",
+        "place_name": "Davis City Hall",
+        "city": "Davis",
+        "note": "City employee association. No separate hall found. Pin is Davis City Hall.",
+        "lat": 38.5467264,
+        "lng": -121.7468967,
+        "geocode_label": "City Hall, 23, Russell Boulevard, Davis, Yolo County, California, 95616, United States",
+        "units": [
+          {
+            "employer": "City of Davis",
+            "unit": "PASEA",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Davis Firefighters Local 3494",
+        "place_name": "Davis Fire Station 31",
+        "city": "Davis",
+        "note": "No separate hall found. Pin is the headquarters station, 530 Fifth Street.",
+        "lat": 38.5468946,
+        "lng": -121.7428422,
+        "geocode_label": "530, 5th Street, Central Davis, Davis, Yolo County, California, 95616, United States",
+        "units": [
+          {
+            "employer": "City of Davis",
+            "unit": "General firefighter unit",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis"
+          },
+          {
+            "employer": "City of Davis",
+            "unit": "Fire management unit",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 2
+      },
+      {
+        "name": "Davis Police Officers Association",
+        "place_name": "Davis Police Department",
+        "city": "Davis",
+        "note": "Employee association. No separate hall found. Pin is the police department, 2600 Fifth Street.",
+        "lat": 38.5512136,
+        "lng": -121.7194928,
+        "geocode_label": "City of Davis Police Department, 2600, 5th Street, East Davis, Davis, Yolo County, California, 95618, United States",
+        "units": [
+          {
+            "employer": "City of Davis",
+            "unit": "Police officer unit",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Davis City Employees Association",
+        "place_name": "Davis City Hall",
+        "city": "Davis",
+        "note": "City employee association. No separate hall found. Pin is Davis City Hall.",
+        "lat": 38.5467264,
+        "lng": -121.7468967,
+        "geocode_label": "City Hall, 23, Russell Boulevard, Davis, Yolo County, California, 95616, United States",
+        "units": [
+          {
+            "employer": "City of Davis",
+            "unit": "General city employees",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Davis Waste Water Treatment Plant Association",
+        "place_name": "Davis Public Works utilities yard",
+        "city": "Davis",
+        "note": "Employee association. No separate hall found. Pin is 1717 Fifth Street, the city's published utilities operations yard.",
+        "lat": 38.5488028,
+        "lng": -121.7303637,
+        "geocode_label": "1717, 5th Street, East Davis, Davis, Yolo County, California, 95616, United States",
+        "units": [
+          {
+            "employer": "City of Davis",
+            "unit": "Wastewater employees",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Woodland City Employees Association",
+        "place_name": "Woodland City Hall",
+        "city": "Woodland",
+        "note": "City employee association. No separate hall found. Pin is Woodland City Hall, 300 First Street.",
+        "lat": 38.6782479,
+        "lng": -121.7735882,
+        "geocode_label": "Woodland City Hall, 300, 1st Street, Woodland, Yolo County, California, 95695, United States",
+        "units": [
+          {
+            "employer": "City of Woodland",
+            "unit": "General services",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Woodland"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Woodland Mid-Management Professional Association",
+        "place_name": "Woodland City Hall",
+        "city": "Woodland",
+        "note": "City employee association. No separate hall found. Pin is Woodland City Hall.",
+        "lat": 38.6782479,
+        "lng": -121.7735882,
+        "geocode_label": "Woodland City Hall, 300, 1st Street, Woodland, Yolo County, California, 95695, United States",
+        "units": [
+          {
+            "employer": "City of Woodland",
+            "unit": "Mid-management",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Woodland"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Woodland Police Officers Association",
+        "place_name": "Woodland Police Department",
+        "city": "Woodland",
+        "note": "Employee association. No separate hall found. Pin is 1000 Lincoln Avenue.",
+        "lat": 38.67551,
+        "lng": -121.768169,
+        "geocode_label": "1000, Lincoln Avenue, Woodland, Yolo County, California, 95695, United States",
+        "units": [
+          {
+            "employer": "City of Woodland",
+            "unit": "Police officers",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Woodland"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Woodland Police Supervisors Association",
+        "place_name": "Woodland Police Department",
+        "city": "Woodland",
+        "note": "Employee association. No separate hall found. Pin is 1000 Lincoln Avenue.",
+        "lat": 38.67551,
+        "lng": -121.768169,
+        "geocode_label": "1000, Lincoln Avenue, Woodland, Yolo County, California, 95695, United States",
+        "units": [
+          {
+            "employer": "City of Woodland",
+            "unit": "Police supervisors",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Woodland"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Woodland Police Mid-Management Unit",
+        "place_name": "Woodland Police Department",
+        "city": "Woodland",
+        "note": "Employee association. No separate hall found. Pin is 1000 Lincoln Avenue.",
+        "lat": 38.67551,
+        "lng": -121.768169,
+        "geocode_label": "1000, Lincoln Avenue, Woodland, Yolo County, California, 95695, United States",
+        "units": [
+          {
+            "employer": "City of Woodland",
+            "unit": "Police mid-management",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Woodland"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Woodland Professional Firefighters Association",
+        "place_name": "Woodland Fire Station 1",
+        "city": "Woodland",
+        "note": "No separate hall found. Pin is Fire Station 1, 101 Court Street.",
+        "lat": 38.679242,
+        "lng": -121.7825034,
+        "geocode_label": "Woodland Fire Station No 1, 101, Court Street, Woodland, Yolo County, California, 95776, United States",
+        "units": [
+          {
+            "employer": "City of Woodland",
+            "unit": "Firefighters",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Woodland"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Woodland Fire Mid-Management Association",
+        "place_name": "Woodland Fire Station 1",
+        "city": "Woodland",
+        "note": "No separate hall found. Pin is Fire Station 1, 101 Court Street.",
+        "lat": 38.679242,
+        "lng": -121.7825034,
+        "geocode_label": "Woodland Fire Station No 1, 101, Court Street, Woodland, Yolo County, California, 95776, United States",
+        "units": [
+          {
+            "employer": "City of Woodland",
+            "unit": "Fire management",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Woodland"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "West Sacramento Firefighters Association",
+        "place_name": "West Sacramento Fire Department",
+        "city": "West Sacramento",
+        "note": "No separate hall found. Pin is the fire administration station at 2040 Lake Washington Boulevard.",
+        "lat": 38.5524049,
+        "lng": -121.535378,
+        "geocode_label": "2040, Lake Washington Boulevard, West Sacramento, Yolo County, California, 95691, United States",
+        "units": [
+          {
+            "employer": "City of West Sacramento",
+            "unit": "Firefighters",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "West Sacramento"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "West Sacramento Battalion Chiefs Association",
+        "place_name": "West Sacramento Fire Department",
+        "city": "West Sacramento",
+        "note": "No separate hall found. Pin is the fire administration station at 2040 Lake Washington Boulevard.",
+        "lat": 38.5524049,
+        "lng": -121.535378,
+        "geocode_label": "2040, Lake Washington Boulevard, West Sacramento, Yolo County, California, 95691, United States",
+        "units": [
+          {
+            "employer": "City of West Sacramento",
+            "unit": "Battalion chiefs",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "West Sacramento"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "West Sacramento Police Officers Association",
+        "place_name": "West Sacramento Police Department",
+        "city": "West Sacramento",
+        "note": "Employee association. No separate hall found. Pin is 550 Jefferson Boulevard.",
+        "lat": 38.5864455,
+        "lng": -121.5275644,
+        "geocode_label": "West Sacramento Police Department, 550, Jefferson Boulevard, Peethill, West Sacramento, Yolo County, California, 95605, United States",
+        "units": [
+          {
+            "employer": "City of West Sacramento",
+            "unit": "Police officers",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "West Sacramento"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "West Sacramento Police Management Association",
+        "place_name": "West Sacramento Police Department",
+        "city": "West Sacramento",
+        "note": "Employee association. No separate hall found. Pin is 550 Jefferson Boulevard.",
+        "lat": 38.5864455,
+        "lng": -121.5275644,
+        "geocode_label": "West Sacramento Police Department, 550, Jefferson Boulevard, Peethill, West Sacramento, Yolo County, California, 95605, United States",
+        "units": [
+          {
+            "employer": "City of West Sacramento",
+            "unit": "Police management",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "West Sacramento"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Davis Teachers Association / CTA",
+        "place_name": "Davis Joint Unified School District",
+        "city": "Davis",
+        "note": "No separate hall found. Pin is the district office, 526 B Street.",
+        "lat": 38.547399,
+        "lng": -121.7448614,
+        "geocode_label": "526, B Street, Central Davis, Davis, Yolo County, California, 95616, United States",
+        "units": [
+          {
+            "employer": "Davis Joint Unified School District",
+            "unit": "Certificated employees",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "CSEA Chapter 572",
+        "place_name": "Davis Joint Unified School District",
+        "city": "Davis",
+        "note": "Chapter office not found apart from the district. Pin is 526 B Street.",
+        "lat": 38.547399,
+        "lng": -121.7448614,
+        "geocode_label": "526, B Street, Central Davis, Davis, Yolo County, California, 95616, United States",
+        "units": [
+          {
+            "employer": "Davis Joint Unified School District",
+            "unit": "Classified employees",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Davis"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Woodland Education Association / CTA",
+        "place_name": "Woodland Joint Unified School District",
+        "city": "Woodland",
+        "note": "No separate hall found. Pin is the district office, 435 Sixth Street.",
+        "lat": 38.6767539,
+        "lng": -121.7670341,
+        "geocode_label": "435, 6th Street, Woodland, Yolo County, California, 95695, United States",
+        "units": [
+          {
+            "employer": "Woodland Joint Unified School District",
+            "unit": "Certificated employees",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Woodland"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "CSEA Chapter 118",
+        "place_name": "Woodland Joint Unified School District",
+        "city": "Woodland",
+        "note": "Chapter office not found apart from the district. Pin is 435 Sixth Street.",
+        "lat": 38.6767539,
+        "lng": -121.7670341,
+        "geocode_label": "435, 6th Street, Woodland, Yolo County, California, 95695, United States",
+        "units": [
+          {
+            "employer": "Woodland Joint Unified School District",
+            "unit": "Classified employees",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Woodland"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "West Sacramento Teachers Association / CTA",
+        "place_name": "Washington Unified School District",
+        "city": "West Sacramento",
+        "note": "No separate hall found. Pin is the district office, 930 Westacre Road.",
+        "lat": 38.5778355,
+        "lng": -121.5307191,
+        "geocode_label": "930, Westacre Road, Peethill, West Sacramento, Yolo County, California, 95691, United States",
+        "units": [
+          {
+            "employer": "Washington Unified School District",
+            "unit": "Certificated employees",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "West Sacramento"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "CSEA Riverview Chapter 168",
+        "place_name": "Washington Unified School District",
+        "city": "West Sacramento",
+        "note": "Chapter office not found apart from the district. Pin is 930 Westacre Road.",
+        "lat": 38.5778355,
+        "lng": -121.5307191,
+        "geocode_label": "930, Westacre Road, Peethill, West Sacramento, Yolo County, California, 95691, United States",
+        "units": [
+          {
+            "employer": "Washington Unified School District",
+            "unit": "Classified employees",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "West Sacramento"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Winters Area Education Association",
+        "place_name": "Winters Joint Unified School District",
+        "city": "Winters",
+        "note": "No separate hall found. Pin is the district office, 909 West Grant Avenue.",
+        "lat": 38.5198777,
+        "lng": -121.9851818,
+        "geocode_label": "909, Grant Avenue, Winters, Yolo County, California, 95694, United States",
+        "units": [
+          {
+            "employer": "Winters Joint Unified School District",
+            "unit": "Certificated employees",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Winters"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "CSEA",
+        "place_name": "Winters Joint Unified School District",
+        "city": "Winters",
+        "note": "CSEA chapter for Winters classified employees. No separate hall found. Pin is the district office.",
+        "lat": 38.5198777,
+        "lng": -121.9851818,
+        "geocode_label": "909, Grant Avenue, Winters, Yolo County, California, 95694, United States",
+        "units": [
+          {
+            "employer": "Winters Joint Unified School District",
+            "unit": "Classified employees",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Winters"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "WAPPSU",
+        "place_name": "Winters Joint Unified School District",
+        "city": "Winters",
+        "note": "Pupil personnel association. No separate hall found. Pin is the district office.",
+        "lat": 38.5198777,
+        "lng": -121.9851818,
+        "geocode_label": "909, Grant Avenue, Winters, Yolo County, California, 95694, United States",
+        "units": [
+          {
+            "employer": "Winters Joint Unified School District",
+            "unit": "Pupil personnel services employees",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Winters"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Yolo Education Association",
+        "place_name": "Yolo County Office of Education",
+        "city": "Woodland",
+        "note": "No separate hall found. Pin is the county office of education, 1280 Santa Anita Court.",
+        "lat": 38.6962539,
+        "lng": -121.757562,
+        "geocode_label": "1280, Santa Anita Court, Woodland, Yolo County, California, 95776, United States",
+        "units": [
+          {
+            "employer": "Yolo County Office of Education",
+            "unit": "Education employees",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Woodland / countywide"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "CSEA",
+        "place_name": "Yolo County Office of Education",
+        "city": "Woodland",
+        "note": "CSEA unit at the county office of education. No separate hall found. Pin is 1280 Santa Anita Court.",
+        "lat": 38.6962539,
+        "lng": -121.757562,
+        "geocode_label": "1280, Santa Anita Court, Woodland, Yolo County, California, 95776, United States",
+        "units": [
+          {
+            "employer": "Yolo County Office of Education",
+            "unit": "Classified employees",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Woodland / countywide"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "AFSCME Council 57, Local 146",
+        "place_name": "Yolo County Office of Education",
+        "city": "Woodland",
+        "note": "No Yolo hall found. Pin is the county office of education.",
+        "lat": 38.6962539,
+        "lng": -121.757562,
+        "geocode_label": "1280, Santa Anita Court, Woodland, Yolo County, California, 95776, United States",
+        "units": [
+          {
+            "employer": "Yolo County Office of Education",
+            "unit": "Covered classified/certificated units",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "Woodland / countywide"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "Amalgamated Transit Union Local 256",
+        "place_name": "Yolobus / Yolo Transportation District",
+        "city": "Woodland",
+        "note": "Local 256's hall is in Sacramento. Pin is the Yolobus office at 350 Industrial Way.",
+        "lat": 38.6791895,
+        "lng": -121.7530452,
+        "geocode_label": "350, Industrial Way, Woodland, Yolo County, California, 95776, United States",
+        "units": [
+          {
+            "employer": "Transdev Services (Yolobus)",
+            "unit": "Transit operations employees",
+            "workers": null,
+            "status": "Strong evidence; 2021 bargaining case",
+            "city": "Woodland / countywide"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "UFCW Local 5",
+        "place_name": "Raley's, 1601 West Capitol Avenue",
+        "city": "West Sacramento",
+        "note": "Local 5's office is in Hayward. The inventory does not name one store, so the pin is a West Sacramento Raley's at 1601 West Capitol Avenue.",
+        "lat": 38.5797836,
+        "lng": -121.5291815,
+        "geocode_label": "Raley's, 1601, West Capitol Avenue, Peethill, West Sacramento, Yolo County, California, 95691, United States",
+        "units": [
+          {
+            "employer": "Raley\u2019s / Nob Hill Foods",
+            "unit": "Grocery employees",
+            "workers": null,
+            "status": "Confirmed current",
+            "city": "West Sacramento"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      },
+      {
+        "name": "APWU Sacramento Area Local 66",
+        "place_name": "West Sacramento Post Office",
+        "city": "West Sacramento",
+        "note": "Sacramento Area Local 66 is based in Sacramento. Pin is the West Sacramento Post Office at 1601 Merkley Avenue.",
+        "lat": 38.5787769,
+        "lng": -121.529147,
+        "geocode_label": "West Sacramento Post Office, 1601, Merkley Avenue, Peethill, West Sacramento, Yolo County, California, 95691, United States",
+        "units": [
+          {
+            "employer": "U.S. Postal Service",
+            "unit": "Postal employees",
+            "workers": null,
+            "status": "Strong recent evidence",
+            "city": "West Sacramento / Yolo area"
+          }
+        ],
+        "workers_counted": null,
+        "unit_count": 1
+      }
+    ]
+  }
+}

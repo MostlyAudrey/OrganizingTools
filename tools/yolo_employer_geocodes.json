@@ -1,0 +1,543 @@
+{
+  "Beckman Coulter Inc|West Sacramento": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "Cache Creek Casino Resort|Brooks": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "Capital Express Lines|West Sacramento": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "City of Davis|Davis": {
+    "lat": 38.549393,
+    "lng": -121.7321747,
+    "label": "City of Davis Public Works Corporation Yard, 1717, East Davis, Davis, Yolo County, California, 95616, United States",
+    "precision": "government"
+  },
+  "City of Davis-City Manager Ofc|Davis": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "Clark Pacific|West Sacramento": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "Dennis Blazona Constr Inc|West Sacramento": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "Fedex Freight|West Sacramento": {
+    "lat": 38.5563771,
+    "lng": -121.5806731,
+    "label": "FedEx Freight, Channel Drive, West Sacramento, Yolo County, California, 95799, United States",
+    "precision": "building"
+  },
+  "KOVR|West Sacramento": {
+    "lat": 38.5934777,
+    "lng": -121.5478429,
+    "label": "Kovr Drive, Bryte, West Sacramento, Yolo County, California, 95605, United States",
+    "precision": "road"
+  },
+  "Mariani Nut Co|Winters": {
+    "lat": 38.5271479,
+    "lng": -121.9679398,
+    "label": "Mariani Nut Company, 709, Dutton Street, Winters, Yolo County, California, 95694, United States",
+    "precision": "building"
+  },
+  "Nor-Cal Beverage Co|West Sacramento": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "Pacific Coast Producers|Woodland": {
+    "lat": 38.679737,
+    "lng": -121.7568712,
+    "label": "Pacific Coast Producers, Woodland, Yolo County, California, United States",
+    "precision": "industrial"
+  },
+  "Procurement Office|West Sacramento": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "Promega Corp|Madison": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "Sutter Davis Hospital|Davis": {
+    "lat": 38.5626195,
+    "lng": -121.7712099,
+    "label": "Sutter Davis Hospital, 2000, County Road 99D, West Davis, Davis, Yolo County, California, 95616, United States",
+    "precision": "amenity"
+  },
+  "Target Distribution Ctr|Woodland": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "Treasure Chest Advg Co Inc|West Sacramento": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "University of California Davis|Davis": {
+    "lat": 38.5337904,
+    "lng": -121.7907544,
+    "label": "University of California, Davis, 1, Levee Road, Davis, Yolo County, California, 95616, United States",
+    "precision": "amenity"
+  },
+  "UPS Customer Ctr|West Sacramento": {
+    "lat": 38.5710916,
+    "lng": -121.5472354,
+    "label": "UPS Customer Center, 1380, Shore Street, West Sacramento, Yolo County, California, 95691, United States",
+    "precision": "building"
+  },
+  "Walmart Supercenter|West Sacramento": {
+    "lat": 38.5873026,
+    "lng": -121.5500861,
+    "label": "Walmart Supercenter, 755, Riverpoint Court, Riverpoint Marketplace, Bryte, West Sacramento, Yolo County, California, 95605, United States",
+    "precision": "shop"
+  },
+  "Woodland Healthcare|Woodland": {
+    "lat": 38.6649209,
+    "lng": -121.7922087,
+    "label": "Woodland Healthcare, 1325, Cottonwood Street, Woodland, Yolo County, California, 95695, United States",
+    "precision": "amenity"
+  },
+  "Woodland Healthcare Foundation|Woodland": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "Yolo County District Attorney|Woodland": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "Yolo County Office of Edu|Woodland": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "Yolo County Sheriff-Civil Div|Woodland": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "1584 Enterprise Blvd, West Sacramento, California": {
+    "lat": 38.568897,
+    "lng": -121.5796062,
+    "label": "1584, Enterprise Boulevard, West Sacramento, Yolo County, California, 95691, United States",
+    "precision": "building"
+  },
+  "14455 State Highway 16, Brooks, California": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "1925 Enterprise Blvd, West Sacramento, California": {
+    "lat": 38.5623081,
+    "lng": -121.5765243,
+    "label": "1925, Enterprise Boulevard, West Sacramento, Yolo County, California, 95691, United States",
+    "precision": "building"
+  },
+  "23 Russell Boulevard, Davis, California": {
+    "lat": 38.5467264,
+    "lng": -121.7468967,
+    "label": "City Hall, 23, Russell Boulevard, Davis, Yolo County, California, 95616, United States",
+    "precision": "amenity"
+  },
+  "710 Riverpoint Court, West Sacramento, California": {
+    "lat": 38.588286,
+    "lng": -121.5469006,
+    "label": "710, Riverpoint Court, Riverpoint Marketplace, Bryte, West Sacramento, Yolo County, California, 95605, United States",
+    "precision": "building"
+  },
+  "525 Harbor Blvd, West Sacramento, California": {
+    "lat": 38.5834501,
+    "lng": -121.5466503,
+    "label": "525, Harbor Boulevard, Mikon, West Sacramento, Yolo County, California, 95691, United States",
+    "precision": "building"
+  },
+  "Fedex Freight, West Sacramento, Yolo County, California": {
+    "lat": 38.5563771,
+    "lng": -121.5806731,
+    "label": "FedEx Freight, Channel Drive, West Sacramento, Yolo County, California, 95799, United States",
+    "precision": "building"
+  },
+  "2713 KOVR Drive, West Sacramento, California": {
+    "lat": 38.5924898,
+    "lng": -121.5465821,
+    "label": "KOVR/KMAX-TV, 2713, Kovr Drive, Bryte, West Sacramento, Yolo County, California, 95605, United States",
+    "precision": "amenity"
+  },
+  "Mariani Nut Co, Winters, Yolo County, California": {
+    "lat": 38.5271479,
+    "lng": -121.9679398,
+    "label": "Mariani Nut Company, 709, Dutton Street, Winters, Yolo County, California, 95694, United States",
+    "precision": "building"
+  },
+  "3600 Massie Ct, West Sacramento, California": {
+    "lat": 38.5499139,
+    "lng": -121.5756359,
+    "label": "Elliot Williams, 3600, Massie Court, West Sacramento, Yolo County, California, 95691, United States",
+    "precision": "building"
+  },
+  "1376 Lemen Avenue, Woodland, California": {
+    "lat": 38.6802623,
+    "lng": -121.7573441,
+    "label": "1376, Lemen Avenue, Woodland, Yolo County, California, 95776, United States",
+    "precision": "place"
+  },
+  "West Sacramento, Yolo County, California": {
+    "lat": 38.5804609,
+    "lng": -121.530234,
+    "label": "West Sacramento, Yolo County, California, United States",
+    "precision": "town"
+  },
+  "Madison, Yolo County, California": {
+    "lat": 38.674279,
+    "lng": -121.9669538,
+    "label": "Madison, Yolo County, California, 95653, United States",
+    "precision": "census"
+  },
+  "Sutter Davis Hospital, Davis, Yolo County, California": {
+    "lat": 38.5626195,
+    "lng": -121.7712099,
+    "label": "Sutter Davis Hospital, 2000, County Road 99D, West Davis, Davis, Yolo County, California, 95616, United States",
+    "precision": "amenity"
+  },
+  "2050 E Beamer St, Woodland, California": {
+    "lat": 38.6827462,
+    "lng": -121.7234508,
+    "label": "2050, East Beamer Street, Woodland, Yolo County, California, 95776, United States",
+    "precision": "building"
+  },
+  "1201 Shore Drive, West Sacramento, California": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "University of California Davis, Davis, Yolo County, California": {
+    "lat": 38.5337904,
+    "lng": -121.7907544,
+    "label": "University of California, Davis, 1, Levee Road, Davis, Yolo County, California, 95616, United States",
+    "precision": "amenity"
+  },
+  "UPS Customer Ctr, West Sacramento, Yolo County, California": {
+    "lat": 38.5710916,
+    "lng": -121.5472354,
+    "label": "UPS Customer Center, 1380, Shore Street, West Sacramento, Yolo County, California, 95691, United States",
+    "precision": "building"
+  },
+  "Walmart Supercenter, West Sacramento, Yolo County, California": {
+    "lat": 38.5873026,
+    "lng": -121.5500861,
+    "label": "Walmart Supercenter, 755, Riverpoint Court, Riverpoint Marketplace, Bryte, West Sacramento, Yolo County, California, 95605, United States",
+    "precision": "shop"
+  },
+  "Woodland Healthcare, Woodland, Yolo County, California": {
+    "lat": 38.6649209,
+    "lng": -121.7922087,
+    "label": "Woodland Healthcare, 1325, Cottonwood Street, Woodland, Yolo County, California, 95695, United States",
+    "precision": "amenity"
+  },
+  "1325 Cottonwood Street, Woodland, California": {
+    "lat": 38.6649209,
+    "lng": -121.7922087,
+    "label": "Woodland Healthcare, 1325, Cottonwood Street, Woodland, Yolo County, California, 95695, United States",
+    "precision": "amenity"
+  },
+  "301 Second Street, Woodland, California": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "1280 Santa Anita Court, Woodland, California": {
+    "lat": 38.6962539,
+    "lng": -121.757562,
+    "label": "1280, Santa Anita Court, Woodland, Yolo County, California, 95776, United States",
+    "precision": "place"
+  },
+  "140 Tony Diaz Drive, Woodland, California": {
+    "lat": 38.6620162,
+    "lng": -121.7320011,
+    "label": "Yolo County Sheriff, 140, Tony Diaz Drive, Woodland, Yolo County, California, 95776, United States",
+    "precision": "amenity"
+  },
+  "1 Shields Avenue, Davis, California": {
+    "lat": 38.5402343,
+    "lng": -121.749142,
+    "label": "1, Peter J Shields Avenue, Davis, Yolo County, California, 95616, United States",
+    "precision": "amenity"
+  },
+  "2000 County Road 99D, Davis, California": {
+    "lat": 38.5612753,
+    "lng": -121.7704284,
+    "label": "County Road 99D, West Davis, Davis, Yolo County, California, 95616, United States",
+    "precision": "road"
+  },
+  "1850 E 8th Street, Davis, California": {
+    "lat": 38.5532676,
+    "lng": -121.7288655,
+    "label": "1850, East 8th Street, East Davis, Davis, Yolo County, California, 95616, United States",
+    "precision": "place"
+  },
+  "623 2nd Street, Davis, California": {
+    "lat": 38.5435347,
+    "lng": -121.740234,
+    "label": "Starbucks, 623, 2nd Street, Downtown Davis, Davis, Yolo County, California, 95616, United States",
+    "precision": "amenity"
+  },
+  "1411 West Covell Boulevard, Davis, California": {
+    "lat": 38.5623601,
+    "lng": -121.7652099,
+    "label": "Peet's Coffee, 1411, West Covell Boulevard, Davis, Yolo County, California, 95616, United States",
+    "precision": "amenity"
+  },
+  "3575 Reed Avenue, West Sacramento, California": {
+    "lat": 38.5914371,
+    "lng": -121.5610048,
+    "label": "3575, Reed Avenue, Lovdal, West Sacramento, Yolo County, California, 95605, United States",
+    "precision": "building"
+  },
+  "UC Davis Police Department, Davis, California": {
+    "lat": 38.540611,
+    "lng": -121.7576894,
+    "label": "UC Davis Police Department, 1, Kleiber Hall Drive, Davis, Yolo County, California, 95616, United States",
+    "precision": "amenity"
+  },
+  "625 Kleiber Hall Drive, Davis, California": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "625 Court Street, Woodland, California": {
+    "lat": 38.6791799,
+    "lng": -121.7721661,
+    "label": "Yolo County Administration Building, 625, Court Street, Woodland, Yolo County, California, 95695, United States",
+    "precision": "amenity"
+  },
+  "2780 East Gibson Road, Woodland, California": {
+    "lat": 38.66263,
+    "lng": -121.7308247,
+    "label": "2780, East Gibson Road, Woodland, Yolo County, California, 95776, United States",
+    "precision": "place"
+  },
+  "2420 East Gibson Road, Woodland, California": {
+    "lat": 38.662643,
+    "lng": -121.7341625,
+    "label": "East Gibson Road, Woodland, Yolo County, California, 95776, United States",
+    "precision": "road"
+  },
+  "530 Fifth Street, Davis, California": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "2600 Fifth Street, Davis, California": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "1717 Fifth Street, Davis, California": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "300 First Street, Woodland, California": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "1000 Lincoln Avenue, Woodland, California": {
+    "lat": 38.67551,
+    "lng": -121.768169,
+    "label": "1000, Lincoln Avenue, Woodland, Yolo County, California, 95695, United States",
+    "precision": "place"
+  },
+  "101 Court Street, Woodland, California": {
+    "lat": 38.679242,
+    "lng": -121.7825034,
+    "label": "Woodland Fire Station No 1, 101, Court Street, Woodland, Yolo County, California, 95776, United States",
+    "precision": "amenity"
+  },
+  "2040 Lake Washington Boulevard, West Sacramento, California": {
+    "lat": 38.5524049,
+    "lng": -121.535378,
+    "label": "2040, Lake Washington Boulevard, West Sacramento, Yolo County, California, 95691, United States",
+    "precision": "amenity"
+  },
+  "550 Jefferson Boulevard, West Sacramento, California": {
+    "lat": 38.5864455,
+    "lng": -121.5275644,
+    "label": "West Sacramento Police Department, 550, Jefferson Boulevard, Peethill, West Sacramento, Yolo County, California, 95605, United States",
+    "precision": "amenity"
+  },
+  "526 B Street, Davis, California": {
+    "lat": 38.547399,
+    "lng": -121.7448614,
+    "label": "526, B Street, Central Davis, Davis, Yolo County, California, 95616, United States",
+    "precision": "building"
+  },
+  "435 Sixth Street, Woodland, California": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "930 Westacre Road, West Sacramento, California": {
+    "lat": 38.5778355,
+    "lng": -121.5307191,
+    "label": "930, Westacre Road, Peethill, West Sacramento, Yolo County, California, 95691, United States",
+    "precision": "place"
+  },
+  "909 West Grant Avenue, Winters, California": {
+    "lat": null,
+    "lng": null,
+    "label": "",
+    "precision": "unmatched",
+    "error": ""
+  },
+  "350 Industrial Way, Woodland, California": {
+    "lat": 38.6791895,
+    "lng": -121.7530452,
+    "label": "350, Industrial Way, Woodland, Yolo County, California, 95776, United States",
+    "precision": "place"
+  },
+  "1601 West Capitol Avenue, West Sacramento, California": {
+    "lat": 38.5797836,
+    "lng": -121.5291815,
+    "label": "Raley's, 1601, West Capitol Avenue, Peethill, West Sacramento, Yolo County, California, 95691, United States",
+    "precision": "shop"
+  },
+  "340 Sacramento Avenue, West Sacramento, California": {
+    "lat": 38.5911658,
+    "lng": -121.5419401,
+    "label": "Sacramento Avenue, Bryte, West Sacramento, Yolo County, California, 95605, United States",
+    "precision": "road"
+  },
+  "Cache Creek Casino, Brooks, California": {
+    "lat": 38.7345359,
+    "lng": -122.1422025,
+    "label": "Cache Creek Casino, 14455, CA 16, Brooks, Yolo County, California, 95606, United States",
+    "precision": "amenity"
+  },
+  "1201 Shore Street, West Sacramento, California": {
+    "lat": 38.5731164,
+    "lng": -121.5454454,
+    "label": "1201, Shore Street, West Sacramento, Yolo County, California, 95691, United States",
+    "precision": "building"
+  },
+  "301 2nd Street, Woodland, California": {
+    "lat": 38.678621,
+    "lng": -121.771774,
+    "label": "301, 2nd Street, Woodland, Yolo County, California, 95695, United States",
+    "precision": "place"
+  },
+  "UC Davis Fire Department, Davis, California": {
+    "lat": 38.5403662,
+    "lng": -121.757659,
+    "label": "UC Davis Fire Department, 1, Kleiber Hall Drive, Davis, Yolo County, California, 95616, United States",
+    "precision": "amenity"
+  },
+  "530 5th Street, Davis, California": {
+    "lat": 38.5468946,
+    "lng": -121.7428422,
+    "label": "530, 5th Street, Central Davis, Davis, Yolo County, California, 95616, United States",
+    "precision": "place"
+  },
+  "2600 5th Street, Davis, California": {
+    "lat": 38.5512136,
+    "lng": -121.7194928,
+    "label": "City of Davis Police Department, 2600, 5th Street, East Davis, Davis, Yolo County, California, 95618, United States",
+    "precision": "emergency"
+  },
+  "1717 5th Street, Davis, California": {
+    "lat": 38.5488028,
+    "lng": -121.7303637,
+    "label": "1717, 5th Street, East Davis, Davis, Yolo County, California, 95616, United States",
+    "precision": "place"
+  },
+  "300 1st Street, Woodland, California": {
+    "lat": 38.6782479,
+    "lng": -121.7735882,
+    "label": "Woodland City Hall, 300, 1st Street, Woodland, Yolo County, California, 95695, United States",
+    "precision": "amenity"
+  },
+  "435 6th Street, Woodland, California": {
+    "lat": 38.6767539,
+    "lng": -121.7670341,
+    "label": "435, 6th Street, Woodland, Yolo County, California, 95695, United States",
+    "precision": "place"
+  },
+  "909 Grant Avenue, Winters, California": {
+    "lat": 38.5198777,
+    "lng": -121.9851818,
+    "label": "909, Grant Avenue, Winters, Yolo County, California, 95694, United States",
+    "precision": "place"
+  },
+  "West Sacramento Post Office, California": {
+    "lat": 38.5787769,
+    "lng": -121.529147,
+    "label": "West Sacramento Post Office, 1601, Merkley Avenue, Peethill, West Sacramento, Yolo County, California, 95691, United States",
+    "precision": "amenity"
+  }
+}
