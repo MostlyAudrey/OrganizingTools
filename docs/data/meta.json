@@ -1,6 +1,6 @@
 {
   "title": "California Ballot Guide",
-  "updated": "2026-10-19",
+  "updated": "2026-10-26",
   "elections": [
     {
       "date": "2026-06-02",
@@ -48,5 +48,5 @@
       "snapshot": null
     }
   ],
-  "default_as_of": "2026-10-19"
+  "default_as_of": "2026-10-26"
 }
